@@ -1,0 +1,405 @@
+---
+title: "DACSS 697D Post 8"
+description: |
+  Assignment 8 for DACSS 697D Course 'Text as Data': "Putting it All Together"
+categories:
+  - text as data
+  - homework
+  - NYT text analysis project
+author:
+  - name: Kristina Becvar
+    url: https://www.kristinabecvar.com
+slug: dacss697Epost8
+date: 04/17/2022
+base_url: https://www.kristinabecvar.com
+output:
+  distill::distill_article:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+# Comparing Main vs. Print Headlines in the New York Times
+
+## Research Background
+
+During the Fall 2021 semester, my research group hand coded PDF copies of articles resulting from a simple search on the websites of the New York Times and Wall Street Journal from Feburary 29, 2020 through September 30, 2021 using the term "Afghanistan withdrawal". One thing I noticed was that when loading the PDF articles into NVivo for coding was that it was difficult to match the New York Times articles to the citation information in Zotero for many of the articles because the article titles did not match. I realized that in the process of saving the articles in Zotero, they were saved with the title viewable on the web version of the article; however, once the article had been preserved by using the site's "Print to PDF" function, the article title that it used as a default file name was different than the web version.
+
+This semester, I began this project to be one expanding on last semester's research and looking to expand a machine analysis of articles pulling articles beginning January 2020 through December 2021. For my initial text collection, I collected articles using the New York Times API for the search query "Afghanistan", and hoped to be able to analyze the full text of a larger range of articles.
+
+However, I found that I am limited in that the article search API for the New York Times does not pull the entire article; rather, I was able to pull the abstract/summary, lead paragraph, and snippet for each article as well as the keywords, authors, sections, and url. In addition, I was able to get the article titles for both the print and online versions of the article. 
+
+The API's lack of full article text was not optimal for my purposes; to examine sentiment and co-occurence of various sources. Sources are not necessarily detailed in the lead paragraph or abstract of an article, so I moved to a different research path.
+
+Remembering the differences in headlines from our manual coding research and noting that the API provides both headlines in the article search API, I turned to analyzing the differences in the main vs. print headlines for articles from the same research period as our first examination. This way, I can potentially use a sample of the full articles collected in our previous research and take the additional step of analyzing the sentiment of full articles and how they may or may not relate to the differing headlines.
+
+## Making Choices on Inclusion of Observations
+
+In my initial look at the headline data, it was clear that not all of the articles had different headlines; some are the same entries, and some have "N/A" in the "print" version only, indicating they were online-only stories. Although I initially felt inclined to leave the "N/A" observations in the analysis, I removed those observations as they would not be relevant to my new research questions comparing the framing for different audiences.
+
+I also removed whole sections where the API returned an observation as there was apparently use of the term "Afghanistan withdrawal" somewhere in the article/entry, but the type of entry was clearly not being represented in the headline. For example, "Corrections" entries have headlines consisting only of the term "Corrections" and the corresponding date. Similar choices were made on the "Arts", Books", and "Podcasts" sections when entries are primarily the names of the things being reviewed that may have a reference to the  Afghanistan withdrawal somewhere in the text, but it is not relevant specifically to the withdrawal time period being analyzed.
+
+With few exceptions, this left the entirety of the "U.S." and "World" news sections, even if the content related to Afghanistan is not readily observable. The count (~650) matched the number of articles pulled for the hand coding research as well.
+
+## Gathering Data
+
+### Previous Process
+
+```{r include=FALSE}
+# load libraries
+library(cleanNLP)
+library(tidytext)
+library(tidyverse)
+library(quanteda)
+library(reticulate)
+library(spacyr)
+library(plyr)
+library(dplyr)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(quanteda.dictionaries)
+library(quanteda.sentiment)
+library(jsonlite)
+```
+
+To pull the data, I had to reduce the queries into more workable groups that would not time out, given the NYT API limits. I was able to pull the ~700 articles by chunk, then assemble them into a dataframe after cleaning. I will not run the code in this post, as it was already run and is an exhaustive process.
+
+```{r code_folding=TRUE}
+
+# For articles from February 29, 2020 through April 30, 2021
+#url1 <- ('https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=20200229&end_date=20210430&q=afghanistan%20withdrawal&api-key=GTp3efxVZiGO75Iox9uZJ8ZTjIMjDWsM')
+
+#query1 <- fromJSON(url1)
+
+#max.pages1 <- ceiling((query1$response$meta$hits[1] / 10)-1) 
+
+#pages1 <- list()
+#for(i in 0:max.pages1){
+  #search1 <- fromJSON(paste0(url1, "&page=", i), flatten = TRUE) %>% data.frame() 
+  #message("Retrieving page ", i)
+  #pages1[[i+1]] <- search1
+  #Sys.sleep(10)
+  #}
+
+#pages1[[i+1]] <- search1 
+#afghanistan_withdrawal_articles1 <- rbind_pages(pages1)
+
+#save(afghanistan_withdrawal_articles1,file="afghanistan_withdrawal_articles1.Rdata")
+
+#For May 1 through September 30, 2021
+
+#url2 <- ('https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=20210501&end_date=20210930&q=afghanistan%20withdrawal&api-key=GTp3efxVZiGO75Iox9uZJ8ZTjIMjDWsM')
+
+#query2 <- fromJSON(url2)
+
+#max.pages2 <- ceiling((query2$response$meta$hits[1] / 10)-1) 
+
+#pages2 <- list()
+#for(i in 0:max.pages2){
+  #search2 <- fromJSON(paste0(url2, "&page=", i), flatten = TRUE) %>% data.frame() 
+  #message("Retrieving page ", i)
+  #pages2[[i+1]] <- search2
+  #Sys.sleep(10)
+  #}
+
+#pages2[[i+1]] <- search2
+#afghanistan_withdrawal_articles2 <- rbind_pages(pages2)
+
+#save(afghanistan_withdrawal_articles2,file="afghanistan_withdrawal_articles2.Rdata")
+
+
+# Create shell for data
+
+#afghanistan_withdrawal_articles <- c()
+#afghanistan_withdrawal_articles <- rbind_pages(c(pages1, pages2))
+#saveRDS(afghanistan_withdrawal_articles,file="afghanistan_withdrawal_articles_all.Rdata")
+
+```
+
+After compiling the data, I re-formatted the date column and saving the formatted tibble for offline access.
+
+```{r code_folding=TRUE}
+
+#afghanistan_withdrawal_table<- as_tibble(cbind(
+  #date=afghanistan_withdrawal_articles$response.docs.pub_date,
+  #abstract=afghanistan_withdrawal_articles$response.docs.abstract,
+  #lead.paragraph=afghanistan_withdrawal_articles$response.docs.lead_paragraph,
+  #snippet=afghanistan_withdrawal_articles$response.docs.snippet,
+  #section.name=afghanistan_withdrawal_articles$response.docs.section_name,
+  #subsection.name=afghanistan_withdrawal_articles$response.docs.subsection_name,
+  #news.desk=afghanistan_withdrawal_articles$response.docs.news_desk,
+  #byline=afghanistan_withdrawal_articles$response.docs.byline.original,
+  #headline.main=afghanistan_withdrawal_articles$response.docs.headline.main,
+  #headline.print=afghanistan_withdrawal_articles$response.docs.headline.print_headline,
+  #headline.kicker=afghanistan_withdrawal_articles$response.docs.headline.kicker,
+  #material=afghanistan_withdrawal_articles$response.docs.type_of_material,
+  #url=afghanistan_withdrawal_articles$response.docs.web_url
+  #))
+
+#afghanistan_withdrawal_table$date <- substr(afghanistan_withdrawal_table$date, 1, nchar(afghanistan_withdrawal_table$date)-14)
+
+#afghanistan_withdrawal_table$date <- as.Date(afghanistan_withdrawal_table$date, "%Y-%m-%d")
+
+#save(afghanistan_withdrawal_table,file="afghanistan_withdrawal_table.Rdata")
+
+#write.table(afghanistan_withdrawal_table, file = "~/GitHub/DACSS.697D/Text as Data Spring22/afghanistan_withdrawal_table.csv", sep=",", row.names=FALSE)
+
+```
+
+### Load Data
+
+Now to the active review of the data. Loading the data from my collection phase:
+
+```{r echo=TRUE}
+
+headlines_main <- read.csv("./data/afghanistan_withdrawal_main.csv")
+headlines_print <- read.csv("./data/afghanistan_withdrawal_print.csv")
+headlines_both <- read.csv("./data/afghanistan_withdrawal_headlines.csv")
+
+```
+
+I want to create a corpus of each of the headline data frames for next step analysis:
+
+```{r code_folding = TRUE}
+main_corpus <- corpus(headlines_main, docid_field = "article_id", text_field = "headline_main")
+print_corpus <- corpus(headlines_print, docid_field = "article_id", text_field = "headline_print")
+```
+
+```{r code_folding = TRUE}
+main_corpus$type <- "Main Headline"
+print_corpus$type <- "Print Headline"
+docvars(main_corpus, field = "type") <- main_corpus$type
+docvars(print_corpus, field = "type") <- print_corpus$type
+```
+
+### Tokenization
+
+After many process posts, I finally realized how to remove the "�" symbol that has plagued me since starting working with this API by using "remove_symbols=TRUE" in addition to removing the punctuation when tokenizing. I also want to remove stopwords.
+
+```{r code_folding = TRUE}
+main_tokens <- tokens(main_corpus) %>%
+  tokens(main_corpus, remove_punct = TRUE) %>%
+  tokens(main_corpus, remove_symbols = TRUE) %>%
+  tokens_remove(stopwords("english"))
+
+print_tokens <- tokens(print_corpus) %>%
+  tokens(print_corpus, remove_punct = TRUE) %>%
+  tokens(print_corpus, remove_symbols = TRUE) %>%
+  tokens_remove(stopwords("english"))
+
+length(main_tokens)
+print(main_tokens)
+
+length(print_tokens)
+print(print_tokens)
+```
+
+### Document Feature Matrix
+
+```{r code_folding = TRUE}
+#print dfm
+print_dfm <- dfm(print_tokens)
+#main dfm
+main_dfm <- dfm(print_tokens)
+```
+
+
+```{r echo=TRUE}
+#create a word frequency variable and the rankings
+main_counts <- as.data.frame(sort(colSums(main_dfm),dec=T))
+colnames(main_counts) <- c("Frequency")
+main_counts$Rank <- c(1:ncol(main_dfm))
+head(main_counts)
+
+print_counts <- as.data.frame(sort(colSums(print_dfm),dec=T))
+colnames(print_counts) <- c("Frequency")
+print_counts$Rank <- c(1:ncol(print_dfm))
+head(print_counts)
+```
+
+Now I can take a look at this network of feature co-occurrences for the main headlines:
+
+```{r code_folding = TRUE}
+# create fcm from dfm
+main_fcm <- fcm(main_dfm)
+# check the dimensions (i.e., the number of rows and the number of columnns)
+# of the matrix we created
+dim(main_fcm)
+# pull the top features
+myFeatures <- names(topfeatures(main_fcm, 20))
+# retain only those top features as part of our matrix
+smaller_main_fcm <- fcm_select(main_fcm, pattern = myFeatures, selection = "keep")
+# check dimensions
+dim(smaller_main_fcm)
+# compute size weight for vertices in network
+size <- log(colSums(smaller_main_fcm))
+# create plot
+textplot_network(smaller_main_fcm, vertex_size = size / max(size) * 3)
+```
+
+and for the print headlines:
+
+```{r code_folding = TRUE}
+# create fcm from dfm
+print_fcm <- fcm(print_dfm)
+# check the dimensions (i.e., the number of rows and the number of columnns)
+# of the matrix we created
+dim(print_fcm)
+# pull the top features
+myFeatures <- names(topfeatures(print_fcm, 20))
+# retain only those top features as part of our matrix
+smaller_print_fcm <- fcm_select(print_fcm, pattern = myFeatures, selection = "keep")
+# check dimensions
+dim(smaller_print_fcm)
+# compute size weight for vertices in network
+size <- log(colSums(smaller_print_fcm))
+# create plot
+textplot_network(smaller_print_fcm, vertex_size = size / max(size) * 3)
+```
+
+
+This brings me to where I had previously stopped in my comparison and analysis, and now that I'm able to produce a cleaner result, I'll move on to further analysis using the quanteda dictionary.
+
+## Dictionary Analysis
+
+```{r echo=TRUE}
+# convert tokens from each headline data set to DFM using the dictionary "NRC"
+main_nrc <- dfm(main_tokens) %>%
+  dfm_lookup(data_dictionary_NRC)
+print_nrc <- dfm(print_tokens) %>%
+  dfm_lookup(data_dictionary_NRC)
+
+dim(main_nrc)
+main_nrc
+dim(print_nrc)
+print_nrc
+```
+
+And use the information in a data frame to plot the output:
+
+```{r echo=TRUE}
+#for the main headlines
+df_main_nrc <- convert(main_nrc, to = "data.frame")
+df_main_nrc$polarity <- (df_main_nrc$positive - df_main_nrc$negative)/(df_main_nrc$positive + df_main_nrc$negative)
+df_main_nrc$polarity[which((df_main_nrc$positive + df_main_nrc$negative) == 0)] <- 0
+
+ggplot(df_main_nrc) + 
+  geom_histogram(aes(x=polarity)) + 
+  theme_bw()
+#and the print headlines
+df_print_nrc <- convert(print_nrc, to = "data.frame")
+df_print_nrc$polarity <- (df_print_nrc$positive - df_print_nrc$negative)/(df_print_nrc$positive + df_print_nrc$negative)
+df_print_nrc$polarity[which((df_print_nrc$positive + df_print_nrc$negative) == 0)] <- 0
+
+ggplot(df_print_nrc) + 
+  geom_histogram(aes(x=polarity)) + 
+  theme_bw()
+```
+
+Looking at the headlines that are indicated as "1", or positive in sentiment, it's clear that this dictionary is not capturing the sentiment accurately.
+
+```{r echo=TRUE}
+head(main_corpus[which(df_main_nrc$polarity == 1)])
+head(print_corpus[which(df_print_nrc$polarity == 1)])
+```
+
+I am going to want to look at multiple dictionaries to see if one can best apply to this data. First, the LSD 2015 dictionary:
+
+```{r echo=TRUE}
+# convert main corpus to DFM using the LSD2015 dictionary
+main_lsd2015 <- dfm(tokens(main_corpus, remove_punct = TRUE),
+                              tolower = TRUE) %>%
+                          dfm_lookup(data_dictionary_LSD2015)
+# create main polarity measure for LSD2015
+main_lsd2015 <- convert(main_lsd2015, to = "data.frame")
+main_lsd2015$polarity <- (main_lsd2015$positive - main_lsd2015$negative)/(main_lsd2015$positive + main_lsd2015$negative)
+main_lsd2015$polarity[which((main_lsd2015$positive + main_lsd2015$negative) == 0)] <- 0
+# convert print corpus to DFM using the LSD2015 dictionary
+print_lsd2015 <- dfm(tokens(print_corpus, remove_punct = TRUE),
+                              tolower = TRUE) %>%
+                          dfm_lookup(data_dictionary_LSD2015)
+# create print polarity measure for LSD2015
+print_lsd2015 <- convert(print_lsd2015, to = "data.frame")
+print_lsd2015$polarity <- (print_lsd2015$positive - print_lsd2015$negative)/(print_lsd2015$positive + print_lsd2015$negative)
+print_lsd2015$polarity[which((print_lsd2015$positive + print_lsd2015$negative) == 0)] <- 0
+```
+
+and the General Inquirer dictionary:
+
+```{r echo=TRUE}
+# convert main corpus to DFM using the General Inquirer dictionary
+main_geninq <- dfm(tokens(main_corpus, remove_punct = TRUE),
+                             tolower = TRUE) %>%
+                    dfm_lookup(data_dictionary_geninqposneg)
+# create main polarity measure for GenInq
+main_geninq <- convert(main_geninq, to = "data.frame")
+main_geninq$polarity <- (main_geninq$positive - main_geninq$negative)/(main_geninq$positive + main_geninq$negative)
+main_geninq$polarity[which((main_geninq$positive + main_geninq$negative) == 0)] <- 0
+# convert print corpus to DFM using the General Inquirer dictionary
+print_geninq <- dfm(tokens(print_corpus, remove_punct = TRUE),
+                             tolower = TRUE) %>%
+                    dfm_lookup(data_dictionary_geninqposneg)
+# create print polarity measure for GenInq
+print_geninq <- convert(print_geninq, to = "data.frame")
+print_geninq$polarity <- (print_geninq$positive - print_geninq$negative)/(print_geninq$positive + print_geninq $negative)
+print_geninq$polarity[which((print_geninq$positive + print_geninq$negative) == 0)] <- 0
+```
+
+Now I'm going to be able to compare the different dictionary scores in one data frame for each type of headline.
+
+```{r code_folding = TRUE}
+# create unique names for each main headline dataframe
+colnames(df_main_nrc) <- paste("nrc", colnames(df_main_nrc), sep = "_")
+colnames(main_lsd2015) <- paste("lsd2015", colnames(main_lsd2015), sep = "_")
+colnames(main_geninq) <- paste("geninq", colnames(main_geninq), sep = "_")
+# now let's compare our estimates
+main_sent <- merge(df_main_nrc, main_lsd2015, by.x = "nrc_doc_id", by.y = "lsd2015_doc_id")
+main_sent <- merge(main_sent, main_geninq, by.x = "nrc_doc_id", by.y = "geninq_doc_id")
+head(main_sent)
+
+# create unique names for each print headline dataframe
+colnames(df_print_nrc) <- paste("nrc", colnames(df_print_nrc), sep = "_")
+colnames(print_lsd2015) <- paste("lsd2015", colnames(print_lsd2015), sep = "_")
+colnames(print_geninq) <- paste("geninq", colnames(print_geninq), sep = "_")
+# now let's compare our estimates
+print_sent <- merge(df_print_nrc, print_lsd2015, by.x = "nrc_doc_id", by.y = "lsd2015_doc_id")
+print_sent <- merge(print_sent, print_geninq, by.x = "nrc_doc_id", by.y = "geninq_doc_id")
+head(print_sent)
+```
+
+Now that we have them all in a single data frame, it's straightforward to figure out a bit about how well our different measures of polarity agree across the different approaches by looking at their correlation using the "cor()" function.
+
+```{r echo=TRUE}
+cor(main_sent$nrc_polarity, main_sent$lsd2015_polarity)
+cor(main_sent$nrc_polarity, main_sent$geninq_polarity)
+cor(main_sent$lsd2015_polarity, main_sent$geninq_polarity)
+```
+
+```{r echo=TRUE}
+cor(print_sent$nrc_polarity, print_sent$lsd2015_polarity)
+cor(print_sent$nrc_polarity, print_sent$geninq_polarity)
+cor(print_sent$lsd2015_polarity, print_sent$geninq_polarity)
+```
+
+
+### Annotation
+
+
+```{r echo=TRUE}
+library(cleanNLP)
+cnlp_init_udpipe()
+```
+
+```{r echo=TRUE}
+library(tidyr)
+#amain <- as_tibble(headlines_main)
+#annotated_main <- cnlp_annotate(main_corpus)
+#annotated_main
+```
+
+
+
+

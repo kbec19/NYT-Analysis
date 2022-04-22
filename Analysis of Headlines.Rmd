@@ -1,15 +1,14 @@
 ---
-title: "DACSS 697D Post 8"
+title: "Analysis of Main vs. Print Headlines"
 description: |
-  Assignment 8 for DACSS 697D Course 'Text as Data': "Putting it All Together"
+  Text as Data Project Headline Comparison Research
 categories:
   - text as data
-  - homework
   - NYT text analysis project
 author:
   - name: Kristina Becvar
     url: https://www.kristinabecvar.com
-slug: dacss697Epost8
+slug: headline-analysis
 date: 04/17/2022
 base_url: https://www.kristinabecvar.com
 output:
@@ -19,7 +18,6 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
 ```
 
 # Comparing Main vs. Print Headlines in the New York Times
@@ -56,13 +54,15 @@ library(tidyverse)
 library(quanteda)
 library(reticulate)
 library(spacyr)
-library(plyr)
-library(dplyr)
+library(plyr); library(dplyr)
 library(quanteda.textmodels)
 library(quanteda.textplots)
 library(quanteda.dictionaries)
 library(quanteda.sentiment)
 library(jsonlite)
+library(caret)
+
+suppressWarnings(expr)
 ```
 
 To pull the data, I had to reduce the queries into more workable groups that would not time out, given the NYT API limits. I was able to pull the ~700 articles by chunk, then assemble them into a dataframe after cleaning. I will not run the code in this post, as it was already run and is an exhaustive process.
@@ -153,22 +153,30 @@ After compiling the data, I re-formatted the date column and saving the formatte
 
 Now to the active review of the data. Loading the data from my collection phase:
 
+### Load Data
+
+```{r code_folding = TRUE}
+#load data
+main_headlines <- read.csv("./data/afghanistan_withdrawal_main.csv")
+main_headlines <- as.data.frame(main_headlines)
+#turn into data frame
+print_headlines <- read.csv("./data/afghanistan_withdrawal_print.csv")
+print_headlines <- as.data.frame(print_headlines)
+#inspect data
+head(main_headlines)
+head(print_headlines)
+```
+
+### Create Corpus
+
 ```{r echo=TRUE}
-
-headlines_main <- read.csv("./data/afghanistan_withdrawal_main.csv")
-headlines_print <- read.csv("./data/afghanistan_withdrawal_print.csv")
-headlines_both <- read.csv("./data/afghanistan_withdrawal_headlines.csv")
-
+main_corpus <- corpus(main_headlines, docid_field = "article_id", text_field = "headline_main")
+print_corpus <- corpus(print_headlines, docid_field = "article_id", text_field = "headline_print")
 ```
 
-I want to create a corpus of each of the headline data frames for next step analysis:
+### Assign Type to Docvars
 
-```{r code_folding = TRUE}
-main_corpus <- corpus(headlines_main, docid_field = "article_id", text_field = "headline_main")
-print_corpus <- corpus(headlines_print, docid_field = "article_id", text_field = "headline_print")
-```
-
-```{r code_folding = TRUE}
+```{r echo=TRUE}
 main_corpus$type <- "Main Headline"
 print_corpus$type <- "Print Headline"
 docvars(main_corpus, field = "type") <- main_corpus$type
@@ -179,19 +187,30 @@ docvars(print_corpus, field = "type") <- print_corpus$type
 
 After many process posts, I finally realized how to remove the "�" symbol that has plagued me since starting working with this API by using "remove_symbols=TRUE" in addition to removing the punctuation when tokenizing. I also want to remove stopwords.
 
+#### Main Headlines
+
 ```{r code_folding = TRUE}
 main_tokens <- tokens(main_corpus) %>%
   tokens(main_corpus, remove_punct = TRUE) %>%
   tokens(main_corpus, remove_symbols = TRUE) %>%
-  tokens_remove(stopwords("english"))
+  tokens_remove(stopwords("english")) %>%
+  tokens_remove(c("s"))
 
-print_tokens <- tokens(print_corpus) %>%
-  tokens(print_corpus, remove_punct = TRUE) %>%
-  tokens(print_corpus, remove_symbols = TRUE) %>%
-  tokens_remove(stopwords("english"))
+main_dfm <- dfm(main_tokens)
 
 length(main_tokens)
 print(main_tokens)
+```
+
+#### Print Headlines
+
+```{r code_folding = TRUE}
+print_tokens <- tokens(print_corpus, remove_punct = TRUE) %>%
+  tokens(print_corpus, remove_symbols = TRUE) %>%
+  tokens_remove(stopwords("english")) %>%
+  tokens_remove(c("s"))
+
+main_dfm <- dfm(print_tokens)
 
 length(print_tokens)
 print(print_tokens)
@@ -265,6 +284,16 @@ This brings me to where I had previously stopped in my comparison and analysis, 
 
 ## Dictionary Analysis
 
+### liwcalike()
+
+```{r code_folding = TRUE}
+# use liwcalike() to estimate sentiment using NRC dictionary
+main_sentiment_nrc <- liwcalike(as.character(main_corpus), data_dictionary_NRC)
+names(main_sentiment_nrc)
+```
+
+### NRC
+
 ```{r echo=TRUE}
 # convert tokens from each headline data set to DFM using the dictionary "NRC"
 main_nrc <- dfm(main_tokens) %>%
@@ -306,6 +335,8 @@ head(main_corpus[which(df_main_nrc$polarity == 1)])
 head(print_corpus[which(df_print_nrc$polarity == 1)])
 ```
 
+### LSD 2015
+
 I am going to want to look at multiple dictionaries to see if one can best apply to this data. First, the LSD 2015 dictionary:
 
 ```{r echo=TRUE}
@@ -326,6 +357,8 @@ print_lsd2015 <- convert(print_lsd2015, to = "data.frame")
 print_lsd2015$polarity <- (print_lsd2015$positive - print_lsd2015$negative)/(print_lsd2015$positive + print_lsd2015$negative)
 print_lsd2015$polarity[which((print_lsd2015$positive + print_lsd2015$negative) == 0)] <- 0
 ```
+
+### General Inquirer
 
 and the General Inquirer dictionary:
 

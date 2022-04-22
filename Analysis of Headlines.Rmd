@@ -222,7 +222,7 @@ print(print_tokens)
 #print dfm
 print_dfm <- dfm(print_tokens)
 #main dfm
-main_dfm <- dfm(print_tokens)
+main_dfm <- dfm(main_tokens)
 ```
 
 

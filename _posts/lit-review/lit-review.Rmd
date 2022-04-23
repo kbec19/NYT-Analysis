@@ -25,11 +25,31 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Annotated Bibliography (Starting with Abstracts Only - In Development)
 
+## Liu & Huang (2022)
+
+* Liu, M., & Huang, J. (2022). “Climate change” versus “global warming”: A corpus-assisted discourse analysis of two popular terms in the New York Times. Journal of World Languages. https://doi.org/10.1515/jwl-2022-0004
+
+* Abstract
+
+“Climate change” and “global warming” are two popular terms that may be often used interchangeably in news media. This study proposes to give a corpusassisted discourse study of the representations of climate change and global warming in the New York Times (2000–2019) in order to examine how they are actually used in the newspaper. The findings show both similarities and differences in their representations in terms of the associated topics/themes, the particular ways of framing, and the perspectivization strategy employed. It is argued that a corpus-assisted discourse study of a large sample of news articles presents a more accurate picture of the actual use of the two terms in news media.
+
+## Chan, et al. (2021)
+
 * Chan, C., Bajjalieh, J., Auvil, L., Wessler, H., Althaus, S., Welbers, K., Atteveldt, W. van, & Jungblut, M. (2021). Four best practices for measuring news sentiment using ‘off-the-shelf’ dictionaries: A large-scale p-hacking experiment. Computational Communication Research, 3(1), 1–27.
 
 * Abstract
 
 We examined the validity of 37 sentiment scores based on dictionary-based methods using a large news corpus and demonstrated the risk of generating a spectrum of results with different levels of statistical significance by presenting an analysis of relationships between news sentiment and U.S. presidential approval. We summarize our findings into four best practices: 1) use a suitable sentiment dictionary; 2) do not assume that the validity and reliability of the dictionary is ‘built-in’; 3) check for the influence of content length and 4) do not use multiple dictionaries to test the same statistical hypothesis.
+
+## Van Atteveldt, et al. (2021)
+
+* van Atteveldt, W., van der Velden, M. A. C. G., & Boukes, M. (2021). The Validity of Sentiment Analysis: Comparing Manual Annotation, Crowd-Coding, Dictionary Approaches, and Machine Learning Algorithms. Communication Methods and Measures, 15(2), 121–140. https://doi.org/10.1080/19312458.2020.1869198
+
+* Abstract
+
+Sentiment is central to many studies of communication science, from negativity and polarization in political communication to analyzing product reviews and social media comments in other sub-fields. This study provides an exhaustive comparison of sentiment analysis methods, using a validation set of Dutch economic headlines to compare the performance of manual annotation, crowd coding, numerous dictionaries and machine learning using both traditional and deep learning algorithms. The three main conclusions of this article are that: (1) The best performance is still attained with trained human or crowd coding; (2) None of the used dictionaries come close to acceptable levels of validity; and (3) machine learning, especially deep learning, substantially outperforms dictionary-based methods but falls short of human performance. From these findings, we stress the importance of always validating automatic text analysis methods before usage. Moreover, we provide a recommended step-bystep approach for (automated) text analysis projects to ensure both efficiency and validity.
+
+## Burggraff & Trilling (2020)
 
 * Burggraaff, C., & Trilling, D. (2020). Through a different gate: An automated content analysis of how online news and print news differ.  Journalism, 21(1), 112–129. https://doi.org/10.1177/1464884917716699
 
@@ -37,11 +57,39 @@ We examined the validity of 37 sentiment scores based on dictionary-based method
 
 We investigate how news values differ between online and print news articles. We hypothesize that print and online articles differ in terms of news values because of differences in the routines used to produce them. Based on a quantitative automated content analysis of N = 762,095 Dutch news items, we show that online news items are more likely to be follow-up items than print items, and that there are further differences regarding news values like references to persons, the power elite, negativity, and positivity. In order to conduct this large-scale analysis, we developed innovative methods to automatically code a wide range of news values. In particular, this article demonstrates how techniques such as sentiment analysis, named entity recognition, supervised machine learning, and automated queries of external databases can be combined and used to study journalistic content. Possible explanations for the difference found between online and offline news are discussed.
 
+## Boukes, et al. (2020)
+
+* Boukes, M., van de Velde, B., Araujo, T., & Vliegenthart, R. (2020). What’s the Tone? Easy Doesn’t Do It: Analyzing Performance and Agreement Between Off-the-Shelf Sentiment Analysis Tools. Communication Methods and Measures, 14(2), 83–104. https://doi.org/10.1080/19312458.2019.1671966
+
+* Abstract
+
+This article scrutinizes the method of automated content analysis to measure the tone of news coverage. We compare a range of off-the-shelf sentiment analysis tools to manually coded economic news as well as examine the agreement between these dictionary approaches themselves. We assess the performance of five off-the-shelf sentiment analysis tools and two tailor-made dictionary-based approaches. The analyses result in five conclusions. First, there is little overlap between the off-the-shelf tools; causing wide divergence in terms of tone measurement. Second, there is no stronger overlap with manual coding for short texts (i.e., headlines) than for long texts (i.e., full articles). Third, an approach that combines individual dictionaries achieves a comparably good performance. Fourth, precision may increase to acceptable levels at higher levels of granularity. Fifth, performance of dictionary approaches depends more on the number of relevant keywords in the dictionary than on the number of valenced words as such; a small tailor-made lexicon was not inferior to large established dictionaries. Altogether, we conclude that off-the-shelf sentiment analysis tools are mostly unreliable and unsuitable for research purposes – at least in the context of Dutch economic news – and manual validation for the specific language, domain, and genre of the research project at hand is always warranted.
+
+## Song, et al. (2020)
+
+* Song, H., Tolochko, P., Eberl, J.-M., Eisele, O., Greussing, E., Heidenreich, T., Lind, F., Galyga, S., & Boomgaarden, H. G. (2020). In Validations We Trust? The Impact of Imperfect Human Annotations as a Gold Standard on the Quality of Validation of Automated Content Analysis. Political Communication, 37(4), 550–572. https://doi.org/10.1080/10584609.2020.1723752
+
+* Abstract
+
+Political communication has become one of the central arenas of innovation in the application of automated analysis approaches to ever-growing quantities of digitized texts. However, although researchers routinely and conveniently resort to certain forms of human coding to validate the results derived from automated procedures, in practice the actual “quality assurance” of such a “gold standard” often goes unchecked. Contemporary practices of validation via manual annotations are far from being acknowledged as best practices in the literature, and the reporting and interpretation of validation procedures differ greatly. We systematically assess the connection between the quality of human judgment in manual annotations and the relative performance evaluations of automated procedures against true standards by relying on large-scale Monte Carlo simulations. The results from the simulations confirm that there is a substantially greater risk of a researcher reaching an incorrect conclusion regarding the performance of automated procedures when the quality of manual annotations used for validation is not properly ensured. Our contribution should therefore be regarded as a call for the systematic application of high-quality manual validation materials in any political communication study, drawing on automated text analysis procedures.
+
+## Rudkowsky, et al. (2018)
+
+* Rudkowsky, E., Haselmayer, M., Wastian, M., Jenny, M., Emrich, Š., & Sedlmair, M. (2018). More than Bags of Words: Sentiment Analysis with Word Embeddings. Communication Methods and Measures, 12(2–3), 140–157. https://doi.org/10.1080/19312458.2018.1455817
+
+* Abstract
+
+Moving beyond the dominant bag-of-words approach to sentiment analysis we introduce an alternative procedure based on distributed word embeddings. The strength of word embeddings is the ability to capture similarities in word meaning. We use word embeddings as part of a supervised machine learning procedure which estimates levels of negativity in parliamentary speeches. The procedure’s accuracy is evaluated with crowdcoded training sentences; its external validity through a study of patterns of negativity in Austrian parliamentary speeches. The results show the potential of the word embeddings approach for sentiment analysis in the social sciences.
+
+## Silva (2017)
+
 * Silva, D. M. D. (2017). The Othering of Muslims: Discourses of Radicalization in the New York Times, 1969–2014. Sociological Forum, 32(1), 138–161. https://doi.org/10.1111/socf.12321
 
 * Abstract
 
 In this article, I engage with Edward Said’s Orientalism and various perspectives within the othering paradigm to analyze the emergence and transformation of radicalization discourses in the news media. Employing discourse analysis of 607 New York Times articles from 1969 to 2014, this article demonstrates that radicalization discourses are not new but are the result of complex sociolinguistic and historical developments that cannot be reduced to dominant contemporary understandings of the concept or to singular events or crises. The news articles were then compared to 850 government documents, speeches, and other official communications. The analysis of the data indicates that media conceptualizations of radicalization, which once denoted political and economic differences, have now shifted to overwhelmingly focus on Islam. As such, radicalization discourse now evokes the construct radicalization as symbolic marker of conflict between the West and the East. I also advanced the established notion that the news media employ strategic discursive strategies that contribute to conceptual distinctions that are used to construct Muslims as an “alien other” to the West.
+
+## Gottlieb (2015)
 
 * Gottlieb, J. (2015). Protest News Framing Cycle: How The New York Times Covered Occupy Wall Street. International Journal of Communication, 9(0), 23.
 
@@ -49,6 +97,7 @@ In this article, I engage with Edward Said’s Orientalism and various perspecti
 
 This article introduces a protest news framing cycle and presents the results of a longitudinal analysis of news attention and framing of protest movements. To identify the frame-changing dynamic occurring over time, a content analysis of the news coverage of Occupy Wall Street was conducted on 228 articles and 37 editorials in The New York Times from the start of the protest in September 2011 until long after the protest had subsided in July 2014. The article identifies longitudinal changes in news frames about the economic substance of the protest and the ensuing conflict between protesters and city officials during the occupation. Findings suggest that conflict had a significant impact on the number of news stories about the protest. Further, the results demonstrate how news framing opportunities changed as the movement reached different stages of the news attention cycle. As the movement grew, journalists focused on the movement’s economic grievances, including economic inequality, bank bailouts, and foreclosures. As the movement peaked, news attention shifted to the intensifying conflict between city officials and protesters.
 
+## Diakopoulos (2015)
 
 * Diakopoulos, N. A. (2015). The Editor’s Eye: Curation and Comment Relevance on the New York Times. Proceedings of the 18th ACM Conference on Computer Supported Cooperative Work & Social Computing, 1153–1157. https://doi.org/10.1145/2675133.2675160
 
@@ -56,11 +105,15 @@ This article introduces a protest news framing cycle and presents the results of
 
 The journalistic curation of social media content from platforms like Facebook and YouTube or from commenting systems is underscored by an imperative for publishing accurate and quality content. This work explores the manifestation of editorial quality criteria in comments that have been curated and selected on the New York Times website as “NYT Picks.” The relationship between comment selection and comment relevance is examined through the analysis of 331,785 comments, including 12,542 editor’s selections. A robust association between editorial selection and article relevance or conversational relevance was found. The results are discussed in terms of their implications for reducing journalistic curatorial work load, or scaling the ability to examine more comments for editorial selection , as well as how end-user commenting experiences might be improved.
 
+## Grimmer & Stewart (2013)
+
 * Grimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. Political Analysis, 21(3), 267–297.
 
 * Abstract
 
 Politics and political conflict often occur in the written and spoken word. Scholars have long recognized this, but the massive costs of analyzing even moderately sized collections of texts have hindered their use in political science research. Here lies the promise of automated text analysis: it substantially reduces the costs of analyzing large collections of text. We provide a guide to this exciting new area of research and show how, in many instances, the methods have already obtained part of their promise. But there are pitfalls to using automated methods–they are no substitute for careful thought and close reading and require extensive and problem-specific validation. We survey a wide range of new methods, provide guidance on how to validate the output of the models, and clarify misconceptions and errors in the literature. To conclude, we argue that for automated text methods to become a standard tool for political scientists, methodologists must contribute new methods and new methods of validation.
+
+## Kothari (2010)
 
 * Kothari, A. (2010). The Framing of the Darfur Conflict in the New York Times: 2003–2006. Journalism Studies, 11(2), 209–224. https://doi.org/10.1080/14616700903481978
 
@@ -68,13 +121,23 @@ Politics and political conflict often occur in the written and spoken word. Scho
 
 This multi-method study examines how the New York Times reported the Darfur conflict in the Sudan, which has led to an estimated 300,000 deaths and over 2.3 million people displaced by the fighting. Drawing on normative media theories and prior studies of Africa's representation, the role of sources in the frame-building process was analyzed, together with the impact of news-making processes on journalists' reporting about Darfur. The textual analysis largely supports results of prior studies on news framing of Africa. However, interviews with four New York Times journalists reveal that the individual biases and motives of the journalists and their sources significantly influenced the coverage. While the journalists participated in news-making processes distinguishable by journalist goal, source availability, and source credibility, their sources also provided information that reinforced certain media frames.
 
-
+## Kiousis (2004)
 
 * Kiousis, S. (2004). Explicating Media Salience: A Factor Analysis of New York Times Issue Coverage During the 2000 U.S. Presidential Election. Journal of Communication, 54(1), 71–87. https://doi.org/10.1111/j.1460-2466.2004.tb02614.x
 
 * Abstract
 
 Media salience—the key independent variable in agenda-setting research—has traditionally been explicated as a singular construct. Nevertheless, scholars have defined and measured it using a number of different conceptualizations and empirical indicators. To address this limitation in research, this study introduced a conceptual model of media salience, suggesting it is a multidimensional construct consisting of 3 core elements: attention, prominence, and valence. Furthermore, the model was tested through an exploratory factor analysis of The New York Times news coverage of 8 major political issues during the 2000 presidential election as a case study. The data revealed that 2 dimensions of media salience emerge: visibility and valence. Based on the factor analysis, 2 indices are created to measure the construct, which are intended for use in future investigations.
+
+## Althaus & Tewksbury (2002)
+
+* Althaus, S. L., & Tewksbury, D. (2002). Agenda Setting and the “New” News: Patterns of Issue Importance Among Readers of the Paper and Online Versions of the New York Times. Communication Research, 29(2), 180–207. https://doi.org/10.1177/0093650202029002004
+
+* Abstract
+
+This study examines whether readers of the paper and online versions of a national newspaper acquire different perceptions of the importance of political issues. Using data from a weeklong experiment in which subjects either readthe print version of the New York Times, the online version of that paper, or received no special exposure, this study finds evidence that people exposed to the Times for 5 days adjusted their agendas in response to that exposure and that print readers modified their agendas differently than did online readers.
+
+
 
 
 

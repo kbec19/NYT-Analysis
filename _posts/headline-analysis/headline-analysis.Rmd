@@ -2,7 +2,7 @@
 title: "Analysis of Main vs. Print Headlines"
 description: |
   Text as Data Project Headline Comparison Research
-preview: Analysis-of-Headlines_files/figure-html5/unnamed-chunk-12-1.png
+preview: unnamed-chunk-12-1.png
 categories:
   - text as data
   - NYT text analysis project
@@ -159,10 +159,10 @@ Now to the active review of the data. Loading the data from my collection phase:
 
 ```{r code_folding = TRUE}
 #load data
-main_headlines <- read.csv("./data/afghanistan_withdrawal_main.csv")
+main_headlines <- read.csv("afghanistan_withdrawal_main.csv")
 main_headlines <- as.data.frame(main_headlines)
 #turn into data frame
-print_headlines <- read.csv("./data/afghanistan_withdrawal_print.csv")
+print_headlines <- read.csv("afghanistan_withdrawal_print.csv")
 print_headlines <- as.data.frame(print_headlines)
 #inspect data
 head(main_headlines)
@@ -434,7 +434,4 @@ library(tidyr)
 #annotated_main <- cnlp_annotate(main_corpus)
 #annotated_main
 ```
-
-
-
 

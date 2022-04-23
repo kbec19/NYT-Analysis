@@ -2,11 +2,10 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "About this blog",
-      "description": "Some additional details about the blog",
+      "title": "Contact Me Via GitHub, Twitter, LinkedIn, or on my Academic Blog",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-04-22T15:23:04-05:00"
+      "contents": "\r\n\r\n          \r\n          \r\n          NYT Headline Analysis\r\n          \r\n          \r\n          Home\r\n          About\r\n          ☰\r\n          \r\n          \r\n      \r\n        \r\n          \r\n            Contact Me Via GitHub, Twitter, LinkedIn, or on my\r\nAcademic Blog\r\n          \r\n          \r\n            \r\n              \r\n            \r\n            \r\n              \r\n            \r\n          \r\n\r\n          \r\n            \r\n              \r\n                  \r\n                    \r\n                      \r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                      \r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                      \r\n                    \r\n                  \r\n                \r\n                              \r\n          \r\n\r\n          \r\n            \r\n              \r\n                                \r\n                  \r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                  \r\n                \r\n                              \r\n            \r\n          \r\n        \r\n      \r\n    \r\n\r\n    \r\n    \r\n    ",
+      "last_modified": "2022-04-22T23:15:59-05:00"
     }
   ],
   "collections": ["posts/posts.json"]

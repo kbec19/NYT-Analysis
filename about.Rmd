@@ -1,9 +1,17 @@
 ---
-title: "About this blog"
-description: |
-  Some additional details about the blog
+title: "Contact Me Via GitHub, Twitter, LinkedIn, or on my Academic Blog"
+image: "initials.png"
+links:
+  - label: '<i class="fab fa-github fa-1x"></i>'
+    url: "https://github.com/kbec19"
+  - label: '<i class="fab fa-twitter fa-1x"></i>'
+    url: "https://twitter.com/kitka2001"
+  - label: '<i class="fab fa-linkedin-in fa-1x"></i>'
+    url: "https://www.linkedin.com/in/kbecvar/"
+output:
+  postcards::jolla
+site: distill::distill_website  
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+
+

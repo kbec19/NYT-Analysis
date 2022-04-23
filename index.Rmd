@@ -1,5 +1,5 @@
 ---
-title: "NYT Headline Analysis"
+title: "New York Times Analysis"
 site: distill::distill_website
 listing: posts
 ---

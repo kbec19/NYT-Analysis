@@ -8,6 +8,8 @@ links:
     url: "https://twitter.com/kitka2001"
   - label: '<i class="fab fa-linkedin-in fa-1x"></i>'
     url: "https://www.linkedin.com/in/kbecvar/"
+  - label: Blog
+    url: "http://www.kristinabecvar.com"
 output:
   postcards::jolla
 site: distill::distill_website  

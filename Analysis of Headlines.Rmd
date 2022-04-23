@@ -2,15 +2,17 @@
 title: "Analysis of Main vs. Print Headlines"
 description: |
   Text as Data Project Headline Comparison Research
+preview: Analysis-of-Headlines_files/figure-html5/unnamed-chunk-12-1.png
 categories:
   - text as data
   - NYT text analysis project
 author:
   - name: Kristina Becvar
-    url: https://www.kristinabecvar.com
+    url: https://kbec19.github.io/NYT-Analysis/
+    affiliation: UMass DACSS Program (My Academic Blog Link)
+    affiliation_url: https://kristinabecvar.com
 slug: headline-analysis
 date: 04/17/2022
-base_url: https://www.kristinabecvar.com
 output:
   distill::distill_article:
     toc: true

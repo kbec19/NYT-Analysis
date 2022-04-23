@@ -1,26 +1,27 @@
 ---
-title: "Welcome to NYT Headline Analysis"
+title: "Analysis of New York Times Headlines"
 description: |
-  Welcome to our new blog, NYT Headline Analysis. We hope you enjoy 
-  reading what we have to say!
+  This is the project page for the analysis of differences between main and print headlines for New York Times articles published surrounding the U.S. withdrawal of the military in Afghanistan.
 author:
-  - name: Nora Jones 
-    url: https://example.com/norajones
-    affiliation: Spacely Sprockets
-    affiliation_url: https://example.com/spacelysprokets
+  - name: Kristina Becvar
+    url: https://kbec19.github.io/Grateful-Network/
+    affiliation: UMass DACSS Program (My Academic Blog Link)
+    affiliation_url: https://kristinabecvar.com
 date: 04-22-2022
 output:
   distill::distill_article:
-    self_contained: false
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-# Learn more about creating blogs with Distill at:
-# https://rstudio.github.io/distill/blog.html
-
 ```
 
 
+For this project, I am using some data gathered in the DACSS 602 course "Research Design". 
+
+I continued down the same path but with new data and a new direction through the DACSS 697D course "Text as Data".
+
+More background data can be found in [this series of posts](https://www.kristinabecvar.com/blog.html#category:text as data){target="_blank"} from my academic blog.
 

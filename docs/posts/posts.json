@@ -1,19 +1,19 @@
 [
   {
     "path": "posts/welcome/",
-    "title": "Welcome to NYT Headline Analysis",
-    "description": "Welcome to our new blog, NYT Headline Analysis. We hope you enjoy \nreading what we have to say!",
+    "title": "Analysis of New York Times Headlines",
+    "description": "This is the project page for the analysis of differences between main and print headlines for New York Times articles published surrounding the U.S. withdrawal of the military in Afghanistan.",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Kristina Becvar",
+        "url": "https://kbec19.github.io/Grateful-Network/"
       }
     ],
     "date": "2022-04-22",
     "categories": [],
-    "contents": "\r\n\r\n\r\n\r\n",
+    "contents": "\r\nFor this project, I am using some data gathered in the DACSS 602\r\ncourse “Research Design”.\r\nI continued down the same path but with new data and a new direction\r\nthrough the DACSS 697D course “Text as Data”.\r\nMore background data can be found in this series of posts from my academic blog.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2022-04-22T15:18:55-05:00",
+    "last_modified": "2022-04-22T23:38:57-05:00",
     "input_file": {}
   }
 ]

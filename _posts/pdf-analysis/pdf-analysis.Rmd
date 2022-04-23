@@ -1,0 +1,236 @@
+---
+title: "Analysis of PDF Articles"
+description: |
+  Text as Data Project HArticle Sentiment Research
+categories:
+  - text as data
+  - NYT text analysis project
+author:
+  - name: Kristina Becvar
+    url: https://kbec19.github.io/NYT-Analysis/
+    affiliation: UMass DACSS Program (My Academic Blog Link)
+    affiliation_url: https://kristinabecvar.com
+slug: pdf-analysis
+date: 04/17/2022
+output:
+  distill::distill_article:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+# Getting Started
+## Pulling in the PDF docs
+
+I have the PDF files in my working directory. Using the "list.files()" function from the "pdftools" package, I can create a vector of PDF file names, specifying only files that end in ".pdf".
+
+```{r code_folding=TRUE}
+#load libraries
+library(pdftools)
+library(readtext)
+library(readr)
+library(tm)
+library(tidytext)
+library(stringr)
+library(MASS)
+library(tidyverse)
+library(plyr); library(dplyr)
+library(quanteda)
+library(purrr)
+library(here)
+```
+
+## Extracting PDF Files being examined
+
+```{r echo=TRUE}
+#create file names
+files <- list.files(pattern = "pdf$")
+
+#extract the pdf file data
+nyt_articles <- lapply(files, pdf_text)
+
+#apply length functions
+lapply(nyt_articles, length)
+
+#view the structure of the list
+str(nyt_articles)
+```
+
+## Inspect the first article
+
+```{r echo = TRUE}
+head(nyt_articles[1])
+```
+
+## Inspecting Individual Articles
+
+Now I'm going to use "purrr" to "pluck()" each of the articles as its' own vector and create a corpus of each article to examine.
+
+```{r echo=TRUE}
+article_111 <- nyt_articles %>% 
+  pluck(1)
+article_111 <- as_vector(article_111)
+
+article_111_corpus <- corpus(article_111)
+article_111_summary <- summary(article_111_corpus)
+article_111_summary
+```
+
+I also found a very interesting way to pul the text and save them as individual .txt files, but for now I'm just going to note that as an alternative process. I've struggled quite a bit to get the PDF text read compared to the headlines.
+
+```{r code_folding = TRUE}
+
+convertpdf2txt <- function(dirpath){
+  files <- list.files(dirpath, full.names = T)
+  x <- sapply(files, function(x){
+  x <- pdftools::pdf_text(x) %>%
+  paste(sep = " ") %>%
+  stringr::str_replace_all(fixed("\n"), " ") %>%
+  stringr::str_replace_all(fixed("\r"), " ") %>%
+  stringr::str_replace_all(fixed("\t"), " ") %>%
+  stringr::str_replace_all(fixed("\""), " ") %>%
+  paste(sep = " ", collapse = " ") %>%
+  stringr::str_squish() %>%
+  stringr::str_replace_all("- ", "") 
+  return(x)
+    })
+}
+# apply function
+txts <- convertpdf2txt("./files")
+# inspect the structure of the txts element
+str(txts)
+```
+```{r code_folding = TRUE}
+#apply length functions
+lapply(txts, length)
+
+#view the structure of the list
+str(txts)
+
+# add names to txt files
+names(txts) <- paste("nyt", 1:length(txts), sep = "")
+# save result to disc
+lapply(seq_along(txts), function(i)writeLines(text = unlist(txts[i]),
+    con = paste("./txts", names(txts)[i],".txt", sep = "")))
+
+```
+
+## Unlist
+
+Documenting, for now, the ways I'm struggling with so I can find out why.
+
+```{r echo=TRUE}
+#convert list to vector
+#nyt_vector <- unlist(nyt_articles, recursive = TRUE)
+#put articles into data frame
+#nyt_df <- as.data.frame(nyt_vector, row.names = NULL, stringsAsFactors = FALSE)
+```
+
+```{r echo=TRUE}
+#create corpus
+#nyt_corpus <- corpus(txts)
+#confirming class of corpus
+#class(nyt_corpus)
+#confirm length of corpus
+#length(nyt_corpus)
+```
+
+## Create Term Document Matrix
+
+```{r echo=TRUE}
+#using the tm package
+#nyt_tdm <- TermDocumentMatrix(nyt_corpus, 
+                                   #control = 
+                                     #list(removePunctuation = TRUE,
+                                          #stopwords = TRUE,
+                                          #tolower = TRUE,
+                                          #stemming = FALSE,
+                                          #removeNumbers = TRUE,
+                                          #bounds = list(global = c(3, Inf))))
+```
+
+## Inspect TDM
+
+```{r echo=TRUE}
+#inspect
+#inspect(nyt_tdm)
+```
+
+## Frequent Terms
+
+The "findFreqTerms()" using the "tm" package to find the frequently occurring terms, starting with a  frequency threshold of 20:
+
+```{r echo=TRUE}
+#words that occur at least 10 times
+#findFreqTerms(nyt_tdm, lowfreq = 20, highfreq = Inf)
+```
+
+## Return Results in a Data Frame
+
+I'll save the result and use it to subset the TDM as "ft", "frequent terms". 
+
+Looking at the top frequency words in decreasing order, I can beging to get a feel for what questions I need to be ready to ask next.
+
+```{r echo=TRUE}
+#keep the terms with at least 20 minimum frequency
+#ft <- findFreqTerms(nyt_tdm, lowfreq = 20, highfreq = Inf)
+#nyt_tdm_ft <- as.matrix(nyt_tdm[ft,])
+#sort(apply(nyt_tdm_ft, 1, sum), decreasing = TRUE)
+```
+
+### Generate Document-Feature Matrix
+
+```{r code_folding = TRUE}
+#library(quanteda.dictionaries)
+#library(quanteda.sentiment)
+```
+
+```{r echo=TRUE}
+# Ensure the column names are appropriate for use in an R model
+#colnames(articles_tdm) <- make.names(colnames(articles_tdm)) 
+
+```
+
+```{r echo=TRUE}
+#use liwcalike() to estimate sentiment using NRC dictionary
+#nyt_nrc <- liwcalike(as.character(nyt_corpus), data_dictionary_NRC)
+#names(nyt_nrc)
+```
+
+
+### Terms & Frequencies
+
+I want to get a sense of my terms and frequencies, so I'll look at the terms using the "stringr" package. 
+
+For example, it looks like the word "veteran" appears in 86 of the documents with a word count of 210.
+
+```{r echo=TRUE}
+#sum(str_detect(nyt_articles, "veteran"))
+#sum(str_count(nyt_corpus, "veteran"))
+```
+
+### Preprocessing Choices
+
+Refining further using the "stemming" option, and running the tdm() function, the sparsity remains ---, with  ----- terms as compared to ----- in the un-stemmed version.
+
+#### Alternative Processing
+
+```{r echo=TRUE}
+
+```
+
+The problems is that stemming removes too many of the words I'll want to examine for sentiment analysis, so I will not use that option at this time.
+
+## Tokenization
+
+I finally realized how to remove the "�" symbol that has plagued me since starting working with this API by using "remove_symbols=TRUE" in addition to removing the punctuation when tokenizing:
+
+```{r code_folding = TRUE}
+#nyt_tokens <- tokens(nyt_corpus,
+                   #remove_punct = TRUE,
+                   #remove_symbols = TRUE)
+#nyt_tokens
+```

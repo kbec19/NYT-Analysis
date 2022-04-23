@@ -1,7 +1,7 @@
 ---
 title: "Analysis of PDF Articles"
 description: |
-  Text as Data Project HArticle Sentiment Research
+  Text as Data Project-Article Sentiment Research
 categories:
   - text as data
   - NYT text analysis project

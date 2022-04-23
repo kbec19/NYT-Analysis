@@ -3129,31 +3129,23 @@ Program (My Academic Blog Link))<a href="https://kristinabecvar.com" class="uri"
 <li><a href="#getting-started">Getting Started</a>
 <ul>
 <li><a href="#pulling-in-the-pdf-docs">Pulling in the PDF docs</a></li>
-<li><a href="#extracting-pdf-files-being-examined">Extracting PDF Files
-being examined</a></li>
+<li><a href="#extracting-pdf-files-being-examined-random-at-this-time---exploratory">Extracting
+PDF Files being examined (random at this time - exploratory)</a></li>
 <li><a href="#inspect-the-first-article">Inspect the first
 article</a></li>
 <li><a href="#inspecting-individual-articles">Inspecting Individual
 Articles</a></li>
 <li><a href="#unlist">Unlist</a></li>
-<li><a href="#create-term-document-matrix">Create Term Document
-Matrix</a></li>
-<li><a href="#inspect-tdm">Inspect TDM</a></li>
-<li><a href="#frequent-terms">Frequent Terms</a></li>
-<li><a href="#return-results-in-a-data-frame">Return Results in a Data
-Frame</a>
-<ul>
-<li><a href="#generate-document-feature-matrix">Generate
-Document-Feature Matrix</a></li>
-<li><a href="#terms-frequencies">Terms &amp; Frequencies</a></li>
-<li><a href="#preprocessing-choices">Preprocessing Choices</a></li>
 </ul></li>
-<li><a href="#tokenization">Tokenization</a></li>
-</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
 </ul>
 </nav>
 </div>
 <h1 id="getting-started">Getting Started</h1>
+<p>The primary goal of this aspect of research is to refine the process
+for examining the content of the full articles for which the main
+vs. print headlines are the most different from each other in the
+primary project analysis.</p>
 <h2 id="pulling-in-the-pdf-docs">Pulling in the PDF docs</h2>
 <p>I have the PDF files in my working directory. Using the
 “list.files()” function from the “pdftools” package, I can create a
@@ -3181,8 +3173,8 @@ Show code
 </div>
 </details>
 </div>
-<h2 id="extracting-pdf-files-being-examined">Extracting PDF Files being
-examined</h2>
+<h2 id="extracting-pdf-files-being-examined-random-at-this-time---exploratory">Extracting
+PDF Files being examined (random at this time - exploratory)</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#create file names</span>
@@ -3429,124 +3421,9 @@ why.</p>
 </code></pre>
 </div>
 </div>
-<h2 id="create-term-document-matrix">Create Term Document Matrix</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#using the tm package</span>
-<span class="co">#nyt_tdm &lt;- TermDocumentMatrix(nyt_corpus, </span>
-                                   <span class="co">#control = </span>
-                                     <span class="co">#list(removePunctuation = TRUE,</span>
-                                          <span class="co">#stopwords = TRUE,</span>
-                                          <span class="co">#tolower = TRUE,</span>
-                                          <span class="co">#stemming = FALSE,</span>
-                                          <span class="co">#removeNumbers = TRUE,</span>
-                                          <span class="co">#bounds = list(global = c(3, Inf))))</span>
-</code></pre>
-</div>
-</div>
-<h2 id="inspect-tdm">Inspect TDM</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#inspect</span>
-<span class="co">#inspect(nyt_tdm)</span>
-</code></pre>
-</div>
-</div>
-<h2 id="frequent-terms">Frequent Terms</h2>
-<p>The “findFreqTerms()” using the “tm” package to find the frequently
-occurring terms, starting with a frequency threshold of 20:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#words that occur at least 10 times</span>
-<span class="co">#findFreqTerms(nyt_tdm, lowfreq = 20, highfreq = Inf)</span>
-</code></pre>
-</div>
-</div>
-<h2 id="return-results-in-a-data-frame">Return Results in a Data
-Frame</h2>
-<p>I’ll save the result and use it to subset the TDM as “ft”, “frequent
-terms”.</p>
-<p>Looking at the top frequency words in decreasing order, I can beging
-to get a feel for what questions I need to be ready to ask next.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#keep the terms with at least 20 minimum frequency</span>
-<span class="co">#ft &lt;- findFreqTerms(nyt_tdm, lowfreq = 20, highfreq = Inf)</span>
-<span class="co">#nyt_tdm_ft &lt;- as.matrix(nyt_tdm[ft,])</span>
-<span class="co">#sort(apply(nyt_tdm_ft, 1, sum), decreasing = TRUE)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="generate-document-feature-matrix">Generate Document-Feature
-Matrix</h3>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#library(quanteda.dictionaries)</span>
-<span class="co">#library(quanteda.sentiment)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ensure the column names are appropriate for use in an R model</span>
-<span class="co">#colnames(articles_tdm) &lt;- make.names(colnames(articles_tdm)) </span>
-</code></pre>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#use liwcalike() to estimate sentiment using NRC dictionary</span>
-<span class="co">#nyt_nrc &lt;- liwcalike(as.character(nyt_corpus), data_dictionary_NRC)</span>
-<span class="co">#names(nyt_nrc)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="terms-frequencies">Terms &amp; Frequencies</h3>
-<p>I want to get a sense of my terms and frequencies, so I’ll look at
-the terms using the “stringr” package.</p>
-<p>For example, it looks like the word “veteran” appears in 86 of the
-documents with a word count of 210.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#sum(str_detect(nyt_articles, &quot;veteran&quot;))</span>
-<span class="co">#sum(str_count(nyt_corpus, &quot;veteran&quot;))</span>
-</code></pre>
-</div>
-</div>
-<h3 id="preprocessing-choices">Preprocessing Choices</h3>
-<p>Refining further using the “stemming” option, and running the tdm()
-function, the sparsity remains —, with —– terms as compared to —– in the
-un-stemmed version.</p>
-<h4 id="alternative-processing">Alternative Processing</h4>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<p>The problems is that stemming removes too many of the words I’ll want
-to examine for sentiment analysis, so I will not use that option at this
-time.</p>
-<h2 id="tokenization">Tokenization</h2>
-<p>I finally realized how to remove the “�” symbol that has plagued me
-since starting working with this API by using “remove_symbols=TRUE” in
-addition to removing the punctuation when tokenizing:</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#nyt_tokens &lt;- tokens(nyt_corpus,</span>
-                   <span class="co">#remove_punct = TRUE,</span>
-                   <span class="co">#remove_symbols = TRUE)</span>
-<span class="co">#nyt_tokens</span>
-</code></pre>
-</div>
-</details>
-</div>
+<h1 id="conclusion">Conclusion</h1>
+<p>I will not be able to fit this type of analysis into the scope of my
+current project. I will use this in further studies.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

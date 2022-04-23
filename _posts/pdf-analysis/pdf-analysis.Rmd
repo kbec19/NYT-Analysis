@@ -23,6 +23,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Getting Started
+
+The primary goal of this aspect of research is to refine the process for examining the content of the full articles for which the main vs. print headlines are the most different from each other in the primary project analysis.
+
 ## Pulling in the PDF docs
 
 I have the PDF files in my working directory. Using the "list.files()" function from the "pdftools" package, I can create a vector of PDF file names, specifying only files that end in ".pdf".
@@ -43,7 +46,7 @@ library(purrr)
 library(here)
 ```
 
-## Extracting PDF Files being examined
+## Extracting PDF Files being examined (random at this time - exploratory)
 
 ```{r echo=TRUE}
 #create file names
@@ -138,99 +141,6 @@ Documenting, for now, the ways I'm struggling with so I can find out why.
 #length(nyt_corpus)
 ```
 
-## Create Term Document Matrix
+# Conclusion
 
-```{r echo=TRUE}
-#using the tm package
-#nyt_tdm <- TermDocumentMatrix(nyt_corpus, 
-                                   #control = 
-                                     #list(removePunctuation = TRUE,
-                                          #stopwords = TRUE,
-                                          #tolower = TRUE,
-                                          #stemming = FALSE,
-                                          #removeNumbers = TRUE,
-                                          #bounds = list(global = c(3, Inf))))
-```
-
-## Inspect TDM
-
-```{r echo=TRUE}
-#inspect
-#inspect(nyt_tdm)
-```
-
-## Frequent Terms
-
-The "findFreqTerms()" using the "tm" package to find the frequently occurring terms, starting with a  frequency threshold of 20:
-
-```{r echo=TRUE}
-#words that occur at least 10 times
-#findFreqTerms(nyt_tdm, lowfreq = 20, highfreq = Inf)
-```
-
-## Return Results in a Data Frame
-
-I'll save the result and use it to subset the TDM as "ft", "frequent terms". 
-
-Looking at the top frequency words in decreasing order, I can beging to get a feel for what questions I need to be ready to ask next.
-
-```{r echo=TRUE}
-#keep the terms with at least 20 minimum frequency
-#ft <- findFreqTerms(nyt_tdm, lowfreq = 20, highfreq = Inf)
-#nyt_tdm_ft <- as.matrix(nyt_tdm[ft,])
-#sort(apply(nyt_tdm_ft, 1, sum), decreasing = TRUE)
-```
-
-### Generate Document-Feature Matrix
-
-```{r code_folding = TRUE}
-#library(quanteda.dictionaries)
-#library(quanteda.sentiment)
-```
-
-```{r echo=TRUE}
-# Ensure the column names are appropriate for use in an R model
-#colnames(articles_tdm) <- make.names(colnames(articles_tdm)) 
-
-```
-
-```{r echo=TRUE}
-#use liwcalike() to estimate sentiment using NRC dictionary
-#nyt_nrc <- liwcalike(as.character(nyt_corpus), data_dictionary_NRC)
-#names(nyt_nrc)
-```
-
-
-### Terms & Frequencies
-
-I want to get a sense of my terms and frequencies, so I'll look at the terms using the "stringr" package. 
-
-For example, it looks like the word "veteran" appears in 86 of the documents with a word count of 210.
-
-```{r echo=TRUE}
-#sum(str_detect(nyt_articles, "veteran"))
-#sum(str_count(nyt_corpus, "veteran"))
-```
-
-### Preprocessing Choices
-
-Refining further using the "stemming" option, and running the tdm() function, the sparsity remains ---, with  ----- terms as compared to ----- in the un-stemmed version.
-
-#### Alternative Processing
-
-```{r echo=TRUE}
-
-```
-
-The problems is that stemming removes too many of the words I'll want to examine for sentiment analysis, so I will not use that option at this time.
-
-## Tokenization
-
-I finally realized how to remove the "�" symbol that has plagued me since starting working with this API by using "remove_symbols=TRUE" in addition to removing the punctuation when tokenizing:
-
-```{r code_folding = TRUE}
-#nyt_tokens <- tokens(nyt_corpus,
-                   #remove_punct = TRUE,
-                   #remove_symbols = TRUE)
-#nyt_tokens
-```
+I will not be able to fit this type of analysis into the scope of my current project. I will use this in further studies.

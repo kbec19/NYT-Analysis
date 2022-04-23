@@ -27,4 +27,4 @@ The article source (NYT v. WSJ) served as a moderator, with the outcomes being t
 
 I continued down the same path but with new data and a new direction through the DACSS 697D course "Text as Data".
 
-More background data can be found in [this series of posts](https://www.kristinabecvar.com/blog.html#category:text as data){target="_blank"} from my academic blog.
+More background data can be found in [this series of posts](https://www.kristinabecvar.com/blog.html#category:text as data) from my academic blog.

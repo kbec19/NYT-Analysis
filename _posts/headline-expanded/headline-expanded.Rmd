@@ -1,23 +1,347 @@
 ---
-title: "Expanded Headline Analysis"
+title: "Analysis of Main vs. Print Headlines: Phase 2"
 description: |
-  A short description of the post.
+  Text as Data Project Headline Comparison Research Using API Query "Afghanistan"
+categories:
+  - text as data
+  - NYT text analysis project
 author:
   - name: Kristina Becvar
     url: https://kbec19.github.io/NYT-Analysis/
+    affiliation: UMass DACSS Program (My Academic Blog Link)
+    affiliation_url: https://kristinabecvar.com
+slug: headline-expanded
 date: 2022-04-26
 output:
   distill::distill_article:
-    self_contained: false
+    toc: true
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
+# Comparing Main vs. Print Headlines in the New York Times
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+## Making Different Choices on Inclusion of Observations
+
+In my initial look at the headline data, it was clear that not all of the articles had different headlines; some are the same entries, and some have "N/A" in the "print" version only, indicating they were online-only stories. Although I initially felt inclined to leave the "N/A" observations in the analysis, I removed those observations as they would not be relevant to my new research questions comparing the framing for different audiences.
+
+I also removed whole sections where the API returned an observation as there was apparently use of the term "Afghanistan" somewhere in the article/entry, but the type of entry was clearly not being represented in the headline. For example, "Corrections" entries have headlines consisting only of the term "Corrections" and the corresponding date. Similar choices were made on the "Arts", Books", and "Podcasts" sections when entries are primarily the names of the things being reviewed that may have a reference to the  Afghanistan withdrawal somewhere in the text, but it is not relevant specifically to the withdrawal time period being analyzed.
+
+With few exceptions, this left the entirety of the "U.S." and "World" news sections, even if the content related to Afghanistan is not readily observable. The count (~650) matched the number of articles pulled for the hand coding research as well.
+
+## Gathering Data
+
+### Previous Process
+
+```{r include=FALSE}
+# load libraries
+library(cleanNLP)
+library(tidytext)
+library(tidyverse)
+library(quanteda)
+library(reticulate)
+library(spacyr)
+library(plyr); library(dplyr)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(quanteda.dictionaries)
+library(quanteda.sentiment)
+library(jsonlite)
+library(caret)
+
+suppressWarnings(expr)
+```
+
+The data was pulled via API using the same process as in my first phase of the comparison research, with the only change in the query term "Afghanistan" as opposed to "Afghanistan Withdrawal". This led to a larger dataset for comparison, though most of the increase in count was filtered out due to their classification as not news-related.
+
+### Load Data
+
+Now to the active review of the data. Loading the data from my collection phase:
+
+```{r code_folding = TRUE}
+#load data
+main_headlines <- read.csv("afghanistan_headlines_main.csv")
+main_headlines <- as.data.frame(main_headlines)
+#turn into data frame
+print_headlines <- read.csv("afghanistan_headlines_print.csv")
+print_headlines <- as.data.frame(print_headlines)
+#inspect data
+head(main_headlines)
+head(print_headlines)
+```
+
+### Create Corpus
+
+```{r echo=TRUE}
+main_corpus <- corpus(main_headlines, docid_field = "doc_id", text_field = "text")
+print_corpus <- corpus(print_headlines, docid_field = "doc_id", text_field = "text")
+```
+
+### Assign Type to Docvars
+
+```{r echo=TRUE}
+main_corpus$type <- "Main Headline"
+print_corpus$type <- "Print Headline"
+docvars(main_corpus, field = "type") <- main_corpus$type
+docvars(print_corpus, field = "type") <- print_corpus$type
+```
+
+### Tokenization
+
+I want to optimize pre-processing by removing the "�" symbol that has plagued me since starting working with this API by using "remove_symbols=TRUE" in addition to removing the punctuation when tokenizing. I also want to remove stopwords. I do NOT want to use stemming at this point.
+
+#### Main Headlines
+
+```{r code_folding = TRUE}
+main_tokens <- tokens(main_corpus) %>%
+  tokens(main_corpus, remove_punct = TRUE) %>%
+  tokens(main_corpus, remove_symbols = TRUE) %>%
+  tokens_remove(stopwords("english")) %>%
+  tokens_remove(c("s"))
+
+main_dfm <- dfm(main_tokens)
+
+length(main_tokens)
+print(main_tokens)
+```
+
+#### Print Headlines
+
+```{r code_folding = TRUE}
+print_tokens <- tokens(print_corpus, remove_punct = TRUE) %>%
+  tokens(print_corpus, remove_symbols = TRUE) %>%
+  tokens_remove(stopwords("english")) %>%
+  tokens_remove(c("s"))
+
+main_dfm <- dfm(print_tokens)
+
+length(print_tokens)
+print(print_tokens)
+```
+
+### Document Feature Matrix
+
+```{r code_folding = TRUE}
+#print dfm
+print_dfm <- dfm(print_tokens)
+#main dfm
+main_dfm <- dfm(main_tokens)
+```
+
+
+```{r echo=TRUE}
+#create a word frequency variable and the rankings
+main_counts <- as.data.frame(sort(colSums(main_dfm),dec=T))
+colnames(main_counts) <- c("Frequency")
+main_counts$Rank <- c(1:ncol(main_dfm))
+head(main_counts)
+
+print_counts <- as.data.frame(sort(colSums(print_dfm),dec=T))
+colnames(print_counts) <- c("Frequency")
+print_counts$Rank <- c(1:ncol(print_dfm))
+head(print_counts)
+```
+
+Now I can take a look at this network of feature co-occurrences for the main headlines:
+
+```{r code_folding = TRUE}
+# create fcm from dfm
+main_fcm <- fcm(main_dfm)
+# check the dimensions (i.e., the number of rows and the number of columnns)
+# of the matrix we created
+dim(main_fcm)
+# pull the top features
+myFeatures <- names(topfeatures(main_fcm, 20))
+# retain only those top features as part of our matrix
+smaller_main_fcm <- fcm_select(main_fcm, pattern = myFeatures, selection = "keep")
+# check dimensions
+dim(smaller_main_fcm)
+# compute size weight for vertices in network
+size <- log(colSums(smaller_main_fcm))
+# create plot
+textplot_network(smaller_main_fcm, vertex_size = size / max(size) * 3)
+```
+
+and for the print headlines:
+
+```{r code_folding = TRUE}
+# create fcm from dfm
+print_fcm <- fcm(print_dfm)
+# check the dimensions (i.e., the number of rows and the number of columnns)
+# of the matrix we created
+dim(print_fcm)
+# pull the top features
+myFeatures <- names(topfeatures(print_fcm, 20))
+# retain only those top features as part of our matrix
+smaller_print_fcm <- fcm_select(print_fcm, pattern = myFeatures, selection = "keep")
+# check dimensions
+dim(smaller_print_fcm)
+# compute size weight for vertices in network
+size <- log(colSums(smaller_print_fcm))
+# create plot
+textplot_network(smaller_print_fcm, vertex_size = size / max(size) * 3)
+```
+
+## Dictionary Analysis
+
+### liwcalike()
+
+```{r code_folding = TRUE}
+# use liwcalike() to estimate sentiment using NRC dictionary
+main_sentiment_nrc <- liwcalike(as.character(main_corpus), data_dictionary_NRC)
+names(main_sentiment_nrc)
+```
+
+### NRC
+
+```{r echo=TRUE}
+# convert tokens from each headline data set to DFM using the dictionary "NRC"
+main_nrc <- dfm(main_tokens) %>%
+  dfm_lookup(data_dictionary_NRC)
+print_nrc <- dfm(print_tokens) %>%
+  dfm_lookup(data_dictionary_NRC)
+
+dim(main_nrc)
+main_nrc
+dim(print_nrc)
+print_nrc
+```
+
+And use the information in a data frame to plot the output:
+
+```{r echo=TRUE}
+#for the main headlines
+df_main_nrc <- convert(main_nrc, to = "data.frame")
+df_main_nrc$polarity <- (df_main_nrc$positive - df_main_nrc$negative)/(df_main_nrc$positive + df_main_nrc$negative)
+df_main_nrc$polarity[which((df_main_nrc$positive + df_main_nrc$negative) == 0)] <- 0
+
+ggplot(df_main_nrc) + 
+  geom_histogram(aes(x=polarity)) + 
+  theme_bw()
+#and the print headlines
+df_print_nrc <- convert(print_nrc, to = "data.frame")
+df_print_nrc$polarity <- (df_print_nrc$positive - df_print_nrc$negative)/(df_print_nrc$positive + df_print_nrc$negative)
+df_print_nrc$polarity[which((df_print_nrc$positive + df_print_nrc$negative) == 0)] <- 0
+
+ggplot(df_print_nrc) + 
+  geom_histogram(aes(x=polarity)) + 
+  theme_bw()
+```
+
+Looking at the headlines that are indicated as "1", or positive in sentiment, it's clear that this dictionary is not capturing the sentiment accurately.
+
+```{r echo=TRUE}
+head(main_corpus[which(df_main_nrc$polarity == 1)])
+head(print_corpus[which(df_print_nrc$polarity == 1)])
+```
+
+### LSD 2015
+
+I am going to want to look at multiple dictionaries to see if one can best apply to this data. First, the LSD 2015 dictionary:
+
+```{r echo=TRUE}
+# convert main corpus to DFM using the LSD2015 dictionary
+main_lsd2015 <- dfm(tokens(main_corpus, remove_punct = TRUE),
+                              tolower = TRUE) %>%
+                          dfm_lookup(data_dictionary_LSD2015)
+# create main polarity measure for LSD2015
+main_lsd2015 <- convert(main_lsd2015, to = "data.frame")
+main_lsd2015$polarity <- (main_lsd2015$positive - main_lsd2015$negative)/(main_lsd2015$positive + main_lsd2015$negative)
+main_lsd2015$polarity[which((main_lsd2015$positive + main_lsd2015$negative) == 0)] <- 0
+# convert print corpus to DFM using the LSD2015 dictionary
+print_lsd2015 <- dfm(tokens(print_corpus, remove_punct = TRUE),
+                              tolower = TRUE) %>%
+                          dfm_lookup(data_dictionary_LSD2015)
+# create print polarity measure for LSD2015
+print_lsd2015 <- convert(print_lsd2015, to = "data.frame")
+print_lsd2015$polarity <- (print_lsd2015$positive - print_lsd2015$negative)/(print_lsd2015$positive + print_lsd2015$negative)
+print_lsd2015$polarity[which((print_lsd2015$positive + print_lsd2015$negative) == 0)] <- 0
+```
+
+### General Inquirer
+
+and the General Inquirer dictionary:
+
+```{r echo=TRUE}
+# convert main corpus to DFM using the General Inquirer dictionary
+main_geninq <- dfm(tokens(main_corpus, remove_punct = TRUE),
+                             tolower = TRUE) %>%
+                    dfm_lookup(data_dictionary_geninqposneg)
+# create main polarity measure for GenInq
+main_geninq <- convert(main_geninq, to = "data.frame")
+main_geninq$polarity <- (main_geninq$positive - main_geninq$negative)/(main_geninq$positive + main_geninq$negative)
+main_geninq$polarity[which((main_geninq$positive + main_geninq$negative) == 0)] <- 0
+# convert print corpus to DFM using the General Inquirer dictionary
+print_geninq <- dfm(tokens(print_corpus, remove_punct = TRUE),
+                             tolower = TRUE) %>%
+                    dfm_lookup(data_dictionary_geninqposneg)
+# create print polarity measure for GenInq
+print_geninq <- convert(print_geninq, to = "data.frame")
+print_geninq$polarity <- (print_geninq$positive - print_geninq$negative)/(print_geninq$positive + print_geninq $negative)
+print_geninq$polarity[which((print_geninq$positive + print_geninq$negative) == 0)] <- 0
+```
+
+Now I'm going to be able to compare the different dictionary scores in one data frame for each type of headline.
+
+```{r code_folding = TRUE}
+# create unique names for each main headline dataframe
+colnames(df_main_nrc) <- paste("nrc", colnames(df_main_nrc), sep = "_")
+colnames(main_lsd2015) <- paste("lsd2015", colnames(main_lsd2015), sep = "_")
+colnames(main_geninq) <- paste("geninq", colnames(main_geninq), sep = "_")
+# now let's compare our estimates
+main_sent <- merge(df_main_nrc, main_lsd2015, by.x = "nrc_doc_id", by.y = "lsd2015_doc_id")
+main_sent <- merge(main_sent, main_geninq, by.x = "nrc_doc_id", by.y = "geninq_doc_id")
+head(main_sent)
+
+# create unique names for each print headline dataframe
+colnames(df_print_nrc) <- paste("nrc", colnames(df_print_nrc), sep = "_")
+colnames(print_lsd2015) <- paste("lsd2015", colnames(print_lsd2015), sep = "_")
+colnames(print_geninq) <- paste("geninq", colnames(print_geninq), sep = "_")
+# now let's compare our estimates
+print_sent <- merge(df_print_nrc, print_lsd2015, by.x = "nrc_doc_id", by.y = "lsd2015_doc_id")
+print_sent <- merge(print_sent, print_geninq, by.x = "nrc_doc_id", by.y = "geninq_doc_id")
+head(print_sent)
+```
+
+Now that we have them all in a single data frame, it's straightforward to figure out a bit about how well our different measures of polarity agree across the different approaches by looking at their correlation using the "cor()" function.
+
+```{r echo=TRUE}
+cor(main_sent$nrc_polarity, main_sent$lsd2015_polarity)
+cor(main_sent$nrc_polarity, main_sent$geninq_polarity)
+cor(main_sent$lsd2015_polarity, main_sent$geninq_polarity)
+```
+
+```{r echo=TRUE}
+cor(print_sent$nrc_polarity, print_sent$lsd2015_polarity)
+cor(print_sent$nrc_polarity, print_sent$geninq_polarity)
+cor(print_sent$lsd2015_polarity, print_sent$geninq_polarity)
+```
+
+### Visualization
+
+#### 
+
+```{r echo=TRUE}
+
+set.seed(11)
+# draw the wordcloud
+library(wordcloud)
+
+par(mfrow=c(1,1)) # 1 panel plot
+par(mar=c(1, 3, 1, 3)) # Set the plot margin
+par(bg="black") # set background color as black
+par(col.main="white") # set title color as white
+wordcloud(main_corpus, scale=c(4,.5),min.freq=5, max.words=Inf, random.order=F, random.color=F, 
+          colors = brewer.pal(8, "Set3"))   
+title("Main Website Headlines")
+wordcloud(print_corpus, scale=c(4,.5),min.freq=5, max.words=Inf, random.order=F, random.color=F, 
+          colors = brewer.pal(8, "Set3"))   
+title("Print Headlines")
+```
+
+I clearly have not done enough pre-processing to the corpus.
+
 
 

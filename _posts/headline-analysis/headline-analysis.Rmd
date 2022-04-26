@@ -1,7 +1,7 @@
 ---
-title: "Analysis of Main vs. Print Headlines"
+title: "Analysis of Main vs. Print Headlines: Phase 1"
 description: |
-  Text as Data Project Headline Comparison Research
+  Text as Data Project Headline Comparison Research Using API Query "Afghanistan Withdrawal"
 preview: unnamed-chunk-12-1.png
 categories:
   - text as data

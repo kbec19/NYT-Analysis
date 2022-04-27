@@ -43,13 +43,14 @@ library(tidyverse)
 library(quanteda)
 library(reticulate)
 library(spacyr)
-library(plyr); library(dplyr)
+library(dplyr)
 library(quanteda.textmodels)
 library(quanteda.textplots)
 library(quanteda.dictionaries)
 library(quanteda.sentiment)
 library(jsonlite)
 library(caret)
+library(magrittr)
 
 suppressWarnings(expr)
 ```
@@ -345,18 +346,52 @@ I clearly have not done enough pre-processing to the corpus.
 
 # Utilizing the cleanNLP package:
 
-As usual, I am struggling to get this to work due to my inexperience with the python backend. What worked for me last time I ran this in a previous tutorial is no longer showing as available.
+As usual, I am struggling to get this to work due to my inexperience with the python backend. What worked for me last time I ran this in a previous tutorial was no longer working, so I had to uninstall my miniconda installation and re-install it, but eventually it initialized so I could run the "cnlp_annotate" function.
 
 ```{r echo=TRUE}
+
+cnlp_init_udpipe()
+
+#first the main headlines
 
 main_tibble <- as_tibble(main_headlines) %>%
   select(c("doc_id", "text"))
 main_tibble <- utf8::as_utf8(main_tibble$text)
 
-Sys.setenv(RETICULATE_PYTHON = "C:/Users/krist/miniconda3/envs/spacy_condaenv/python.exe")
-py_discover_config(required_module="cleannlp")
+annotated_main <- cnlp_annotate(main_tibble)
+head(annotated_main)
+
+#then the print headlines
+
+print_tibble <- as_tibble(print_headlines) %>%
+  select(c("doc_id", "text"))
+print_tibble <- utf8::as_utf8(print_tibble$text)
+
+annotated_print <- cnlp_annotate(print_tibble)
+head(annotated_print)
 
 ```
+
+# Exploratory Analysis
+
+```{r echo=TRUE}
+
+parsed_main <- spacy_parse(main_headlines,
+                           lemma = TRUE,
+                           entity = TRUE,
+                           nounphrase = TRUE,
+                           additional_attributes = c("is_punct",
+                                                     "is_stop")) %>%
+  as_tibble %>%
+  select(-sentence_id) %>%
+  rename(sentence_nr = doc_id) 
+
+head(parsed_main)
+
+```
+
+
+
 
 
 

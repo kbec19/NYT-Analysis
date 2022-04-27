@@ -343,5 +343,20 @@ title("Print Headlines")
 
 I clearly have not done enough pre-processing to the corpus.
 
+# Utilizing the cleanNLP package:
+
+As usual, I am struggling to get this to work due to my inexperience with the python backend. What worked for me last time I ran this in a previous tutorial is no longer showing as available.
+
+```{r echo=TRUE}
+
+main_tibble <- as_tibble(main_headlines) %>%
+  select(c("doc_id", "text"))
+main_tibble <- utf8::as_utf8(main_tibble$text)
+
+Sys.setenv(RETICULATE_PYTHON = "C:/Users/krist/miniconda3/envs/spacy_condaenv/python.exe")
+py_discover_config(required_module="cleannlp")
+
+```
+
 
 

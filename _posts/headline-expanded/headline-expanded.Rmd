@@ -37,6 +37,7 @@ With few exceptions, this left the entirety of the "U.S." and "World" news secti
 
 ```{r include=FALSE}
 # load libraries
+
 library(cleanNLP)
 library(tidytext)
 library(tidyverse)
@@ -51,8 +52,13 @@ library(quanteda.sentiment)
 library(jsonlite)
 library(caret)
 library(magrittr)
+library(stringr)
+library(tidyr)
+library(widyr)
+library(ggplot2)
 
 suppressWarnings(expr)
+
 ```
 
 The data was pulled via API using the same process as in my first phase of the comparison research, with the only change in the query term "Afghanistan" as opposed to "Afghanistan Withdrawal". This led to a larger dataset for comparison, though most of the increase in count was filtered out due to their classification as not news-related.
@@ -306,6 +312,8 @@ print_sent <- merge(print_sent, print_geninq, by.x = "nrc_doc_id", by.y = "genin
 head(print_sent)
 ```
 
+### Correlations
+
 Now that we have them all in a single data frame, it's straightforward to figure out a bit about how well our different measures of polarity agree across the different approaches by looking at their correlation using the "cor()" function.
 
 ```{r echo=TRUE}
@@ -321,8 +329,6 @@ cor(print_sent$lsd2015_polarity, print_sent$geninq_polarity)
 ```
 
 ### Visualization
-
-#### 
 
 ```{r echo=TRUE}
 
@@ -342,13 +348,261 @@ wordcloud(print_corpus, scale=c(4,.5),min.freq=5, max.words=Inf, random.order=F,
 title("Print Headlines")
 ```
 
-I clearly have not done enough pre-processing to the corpus.
+## Using Lexicons Differently
 
-# Utilizing the cleanNLP package:
+
+### Bing Lexicon
+
+```{r echo=TRUE, message=FALSE}
+#create tokens without stop words for main headlines
+tkn_l_main <- apply(main_headlines, 1, function(x) { data.frame(text=x, stringsAsFactors = FALSE) %>% unnest_tokens(word, text)})
+main_news_tokens <- lapply(tkn_l_main, function(x) {anti_join(x, stop_words)})
+str(main_news_tokens, list.len = 5)
+main_news_tokens[[1]]
+#create tokens without stop words for print headlines
+tkn_l_print <- apply(print_headlines, 1, function(x) { data.frame(text=x, stringsAsFactors = FALSE) %>% unnest_tokens(word, text)})
+print_news_tokens <- lapply(tkn_l_print, function(x) {anti_join(x, stop_words)})
+str(print_news_tokens, list.len = 5)
+print_news_tokens[[1]]
+```
+
+```{r echo=TRUE}
+compute_sentiment <- function(d) {
+  if (nrow(d) == 0) {
+    return(NA)
+  }
+  neg_score <- d %>% filter(sentiment=="negative") %>% nrow()
+  pos_score <- d %>% filter(sentiment=="positive") %>% nrow()
+  pos_score - neg_score
+} 
+```
+
+```{r echo=TRUE, message=FALSE}
+sentiments_bing <- get_sentiments("bing")
+str(sentiments_bing)
+
+#apply sentiment to main headlines
+main_news_sentiment_bing <- sapply(main_news_tokens, function(x) { x %>% inner_join(sentiments_bing) %>% compute_sentiment()})
+#apply sentiment to print headlines
+print_news_sentiment_bing <- sapply(print_news_tokens, function(x) { x %>% inner_join(sentiments_bing) %>% compute_sentiment()})
+```
+
+```{r echo=TRUE, message=FALSE}
+str(main_news_sentiment_bing)
+str(print_news_sentiment_bing)
+```
+
+```{r}
+summary(main_news_sentiment_bing)
+summary(print_news_sentiment_bing)
+```
+
+```{r}
+main_news_sentiment_bing_df <- data.frame(main_text=main_headlines$text, score = main_news_sentiment_bing)
+head(main_news_sentiment_bing_df, 10)
+print_news_sentiment_bing_df <- data.frame(print_text=print_headlines$text, score = print_news_sentiment_bing)
+head(print_news_sentiment_bing_df, 10)
+```
+
+### NRC
+
+```{r echo=TRUE, message=FALSE}
+sentiments_nrc <- get_sentiments("nrc")
+(unique_sentiments_nrc <- unique(sentiments_nrc$sentiment))
+```
+
+```{r echo=TRUE, message=FALSE}
+compute_pos_neg_sentiments_nrc <- function(the_sentiments_nrc) {
+  s <- unique(the_sentiments_nrc$sentiment)
+  df_sentiments <- data.frame(sentiment = s, 
+                              mapped_sentiment = c("positive", "negative", "negative", "negative",
+                                                    "negative", "positive", "positive", "negative", 
+                                                    "positive", "positive"))
+  ss <- sentiments_nrc %>% inner_join(df_sentiments)
+  the_sentiments_nrc$sentiment <- ss$mapped_sentiment
+  the_sentiments_nrc
+}
+
+nrc_sentiments_pos_neg_scale <- compute_pos_neg_sentiments_nrc(sentiments_nrc)
+```
+
+```{r echo=TRUE, message=FALSE}
+#calculating NRC sentiment for main headlines
+main_news_sentiment_nrc <- sapply(main_news_tokens, function(x) { x %>% inner_join(nrc_sentiments_pos_neg_scale) %>% compute_sentiment()})
+str(main_news_sentiment_nrc)
+
+#calculating NRC sentiment for print headlines
+print_news_sentiment_nrc <- sapply(print_news_tokens, function(x) { x %>% inner_join(nrc_sentiments_pos_neg_scale) %>% compute_sentiment()})
+str(print_news_sentiment_nrc)
+
+```
+
+
+
+```{r echo=TRUE, message=FALSE}
+#data frame of main NRC sentiment
+summary(main_news_sentiment_nrc)
+main_news_sentiment_nrc_df <- data.frame(main_text=main_headlines$text, score = main_news_sentiment_nrc)
+head(main_news_sentiment_nrc_df, 10)
+
+#data frame of print NRC sentiment
+summary(print_news_sentiment_nrc)
+print_news_sentiment_nrc_df <- data.frame(print_text=print_headlines$text, score = print_news_sentiment_nrc)
+head(print_news_sentiment_nrc_df, 10)
+
+```
+
+### AFINN
+
+```{r echo=TRUE, message=FALSE}
+sentiments_afinn <- get_sentiments("afinn")
+
+colnames(sentiments_afinn) <- c("word", "sentiment")
+str(sentiments_afinn)
+```
+
+```{r echo=TRUE, message=FALSE}
+#applying AFINN sentiment to main headlines
+main_news_sentiment_afinn_df <- lapply(main_news_tokens, function(x) { x %>% inner_join(sentiments_afinn)})
+main_news_sentiment_afinn <- sapply(main_news_sentiment_afinn_df, function(x) { 
+      ifelse(nrow(x) > 0, sum(x$sentiment), NA)
+  })
+str(main_news_sentiment_afinn)
+#applying AFINN sentiment to print headlines
+print_news_sentiment_afinn_df <- lapply(print_news_tokens, function(x) { x %>% inner_join(sentiments_afinn)})
+print_news_sentiment_afinn <- sapply(print_news_sentiment_afinn_df, function(x) { 
+      ifelse(nrow(x) > 0, sum(x$sentiment), NA)
+  })
+str(print_news_sentiment_afinn)
+
+```
+
+
+```{r echo=TRUE, message=FALSE}
+#data frame of AFINN main headlines
+summary(main_news_sentiment_afinn)
+main_news_sentiment_afinn_df <- data.frame(main_text=main_headlines$text, score = main_news_sentiment_afinn)
+head(main_news_sentiment_afinn_df, 10)
+#data frame of AFINN print headlines
+summary(print_news_sentiment_afinn)
+print_news_sentiment_afinn_df <- data.frame(print_text=print_headlines$text, score = print_news_sentiment_afinn)
+head(print_news_sentiment_afinn_df, 10)
+```
+
+
+### Comparing Results
+
+Having obtained for each news three potential results as sentiment evaluation, we would like to compare their congruency.
+As congruence we mean the fact that all three lexicons express the same positive or negative result, in other words the same score sign indipendently from its magnitude. If NA values are present, the congruence shall be computed until at least two non NA values are available, otherwise is equal to NA.
+
+Furthermore we compute the final news sentiment as based upon the sum of each lexicon sentiment score.
+
+```{r echo=TRUE, message=FALSE}
+compute_congruence <- function(x,y,z) {
+  v <- c(sign(x), sign(y), sign(z))
+  # if only one lexicon reports the score, we cannot check for congruence
+  if (sum(is.na(v)) >= 2) {
+    return (NA)
+  }
+  # removing NA and zero value
+  v <- na.omit(v)
+  v_sum <- sum(v)
+  abs(v_sum) == length(v)
+}
+```
+
+```{r echo=TRUE, message=FALSE}
+compute_final_sentiment <- function(x,y,z) {
+  if (is.na(x) && is.na(y) && is.na(z)) {
+    return (NA)
+  }
+
+  s <- sum(x, y, z, na.rm=TRUE)
+  # positive sentiments have score strictly greater than zero
+  # negative sentiments have score strictly less than zero
+  # neutral sentiments have score equal to zero 
+  ifelse(s > 0, "positive", ifelse(s < 0, "negative", "neutral"))
+}
+```
+
+
+```{r echo=TRUE, message=FALSE}
+
+all_sentiments_results <- data.frame(main_text = main_headlines$text, 
+                                 main_bing = main_news_sentiment_bing, 
+                                 main_nrc = main_news_sentiment_nrc, 
+                                 main_afinn = main_news_sentiment_afinn,
+                                 print_text = print_headlines$text, 
+                                 print_bing = print_news_sentiment_bing, 
+                                 print_nrc = print_news_sentiment_nrc, 
+                                 print_afinn = print_news_sentiment_afinn,
+                                 stringsAsFactors = FALSE)
+
+main_sentiments_results <- data.frame(main_text = main_headlines$text, 
+                                 bing_score = main_news_sentiment_bing, 
+                                 nrc_score = main_news_sentiment_nrc, 
+                                 afinn_score = main_news_sentiment_afinn,
+                                 stringsAsFactors = FALSE)
+
+print_sentiments_results <- data.frame(print_text = print_headlines$text, 
+                                 bing_score = print_news_sentiment_bing, 
+                                 nrc_score = print_news_sentiment_nrc, 
+                                 afinn_score = print_news_sentiment_afinn,
+                                 stringsAsFactors = FALSE)
+
+
+main_sentiments_results <- main_sentiments_results %>% rowwise() %>% 
+  mutate(final_sentiment = compute_final_sentiment(bing_score, nrc_score, afinn_score),
+         congruence = compute_congruence(bing_score, nrc_score, afinn_score))
+
+print_sentiments_results <- print_sentiments_results %>% rowwise() %>% 
+  mutate(final_sentiment = compute_final_sentiment(bing_score, nrc_score, afinn_score),
+         congruence = compute_congruence(bing_score, nrc_score, afinn_score))
+
+head(main_sentiments_results, 10)
+head(print_sentiments_results, 10)
+
+```
+
+```{r echo=TRUE, message=FALSE}
+#If it would be useful to replace the numeric score with same {negative, neutral, positive} scale.
+replace_score_with_sentiment <- function(v_score) {
+  v_score[v_score > 0] <- "positive"
+  v_score[v_score < 0] <- "negative"
+  v_score[v_score == 0] <- "neutral"
+  v_score
+} 
+#apply scale to main results
+main_sentiments_results$bing_score <- replace_score_with_sentiment(main_sentiments_results$bing_score)
+main_sentiments_results$nrc_score <- replace_score_with_sentiment(main_sentiments_results$nrc_score)
+main_sentiments_results$afinn_score <- replace_score_with_sentiment(main_sentiments_results$afinn_score)
+main_sentiments_results[,2:5] <- lapply(main_sentiments_results[,2:5], as.factor)
+head(main_sentiments_results, 40)
+#apply scale to print results
+print_sentiments_results$bing_score <- replace_score_with_sentiment(print_sentiments_results$bing_score)
+print_sentiments_results$nrc_score <- replace_score_with_sentiment(print_sentiments_results$nrc_score)
+print_sentiments_results$afinn_score <- replace_score_with_sentiment(print_sentiments_results$afinn_score)
+print_sentiments_results[,2:5] <- lapply(print_sentiments_results[,2:5], as.factor)
+head(print_sentiments_results, 40)
+
+```
+#### Final Results
+
+```{r echo=TRUE, message=FALSE}
+table(main_sentiments_results$congruence, main_sentiments_results$final_sentiment, dnn = c("congruence", "final"))
+table(print_sentiments_results$congruence, print_sentiments_results$final_sentiment, dnn = c("congruence", "final"))
+```
+
+
+
+
+# Other Types of Analysis
+
+## Utilizing the cleanNLP package:
 
 As usual, I am struggling to get this to work due to my inexperience with the python backend. What worked for me last time I ran this in a previous tutorial was no longer working, so I had to uninstall my miniconda installation and re-install it, but eventually it initialized so I could run the "cnlp_annotate" function.
 
-```{r echo=TRUE}
+```{r echo=TRUE, results=FALSE}
 
 cnlp_init_udpipe()
 
@@ -359,7 +613,6 @@ main_tibble <- as_tibble(main_headlines) %>%
 main_tibble <- utf8::as_utf8(main_tibble$text)
 
 annotated_main <- cnlp_annotate(main_tibble)
-head(annotated_main)
 
 #then the print headlines
 
@@ -368,11 +621,12 @@ print_tibble <- as_tibble(print_headlines) %>%
 print_tibble <- utf8::as_utf8(print_tibble$text)
 
 annotated_print <- cnlp_annotate(print_tibble)
-head(annotated_print)
 
 ```
 
-# Exploratory Analysis
+## Using spaCyr
+
+### For Main Headlines
 
 ```{r echo=TRUE}
 
@@ -380,14 +634,38 @@ parsed_main <- spacy_parse(main_headlines,
                            lemma = TRUE,
                            entity = TRUE,
                            nounphrase = TRUE,
+                           sentiment = TRUE,
                            additional_attributes = c("is_punct",
-                                                     "is_stop")) %>%
+                                                     "is_stop",
+                                                     "is_currency",
+                                                     "is_digit",
+                                                     "is_quote")) %>%
   as_tibble %>%
-  select(-sentence_id) %>%
-  rename(sentence_nr = doc_id) 
+  select(-sentence_id)
 
 head(parsed_main)
+summary(parsed_main)
+```
 
+### For Print Headlines
+
+```{r echo=TRUE}
+
+parsed_print <- spacy_parse(print_headlines,
+                           lemma = TRUE,
+                           entity = TRUE,
+                           nounphrase = TRUE,
+                           additional_attributes = c("is_punct",
+                                                     "is_stop",
+                                                     "is_currency",
+                                                     "is_digit",
+                                                     "is_quote",
+                                                     "sentiment")) %>%
+  as_tibble %>%
+  select(-sentence_id)
+
+head(parsed_print)
+summary(parsed_print)
 ```
 
 

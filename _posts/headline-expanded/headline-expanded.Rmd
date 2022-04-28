@@ -2,6 +2,7 @@
 title: "Analysis of Main vs. Print Headlines: Phase 2"
 description: |
   Text as Data Project Headline Comparison Research Using API Query "Afghanistan"
+preview: headlines.png
 categories:
   - text as data
   - NYT text analysis project
@@ -336,16 +337,17 @@ set.seed(11)
 # draw the wordcloud
 library(wordcloud)
 
+simplified_tokens <- read.csv("token.csv")
+
+simplified_corpus <- corpus(simplified_tokens, text_field = "word")
+
 par(mfrow=c(1,1)) # 1 panel plot
 par(mar=c(1, 3, 1, 3)) # Set the plot margin
 par(bg="black") # set background color as black
 par(col.main="white") # set title color as white
-wordcloud(main_corpus, scale=c(4,.5),min.freq=5, max.words=Inf, random.order=F, random.color=F, 
+wordcloud(simplified_corpus, scale=c(4,.5),min.freq=5, max.words=Inf, random.order=F, random.color=F, 
           colors = brewer.pal(8, "Set3"))   
 title("Main Website Headlines")
-wordcloud(print_corpus, scale=c(4,.5),min.freq=5, max.words=Inf, random.order=F, random.color=F, 
-          colors = brewer.pal(8, "Set3"))   
-title("Print Headlines")
 ```
 
 ## Using Lexicons Differently

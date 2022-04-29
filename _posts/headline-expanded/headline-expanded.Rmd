@@ -669,9 +669,3 @@ parsed_print <- spacy_parse(print_headlines,
 head(parsed_print)
 summary(parsed_print)
 ```
-
-
-
-
-
-

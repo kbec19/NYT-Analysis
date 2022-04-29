@@ -81,7 +81,7 @@ To pull the data, I had to reduce the queries into more workable groups that wou
 ```{r code_folding=TRUE}
 
 # For articles from February 29, 2020 through April 30, 2021
-#url1 <- ('https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=20200229&end_date=20210430&q=afghanistan&api-key=GTp3efxVZiGO75Iox9uZJ8ZTjIMjDWsM')
+#url1 <- ('https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=20200229&end_date=20210430&q=afghanistan&withdrawal&api-key=XXXXX')
 
 #query1 <- fromJSON(url1)
 
@@ -102,7 +102,7 @@ To pull the data, I had to reduce the queries into more workable groups that wou
 
 #For May 1 through September 30, 2021
 
-#url2 <- ('https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=20210501&end_date=20210930&q=afghanistan&api-key=GTp3efxVZiGO75Iox9uZJ8ZTjIMjDWsM')
+#url2 <- ('https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=20210501&end_date=20210930&q=afghanistan&withdrawal&api-key=XXXXX')
 
 #query2 <- fromJSON(url2)
 

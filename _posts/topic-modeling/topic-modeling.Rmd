@@ -1,0 +1,374 @@
+---
+title: "Topic Modeling"
+description: |
+  Text as Data Project: Headline Topic Modeling
+categories:
+  - text as data
+  - NYT text analysis project
+author:
+  - name: Kristina Becvar
+    url: https://kbec19.github.io/NYT-Analysis/
+    affiliation: UMass DACSS Program (My Academic Blog Link)
+    affiliation_url: https://kristinabecvar.com
+slug: topic-modeling
+date: 2022-04-28
+output:
+  distill::distill_article:
+    toc: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Prepare for Analysis
+
+```{r code_folding=TRUE}
+#no automatic data transformation
+options(stringsAsFactors = F)  
+#supress math annotation
+options("scipen" = 100, "digits" = 4)
+#load packages
+library(knitr) 
+library(kableExtra) 
+library(DT)
+library(tm)
+library(topicmodels)
+library(reshape2)
+library(ggplot2)
+library(wordcloud)
+library(pals)
+library(SnowballC)
+library(lda)
+library(ldatuning)
+library(flextable)
+```
+
+# Getting Started
+
+I am using code from a wonderfully helpful tutorial to do some exploratory topic modeling with the headline data. 
+
+*Schweinberger, Martin. 2022. Topic Modeling with R. Brisbane: The University of Queensland. url: https://slcladal.github.io/topicmodels.html (Version 2022.03.18).*
+
+## Create Corpus
+
+Loading the entirety of the headlines pulled from the New York Times API, I will pre-process and create a corpus object.
+
+I am transforming to lower case, removing English stopwords, removing punctuation, numbers, and stripping white space. I am going to use stemming, to begin the analysis, though I may go back and change this.
+
+*added on after first run*
+
+I had to create a function to remove 'curly' apostrophes after they showed up as top results in 2 models
+
+```{r code_folding=TRUE}
+#creating functions using gsub to remove each of the curly apostrophes
+exchanger1 <- function(x) gsub("’", "", x)
+exchanger2 <- function(x) gsub("‘", "", x)
+
+#corpus <- tm_map(corpus, exchanger1)
+#corpus <- tm_map(corpus, exchanger2)
+```
+
+### Pre-Processing
+
+```{r code_folding=TRUE}
+#load data
+textdata <- read.csv("all_headlines.csv")
+#load stop words
+english_stopwords <- readLines("https://slcladal.github.io/resources/stopwords_en.txt", encoding = "UTF-8")
+#create corpus object
+corpus <- Corpus(DataframeSource(textdata))
+#pre-processing chain
+processedCorpus <- tm_map(corpus, content_transformer(tolower))
+processedCorpus <- tm_map(processedCorpus, removeWords, english_stopwords)
+processedCorpus <- tm_map(processedCorpus, removePunctuation, preserve_intra_word_dashes = TRUE)
+processedCorpus <- tm_map(processedCorpus, removeNumbers)
+processedCorpus <- tm_map(processedCorpus, stemDocument, language = "en")
+processedCorpus <- tm_map(processedCorpus, stripWhitespace)
+processedCorpus <- tm_map(processedCorpus, exchanger1)
+processedCorpus <- tm_map(processedCorpus, exchanger2)
+
+```
+
+## Create Document Term Matrix
+
+I will use the threshold with a minimum frequency of 2.
+
+```{r code_folding=TRUE}
+minimumFrequency <- 2
+DTM <- DocumentTermMatrix(processedCorpus, control = list(bounds = list(global = c(minimumFrequency, Inf))))
+#preview
+dim(DTM)
+```
+
+I need to clean up the matrix to remove empty rows due to the vocabulary being stemmed/stop words being removed.
+
+```{r code_folding=TRUE}
+sel_idx <- slam::row_sums(DTM) > 0
+DTM <- DTM[sel_idx, ]
+textdata <- textdata[sel_idx, ]
+```
+
+# Create Models
+
+Now I can create models to examine the metrics that can lead to choosing the optical number of topics:
+
+```{r code_folding=TRUE}
+#create models with different number of topics
+result <- ldatuning::FindTopicsNumber(
+  DTM,
+  topics = seq(from = 2, to = 20, by = 1),
+  metrics = c("CaoJuan2009",  "Deveaud2014", "Arun2010", "Griffiths2004"),
+  method = "Gibbs",
+  control = list(seed = 11),
+  verbose = TRUE
+)
+```
+
+## Choose K
+
+After inspecting the results of all four metrics from the "ldatuning" package, it seems that a good starting point will be 5 topics, or "K".
+
+```{r code_folding=TRUE}
+FindTopicsNumber_plot(result)
+```
+
+## Compute Model at K(5)
+
+I'll set the topic model to run 1,000 iterations
+
+```{r code_folding=TRUE}
+#number of topics
+K <- 5
+#set random number generator seed
+set.seed(11)
+#compute the LDA model, inference via 1000 iterations of Gibbs sampling
+topicModel <- LDA(DTM, K, method="Gibbs", control=list(iter = 1000, verbose = 25))
+```
+
+## Model Details
+
+```{r code_folding=TRUE}
+#look at posterior distributions
+tmResult <- posterior(topicModel)
+#format of the resulting object
+attributes(tmResult)
+#lengthOfVocab
+nTerms(DTM)              
+#topics are probability distributions over the entire vocabulary
+#get beta from results
+beta <- tmResult$terms 
+#K distributions over nTerms(DTM) terms
+dim(beta)                
+#rows in beta sum to 1
+rowSums(beta)          
+#size of collection
+nDocs(DTM)             
+#for every document we have a probability distribution of its contained topics
+theta <- tmResult$topics 
+#nDocs(DTM) distributions over K topics
+dim(theta)
+#rows in theta sum to 1
+rowSums(theta)[1:10] 
+```
+
+Now I can look at the 10 most likely terms within the probabilities of the inferred topics.
+
+```{r code_folding=TRUE}
+terms(topicModel, 10)
+```
+
+I'll take a look at the first 2 terms for each of the 6 topics to get a clearer idea of the topic I want to look at.
+
+```{r code_folding=TRUE}
+exampleTermData <- terms(topicModel, 10)
+exampleTermData[, 1:5]
+```
+
+## Choosing a Model
+
+To look at the models more easily, I'll name the strings with the top 5 most likely terms for each topic.
+
+```{r code_folding=TRUE}
+top5termsPerTopic <- terms(topicModel, 5)
+topicNames <- apply(top5termsPerTopic, 2, paste, collapse=" ")
+```
+
+### Visualization of Topics
+
+The wordcloud is a good preliminary way to look at the topics
+
+```{r code_folding=TRUE}
+# visualize topics as word cloud
+topicToViz <- 2 # change for your own topic of interest
+#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
+# select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
+top40terms <- sort(tmResult$terms[topicToViz,], decreasing=TRUE)[1:40]
+words <- names(top40terms)
+# extract the probabilites of each of the 40 terms
+probabilities <- sort(tmResult$terms[topicToViz,], decreasing=TRUE)[1:40]
+# visualize the terms as wordcloud
+mycolors <- brewer.pal(8, "Dark2")
+wordcloud(words, probabilities, random.order = FALSE, color = mycolors)
+
+```
+
+I am not sure if it is going to be best to use stemming, I'll have to revisit this.
+
+## Sample Headlines
+
+```{r code_folding=TRUE}
+exampleIds <- c(2, 100, 200)
+lapply(corpus[exampleIds], as.character)
+
+exampleIds <- c(2, 100, 200)
+print(paste0(exampleIds[1], ": ", substr(content(corpus[[exampleIds[1]]]), 0, 400), '...'))
+
+print(paste0(exampleIds[2], ": ", substr(content(corpus[[exampleIds[2]]]), 0, 400), '...'))
+
+print(paste0(exampleIds[3], ": ", substr(content(corpus[[exampleIds[3]]]), 0, 400), '...'))
+
+print(paste0(exampleIds[3], ": ", substr(content(corpus[[exampleIds[3]]]), 0, 400), '...'))
+```
+
+### Visualization of Topic Distributions
+
+After looking into the documents, I can visualize the topic distributions within the documents.
+
+```{r code_folding=TRUE}
+N <- length(exampleIds)
+# get topic proportions form example documents
+topicProportionExamples <- theta[exampleIds,]
+colnames(topicProportionExamples) <- topicNames
+vizDataFrame <- melt(cbind(data.frame(topicProportionExamples), document = factor(1:N)), variable.name = "topic", id.vars = "document")  
+ggplot(data = vizDataFrame, aes(topic, value, fill = document), ylab = "proportion") + 
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +  
+  coord_flip() +
+  facet_wrap(~ document, ncol = N)
+```
+
+# Topic Distributions
+
+Changing the alpha to a lower level 
+
+```{r code_folding=TRUE}
+# see alpha from previous model
+attr(topicModel, "alpha") 
+
+topicModel2 <- LDA(DTM, K, method="Gibbs", control=list(iter = 1000, verbose = 25, alpha = 0.2))
+```
+
+## Visualization of New Distribution Alpha
+
+```{r code_folding=TRUE}
+tmResult <- posterior(topicModel2)
+theta <- tmResult$topics
+beta <- tmResult$terms
+#reset topicnames
+topicNames <- apply(terms(topicModel2, 5), 2, paste, collapse = " ")  
+```
+
+```{r code_folding=TRUE}
+# get topic proportions form example documents
+topicProportionExamples <- theta[exampleIds,]
+colnames(topicProportionExamples) <- topicNames
+vizDataFrame <- melt(cbind(data.frame(topicProportionExamples), document = factor(1:N)), variable.name = "topic", id.vars = "document")  
+ggplot(data = vizDataFrame, aes(topic, value, fill = document), ylab = "proportion") + 
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +  
+  coord_flip() +
+  facet_wrap(~ document, ncol = N)
+
+```
+
+# Topic Ranking
+
+I will try to get a more meaningful order of top terms per topic by re-ranking them with a specific score (Chang et al. 2009).
+
+The idea of re-ranking terms is similar to the idea of TF-IDF. The more a term appears in top levels w.r.t. its probability, the less meaningful it is to describe the topic. Hence, the scoring advanced favors terms to describe a topic.
+
+```{r code_folding=TRUE}
+# re-rank top topic terms for topic names
+topicNames <- apply(lda::top.topic.words(beta, 5, by.score = T), 2, paste, collapse = " ")
+```
+
+## Approach 1
+
+Sort topics according to their probability within the entire collection:
+
+```{r code_folding=TRUE}
+#mean probablities over all paragraphs
+topicProportions <- colSums(theta) / nDocs(DTM)  
+#assign the topic names we created before
+names(topicProportions) <- topicNames     
+#show summed proportions in decreased order
+sort(topicProportions, decreasing = TRUE) 
+```
+
+```{r code_folding=TRUE}
+soP <- sort(topicProportions, decreasing = TRUE)
+paste(round(soP, 5), ":", names(soP))
+```
+
+## Approach 2
+
+We count how often a topic appears as a primary topic within a paragraph This method is also called Rank-1.
+
+```{r code_folding=TRUE}
+countsOfPrimaryTopics <- rep(0, K)
+names(countsOfPrimaryTopics) <- topicNames
+for (i in 1:nDocs(DTM)) {
+  topicsPerDoc <- theta[i, ] # select topic distribution for document i
+  # get first element position from ordered list
+  primaryTopic <- order(topicsPerDoc, decreasing = TRUE)[1] 
+  countsOfPrimaryTopics[primaryTopic] <- countsOfPrimaryTopics[primaryTopic] + 1
+}
+sort(countsOfPrimaryTopics, decreasing = TRUE)
+```
+
+```{r code_folding=TRUE}
+so <- sort(countsOfPrimaryTopics, decreasing = TRUE)
+paste(so, ":", names(so))
+```
+
+Sorting topics by the Rank-1 method places topics with rather specific thematic coherences in upper ranks of the list.
+
+# Filtering Documents
+
+The fact that a topic model conveys of topic probabilities for each document, resp. paragraph in our case, makes it possible to use it for thematic filtering of a collection. AS filter we select only those documents which exceed a certain threshold of their probability value for certain topics (for example, each document which contains topic X to more than 20 percent).
+
+```{r code_folding=TRUE}
+topicToFilter <- 3  # you can set this manually ...
+# ... or have it selected by a term in the topic name (e.g. 'children')
+topicToFilter <- grep('war', topicNames)[1] 
+topicThreshold <- 0.2
+selectedDocumentIndexes <- which(theta[, topicToFilter] >= topicThreshold)
+filteredCorpus <- corpus[selectedDocumentIndexes]
+# show length of filtered corpus
+filteredCorpus
+```
+
+# Topic Proportions Over Time
+
+In a last step, we provide a distant view on the topics in the data over time. For this, we aggregate mean topic proportions per month for all of the topics. These aggregated topic proportions can then be visualized, e.g. as a bar plot.
+
+```{r code_folding=TRUE}
+# append month information for aggregation
+textdata$month <- paste0(substr(textdata$month.ended, 0, 3), "0")
+# get mean topic proportions per month
+topic_proportion_per_month <- aggregate(theta, by = list(month = textdata$month), mean)
+# set topic names to aggregated columns
+colnames(topic_proportion_per_month)[2:(K+1)] <- topicNames
+# reshape data frame
+vizDataFrame <- melt(topic_proportion_per_month, id.vars = "month")
+# plot topic proportions per month as bar plot
+ggplot(vizDataFrame, aes(x=month, y=value, fill=variable)) + 
+  geom_bar(stat = "identity") + ylab("proportion") + 
+  scale_fill_manual(values = paste0(alphabet(20), "FF"), name = "topic") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+
+

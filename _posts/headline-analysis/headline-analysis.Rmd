@@ -2,7 +2,7 @@
 title: "Analysis of Main vs. Print Headlines: Phase 1"
 description: |
   Text as Data Project Headline Comparison Research Using API Query "Afghanistan Withdrawal"
-preview: unnamed-chunk-12-1.png
+preview: 000012.png
 categories:
   - text as data
   - NYT text analysis project

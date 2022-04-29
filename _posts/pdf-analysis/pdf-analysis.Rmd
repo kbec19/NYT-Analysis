@@ -15,6 +15,7 @@ date: 04/17/2022
 output:
   distill::distill_article:
     toc: true
+    code_folding: true
 ---
 
 ```{r setup, include=FALSE}
@@ -82,7 +83,7 @@ article_111_summary <- summary(article_111_corpus)
 article_111_summary
 ```
 
-I also found a very interesting way to pul the text and save them as individual .txt files, but for now I'm just going to note that as an alternative process. I've struggled quite a bit to get the PDF text read compared to the headlines.
+I also found a very interesting way to pull the text and save them as individual .txt files, but for now I'm just going to note that as an alternative process. I've struggled quite a bit to get the PDF text read compared to the headlines.
 
 ```{r code_folding = TRUE}
 
@@ -123,7 +124,7 @@ lapply(seq_along(txts), function(i)writeLines(text = unlist(txts[i]),
 
 ## Unlist
 
-Documenting, for now, the ways I'm struggling with so I can find out why.
+Documenting, for now, the ways I'm struggling with so I can find out why. Primarily, I'm struggling with the 'unlist' command as it applies to documents originating as PDF files, though this is not an issue when I use it in other types of situations.
 
 ```{r echo=TRUE}
 #convert list to vector

@@ -16,6 +16,7 @@ date: 04/15/2022
 output:
   distill::distill_article:
     toc: true
+    code_folding: true
 ---
 
 
@@ -129,6 +130,15 @@ This multi-method study examines how the New York Times reported the Darfur conf
 
 Media salience—the key independent variable in agenda-setting research—has traditionally been explicated as a singular construct. Nevertheless, scholars have defined and measured it using a number of different conceptualizations and empirical indicators. To address this limitation in research, this study introduced a conceptual model of media salience, suggesting it is a multidimensional construct consisting of 3 core elements: attention, prominence, and valence. Furthermore, the model was tested through an exploratory factor analysis of The New York Times news coverage of 8 major political issues during the 2000 presidential election as a case study. The data revealed that 2 dimensions of media salience emerge: visibility and valence. Based on the factor analysis, 2 indices are created to measure the construct, which are intended for use in future investigations.
 
+## Peng (2004)
+
+* Peng, Z. (2004). Representation of China: An across time analysis of coverage in the New York Times and Los Angeles Times. Asian Journal of Communication, 14(1), 53–67. https://doi.org/10.1080/0129298042000195170
+
+* Abstract
+
+This study examined the coverage of China in the New York Times and Los Angeles Times between 1992 and 2001. Across time comparison were made both within and between the two newspapers in terms of total number of stories, media frames used and favourability differences. Findings show that coverage of China has increased significantly over time, but the overall tone remained negative. Stories presented in
+political frames and ideological frames were more likely to be unfavourable. No significant differences were found between the two newspapers.
+
 ## Althaus & Tewksbury (2002)
 
 * Althaus, S. L., & Tewksbury, D. (2002). Agenda Setting and the “New” News: Patterns of Issue Importance Among Readers of the Paper and Online Versions of the New York Times. Communication Research, 29(2), 180–207. https://doi.org/10.1177/0093650202029002004
@@ -137,6 +147,13 @@ Media salience—the key independent variable in agenda-setting research—has t
 
 This study examines whether readers of the paper and online versions of a national newspaper acquire different perceptions of the importance of political issues. Using data from a weeklong experiment in which subjects either readthe print version of the New York Times, the online version of that paper, or received no special exposure, this study finds evidence that people exposed to the Times for 5 days adjusted their agendas in response to that exposure and that print readers modified their agendas differently than did online readers.
 
+## Pan & Kosicki (1993)
+
+* Pan, Z., & Kosicki, G. (1993). Framing analysis: An approach to news discourse. Political Communication, 10(1), 55–75. https://doi.org/10.1080/10584609.1993.9962963
+
+* Abstract
+
+In the American political process, news discourse concerning public policy issues is carefully constructed. This occurs in part because both politicians and interest groups take an increasingly proactive approach to amplify their views of what an issue is about. However, news media also play an active role in framing public policy issues. Thus, in this article, news discourse is conceived as a sociocognitive process involving all three players: sources, journalists, and audience members operating in the universe of shared culture and on the basis of socially defined roles. Framing analysis is presented as a constructivist approach to examine news discourse with the primary focus on conceptualizing news texts into empirically operationalizable dimensions—syntactical, script, thematic, and rhetorical structures—so that evidence of the news media's framing of issues in news texts may be gathered. This is considered an initial step toward analyzing the news discourse process as a whole. Finally, an extended empirical example is provided to illustrate the applications of this conceptual framework of news texts.
 
 
 

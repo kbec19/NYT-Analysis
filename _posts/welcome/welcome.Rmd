@@ -11,6 +11,7 @@ date: 04-13-2022
 output:
   distill::distill_article:
     toc: true
+    code_folding: true
 ---
 
 ```{r setup, include=FALSE}
@@ -25,4 +26,6 @@ For this project, I am using some data gathered in the DACSS 602 course "Researc
 I continued down the same path but with new data and a new direction through the DACSS 697D course "Text as Data".
 
 More background data can be found in [this series of posts](https://www.kristinabecvar.com/blog.html#category:text as data){target="_blank"} from my academic blog.
+
+
 

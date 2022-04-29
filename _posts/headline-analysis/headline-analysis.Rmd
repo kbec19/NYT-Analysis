@@ -489,6 +489,8 @@ ggplot(print_geninq) +
 
 Now I'm going to be able to compare the different dictionary scores in one data frame for each type of headline.
 
+#### Main Headlines
+
 ```{r code_folding = TRUE}
 # create unique names for each main headline dataframe
 colnames(df_main_nrc) <- paste("nrc", colnames(df_main_nrc), sep = "_")
@@ -497,8 +499,12 @@ colnames(main_geninq) <- paste("geninq", colnames(main_geninq), sep = "_")
 # now let's compare our estimates
 main_sent <- merge(df_main_nrc, main_lsd2015, by.x = "nrc_doc_id", by.y = "lsd2015_doc_id")
 main_sent <- merge(main_sent, main_geninq, by.x = "nrc_doc_id", by.y = "geninq_doc_id")
-head(main_sent)
+head(main_sent)[1:5]
+```
 
+#### Print Headlines
+
+```{r code_folding = TRUE}
 # create unique names for each print headline dataframe
 colnames(df_print_nrc) <- paste("nrc", colnames(df_print_nrc), sep = "_")
 colnames(print_lsd2015) <- paste("lsd2015", colnames(print_lsd2015), sep = "_")
@@ -506,12 +512,14 @@ colnames(print_geninq) <- paste("geninq", colnames(print_geninq), sep = "_")
 # now let's compare our estimates
 print_sent <- merge(df_print_nrc, print_lsd2015, by.x = "nrc_doc_id", by.y = "lsd2015_doc_id")
 print_sent <- merge(print_sent, print_geninq, by.x = "nrc_doc_id", by.y = "geninq_doc_id")
-head(print_sent)
+head(print_sent)[1:5]
 ```
 
 ### Correlation
 
 Now that I have them all in a single data frame, it's straightforward to figure out a bit about how well our different measures of polarity agree across the different approaches by looking at their correlation using the "cor()" function.
+
+It seems like the polarity of the headlines are more highly correlated between dictionaries slightly for the main headlines than the print headlines.
 
 #### For Main Headlines
 
@@ -529,6 +537,27 @@ cor(print_sent$nrc_polarity, print_sent$geninq_polarity)
 cor(print_sent$lsd2015_polarity, print_sent$geninq_polarity)
 ```
 
+### Correlation of NRC Sentiments
+
+I can take a quick visual look at the correlation between sentiments detected in both sets of headlines using the "GGally" package. There seems to be very little difference in that regard.
+
+#### Main Headlines
+
+```{r echo=TRUE}
+library(GGally)
+
+main_nrc_only<- read.csv("main_sent_nrc_only.csv")
+ggcorr(main_nrc_only, method = c("everything", "pearson"))
+```
+
+#### Print Headlines
+
+```{r code_folding=TRUE}
+
+print_nrc_only<- read.csv("print_sent_nrc_only.csv")
+ggcorr(print_nrc_only, method = c("everything", "pearson"))
+```
+
 ### Linear Model Testing
 
 Finally, I want to visually look at the correlations or positive and negative sentiments as my starting point for understanding relationships between both my sentiment analyses and dictionaries. I'll start by dividing the sentiment scores for positive and negative from each text source into its own object and change column names to make them unique except for 'doc_id' for joining them into one data frame.
@@ -542,18 +571,31 @@ corr_print <- print_sent %>%
 colnames(corr_print) <- c("doc_id", "print_nrc", "print_lsd", "print_geninq")
 
 corr_matrix <- join(corr_main, corr_print, by = "doc_id")
+head(corr_matrix)
 ```
 
 Then I can look at the model for each relationship
+
+#### NRC
 
 ```{r code_folding=TRUE}
 
 #run the linear model of main vs. print correlation in the NRC dictionary
 lm_nrc <- lm(main_nrc~print_nrc, data = corr_matrix)
 summary(lm_nrc)
+```
+
+#### LSD
+
+```{r code_folding=TRUE}
 #run the linear model of main vs. print correlation in the LSD dictionary
 lm_lsd <- lm(main_lsd~print_lsd, data = corr_matrix)
 summary(lm_lsd)
+```
+
+#### General Inquiry
+
+```{r code_folding=TRUE}
 #run the linear model of main vs. print correlation in the General Inquiry dictionary
 lm_geninq <- lm(main_geninq~print_geninq, data = corr_matrix)
 summary(lm_geninq)
@@ -588,7 +630,6 @@ tidy_all <- do.call("rbind", list(tidynrc, tidylsd, tidygeninq))
 tidy_all
                  
 ```
-
 
 
 

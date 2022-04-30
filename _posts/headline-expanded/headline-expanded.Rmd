@@ -2,7 +2,7 @@
 title: "Analysis of Main vs. Print Headlines: Phase 2"
 description: |
   Text as Data Project Headline Comparison Research Using API Query "Afghanistan"
-preview: 0000010.png
+preview: 000010.png
 categories:
   - text as data
   - NYT text analysis project

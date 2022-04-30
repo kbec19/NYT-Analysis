@@ -1,27 +1,72 @@
 ---
-title: "New Lexicon Analysis"
+title: "New Direction of Sentiment Analysis"
 description: |
-  A short description of the post.
+  Adding on to my initial sentiment analysis using new methods and dictionaries.
+categories:
+  - text as data
+  - NYT text analysis project
 author:
   - name: Kristina Becvar
     url: https://kbec19.github.io/NYT-Analysis/
-date: 2022-04-29
+    affiliation: UMass DACSS Program (My Academic Blog Link)
+    affiliation_url: https://kristinabecvar.com
+slug: new-lexicon
+date: 2022-04-27
 output:
   distill::distill_article:
-    self_contained: false
+    toc: true
+    code_folding: true
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Using Lexicons Differently
+# Using New Dictionaries
 
+```{r include=FALSE}
+# load libraries
+
+library(cleanNLP)
+library(tidytext)
+library(tidyverse)
+library(quanteda)
+library(reticulate)
+library(spacyr)
+library(plyr); library(dplyr)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(quanteda.dictionaries)
+library(quanteda.sentiment)
+library(jsonlite)
+library(caret)
+library(magrittr)
+library(stringr)
+library(tidyr)
+library(widyr)
+library(ggplot2)
+
+suppressWarnings(expr)
+
+```
+
+## Load Data
+
+Loading the data from the expanded analysis:
+
+```{r code_folding = TRUE}
+#load data
+main_headlines <- read.csv("afghanistan_headlines_main.csv")
+main_headlines <- as.data.frame(main_headlines)
+#turn into data frame
+print_headlines <- read.csv("afghanistan_headlines_print.csv")
+print_headlines <- as.data.frame(print_headlines)
+```
 
 ### Bing Lexicon
 
-```{r echo=TRUE, message=FALSE}
+
+```{r code_folding = TRUE, message=FALSE}
 #create tokens without stop words for main headlines
 tkn_l_main <- apply(main_headlines, 1, function(x) { data.frame(text=x, stringsAsFactors = FALSE) %>% unnest_tokens(word, text)})
 main_news_tokens <- lapply(tkn_l_main, function(x) {anti_join(x, stop_words)})
@@ -34,7 +79,7 @@ str(print_news_tokens, list.len = 5)
 print_news_tokens[[1]]
 ```
 
-```{r echo=TRUE}
+```{r code_folding = TRUE}
 compute_sentiment <- function(d) {
   if (nrow(d) == 0) {
     return(NA)
@@ -45,7 +90,8 @@ compute_sentiment <- function(d) {
 } 
 ```
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
+
 sentiments_bing <- get_sentiments("bing")
 str(sentiments_bing)
 
@@ -55,17 +101,17 @@ main_news_sentiment_bing <- sapply(main_news_tokens, function(x) { x %>% inner_j
 print_news_sentiment_bing <- sapply(print_news_tokens, function(x) { x %>% inner_join(sentiments_bing) %>% compute_sentiment()})
 ```
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 str(main_news_sentiment_bing)
 str(print_news_sentiment_bing)
 ```
 
-```{r}
+```{r code_folding = TRUE, message=FALSE}
 summary(main_news_sentiment_bing)
 summary(print_news_sentiment_bing)
 ```
 
-```{r}
+```{r code_folding = TRUE, message=FALSE}
 main_news_sentiment_bing_df <- data.frame(main_text=main_headlines$text, score = main_news_sentiment_bing)
 head(main_news_sentiment_bing_df, 10)
 print_news_sentiment_bing_df <- data.frame(print_text=print_headlines$text, score = print_news_sentiment_bing)
@@ -74,12 +120,12 @@ head(print_news_sentiment_bing_df, 10)
 
 ### NRC
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 sentiments_nrc <- get_sentiments("nrc")
 (unique_sentiments_nrc <- unique(sentiments_nrc$sentiment))
 ```
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 compute_pos_neg_sentiments_nrc <- function(the_sentiments_nrc) {
   s <- unique(the_sentiments_nrc$sentiment)
   df_sentiments <- data.frame(sentiment = s, 
@@ -94,7 +140,7 @@ compute_pos_neg_sentiments_nrc <- function(the_sentiments_nrc) {
 nrc_sentiments_pos_neg_scale <- compute_pos_neg_sentiments_nrc(sentiments_nrc)
 ```
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 #calculating NRC sentiment for main headlines
 main_news_sentiment_nrc <- sapply(main_news_tokens, function(x) { x %>% inner_join(nrc_sentiments_pos_neg_scale) %>% compute_sentiment()})
 str(main_news_sentiment_nrc)
@@ -107,7 +153,7 @@ str(print_news_sentiment_nrc)
 
 
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 #data frame of main NRC sentiment
 summary(main_news_sentiment_nrc)
 main_news_sentiment_nrc_df <- data.frame(main_text=main_headlines$text, score = main_news_sentiment_nrc)
@@ -122,7 +168,7 @@ head(print_news_sentiment_nrc_df, 10)
 
 ### AFINN
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 sentiments_afinn <- get_sentiments("afinn")
 
 colnames(sentiments_afinn) <- c("word", "sentiment")
@@ -146,7 +192,7 @@ str(print_news_sentiment_afinn)
 ```
 
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 #data frame of AFINN main headlines
 summary(main_news_sentiment_afinn)
 main_news_sentiment_afinn_df <- data.frame(main_text=main_headlines$text, score = main_news_sentiment_afinn)
@@ -165,7 +211,7 @@ As congruence we mean the fact that all three lexicons express the same positive
 
 Furthermore we compute the final news sentiment as based upon the sum of each lexicon sentiment score.
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 compute_congruence <- function(x,y,z) {
   v <- c(sign(x), sign(y), sign(z))
   # if only one lexicon reports the score, we cannot check for congruence
@@ -179,7 +225,7 @@ compute_congruence <- function(x,y,z) {
 }
 ```
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 compute_final_sentiment <- function(x,y,z) {
   if (is.na(x) && is.na(y) && is.na(z)) {
     return (NA)
@@ -194,7 +240,7 @@ compute_final_sentiment <- function(x,y,z) {
 ```
 
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 
 all_sentiments_results <- data.frame(main_text = main_headlines$text, 
                                  main_bing = main_news_sentiment_bing, 
@@ -232,7 +278,7 @@ head(print_sentiments_results, 10)
 
 ```
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 #If it would be useful to replace the numeric score with same {negative, neutral, positive} scale.
 replace_score_with_sentiment <- function(v_score) {
   v_score[v_score > 0] <- "positive"
@@ -256,7 +302,7 @@ head(print_sentiments_results, 40)
 ```
 #### Final Results
 
-```{r echo=TRUE, message=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 table(main_sentiments_results$congruence, main_sentiments_results$final_sentiment, dnn = c("congruence", "final"))
 table(print_sentiments_results$congruence, print_sentiments_results$final_sentiment, dnn = c("congruence", "final"))
 ```
@@ -270,7 +316,7 @@ table(print_sentiments_results$congruence, print_sentiments_results$final_sentim
 
 As usual, I am struggling to get this to work due to my inexperience with the python backend. What worked for me last time I ran this in a previous tutorial was no longer working, so I had to uninstall my miniconda installation and re-install it, but eventually it initialized so I could run the "cnlp_annotate" function.
 
-```{r echo=TRUE, results=FALSE}
+```{r code_folding = TRUE, message=FALSE}
 
 cnlp_init_udpipe()
 
@@ -296,7 +342,7 @@ annotated_print <- cnlp_annotate(print_tibble)
 
 ### For Main Headlines
 
-```{r echo=TRUE}
+```{r code_folding = TRUE, message=FALSE}
 
 parsed_main <- spacy_parse(main_headlines,
                            lemma = TRUE,
@@ -317,7 +363,7 @@ summary(parsed_main)
 
 ### For Print Headlines
 
-```{r echo=TRUE}
+```{r code_folding = TRUE, message=FALSE}
 
 parsed_print <- spacy_parse(print_headlines,
                            lemma = TRUE,

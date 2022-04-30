@@ -44,7 +44,7 @@ library(tidyverse)
 library(quanteda)
 library(reticulate)
 library(spacyr)
-library(dplyr)
+library(plyr); library(dplyr)
 library(quanteda.textmodels)
 library(quanteda.textplots)
 library(quanteda.dictionaries)
@@ -91,6 +91,7 @@ print_corpus <- corpus(print_headlines, docid_field = "doc_id", text_field = "te
 ```{r echo=TRUE}
 main_corpus$type <- "Main Headline"
 print_corpus$type <- "Print Headline"
+
 docvars(main_corpus, field = "type") <- main_corpus$type
 docvars(print_corpus, field = "type") <- print_corpus$type
 ```
@@ -402,6 +403,9 @@ colnames(print_geninq) <- paste("geninq", colnames(print_geninq), sep = "_")
 print_sent <- merge(df_print_nrc, print_lsd2015, by.x = "nrc_doc_id", by.y = "lsd2015_doc_id")
 print_sent <- merge(print_sent, print_geninq, by.x = "nrc_doc_id", by.y = "geninq_doc_id")
 head(print_sent)[1:5]
+
+write.csv(main_sent, file="main_sent.csv")
+write.csv(print_sent, file="print_sent.csv")
 ```
 
 
@@ -427,25 +431,108 @@ cor(print_sent$nrc_polarity, print_sent$geninq_polarity)
 cor(print_sent$lsd2015_polarity, print_sent$geninq_polarity)
 ```
 
-### Visualization
+### Correlation of NRC Sentiments
+
+I can take a quick visual look at the correlation between sentiments detected in both sets of headlines using the "GGally" package. There seems to be very little difference in that regard.
+
+#### Main Headlines
+
+```{r echo=TRUE}
+library(GGally)
+
+main_nrc_only<- read.csv("main_sent_nrc_only.csv")
+ggcorr(main_nrc_only, method = c("everything", "pearson"))
+```
+
+#### Print Headlines
 
 ```{r echo=TRUE}
 
-set.seed(11)
-# draw the wordcloud
-library(wordcloud)
+print_nrc_only<- read.csv("print_sent_nrc_only.csv")
+ggcorr(print_nrc_only, method = c("everything", "pearson"))
+```
 
-simplified_tokens <- read.csv("token.csv")
+### Linear Model Testing
 
-simplified_corpus <- corpus(simplified_tokens, text_field = "word")
+Finally, I want to visually look at the correlations or positive and negative sentiments as my starting point for understanding relationships between both my sentiment analyses and dictionaries. I'll start by dividing the sentiment scores for positive and negative from each text source into its own object and change column names to make them unique except for 'doc_id' for joining them into one data frame.
 
-par(mfrow=c(1,1)) # 1 panel plot
-par(mar=c(1, 3, 1, 3)) # Set the plot margin
-par(bg="black") # set background color as black
-par(col.main="white") # set title color as white
-wordcloud(simplified_corpus, scale=c(4,.5),min.freq=5, max.words=Inf, random.order=F, random.color=F, 
-          colors = brewer.pal(8, "Set3"))   
-title("Main Website Headlines")
+```{r code_folding=TRUE}
+corr_main <- main_sent %>%
+  select(nrc_doc_id, nrc_polarity, lsd2015_polarity, geninq_polarity )
+colnames(corr_main) <- c("doc_id", "main_nrc", "main_lsd", "main_geninq")
+corr_print <- print_sent %>%
+  select(nrc_doc_id, nrc_polarity, lsd2015_polarity, geninq_polarity )
+colnames(corr_print) <- c("doc_id", "print_nrc", "print_lsd", "print_geninq")
+
+corr_matrix <- join(corr_main, corr_print, by = "doc_id")
+head(corr_matrix)
+```
+
+Then I can look at the model for each relationship
+
+#### NRC
+
+```{r code_folding=TRUE}
+
+#run the linear model of main vs. print correlation in the NRC dictionary
+lm_nrc <- lm(main_nrc~print_nrc, data = corr_matrix)
+summary(lm_nrc)
+```
+
+#### LSD
+
+```{r code_folding=TRUE}
+#run the linear model of main vs. print correlation in the LSD dictionary
+lm_lsd <- lm(main_lsd~print_lsd, data = corr_matrix)
+summary(lm_lsd)
+```
+
+#### General Inquiry
+
+```{r code_folding=TRUE}
+#run the linear model of main vs. print correlation in the General Inquiry dictionary
+lm_geninq <- lm(main_geninq~print_geninq, data = corr_matrix)
+summary(lm_geninq)
+```
+
+And try to look at if there is any meaningful difference between the models. Despite the differences in the expanded dataset from the primary one, there stil does not seem to be any meaningful difference between main and print headlines based on these analyses.
+
+```{r code_folding=TRUE}
+#create a data frame from the NRC model results
+tidynrc <- tidy(lm_nrc, conf.int = FALSE) 
+#round the results to 3 decimal points
+tidynrc <- tidynrc %>%
+  mutate_if(is.numeric, round, 3)
+tidynrc$model <- c("nrc")
+
+#create a data frame from the LSD model results
+tidylsd <- tidy(lm_lsd, conf.int = FALSE) 
+#round the results to 3 decimal points
+tidylsd <- tidylsd %>%
+  mutate_if(is.numeric, round, 3)
+tidylsd$model <- c("lsd")
+
+#create a data frame from the Gen Inq model results
+tidygeninq <- tidy(lm_geninq, conf.int = FALSE) 
+#round the results to 3 decimal points
+tidygeninq <- tidygeninq %>%
+  mutate_if(is.numeric, round, 3)
+tidygeninq$model <- c("geninq")
+
+tidy_all <- do.call("rbind", list(tidynrc, tidylsd, tidygeninq))
+
+tidy_all
+                 
 ```
 
 
+
+# Citations
+
+Citations:
+
+* This research makes use of the [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm), created by Saif Mohammad and Peter Turney at the National Research Council Canada. 
+
+* This research makes use of the [LSD Lexicoder Sentiment Dictionary](http://www.snsoroka.com/data-lexicoder/). This dataset was first published in Young, L. & Soroka, S. (2012). Affective News: The Automated Coding of Sentiment in Political Texts]. doi: 10.1080/10584609.2012.671234 . Political Communication, 29(2), 205--231.
+
+* This research makes use of the [General Inquirer Lexicon](http://www.mariapinto.es/ciberabstracts/Articulos/Inquirer.htm), Stone, P. J. (1962). The general inquirer: A computer system for content analysis and retrieval based on the sentence as a unit of information. Harvard: Laboratory of Social Relations, Harvard University.

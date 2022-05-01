@@ -2,6 +2,7 @@
 title: "New Direction of Sentiment Analysis"
 description: |
   Adding on to my initial sentiment analysis using new methods and dictionaries.
+preview: photo1.png
 categories:
   - text as data
   - NYT text analysis project
@@ -202,10 +203,6 @@ print_news_sentiment_nrc_df <- data.frame(print_text=print_headlines$text, score
 head(print_news_sentiment_nrc_df, 10)
 ```
 
-### Visualization
-
-
-
 ## AFINN
 
 The AFINN lexicon has valence ratings between -5 (negative) and +5 (positive).
@@ -373,8 +370,19 @@ head(final_total)
 
 ## Visualization
 
+```{r code_folding = TRUE, message=FALSE}
 
+main_graph <- read.csv("main_graph.csv")
 
+library(ggplot2)
+
+main_plot <- main_graph %>%
+  ggplot(aes(date, sentiment, fill = lexicon)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~lexicon, ncol = 1, scales = "free_y")
+main_plot
+
+```
 
 
 

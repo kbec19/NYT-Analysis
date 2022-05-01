@@ -204,20 +204,7 @@ head(print_news_sentiment_nrc_df, 10)
 
 ### Visualization
 
-```{r code_folding = TRUE, message=FALSE}
-#transpose
-td<-data.frame(t(d))
-#The function rowSums computes column sums across rows for each level of a grouping variable.
-td_new <- data.frame(rowSums(td[2:253]))
-#Transformation and cleaning
-names(td_new)[1] <- "count"
-td_new <- cbind("sentiment" = rownames(td_new), td_new)
-rownames(td_new) <- NULL
-td_new2<-td_new[1:8,]
-#Plot One - count of words associated with each sentiment
-quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="count")+ggtitle("Survey sentiments")
-You can see the bar plot in Figure 11.
-```
+
 
 ## AFINN
 
@@ -386,103 +373,10 @@ head(final_total)
 
 ## Visualization
 
-```{r code_folding = TRUE, message=FALSE}
-
-#created matrix of tallies from this function for each test
-#print_bing <- final_total %>%
-        #group_by(print_bing) %>%
-        #tally()
-gg_data <- read.csv("gg_data2.csv")
-
-theme_set(theme_classic())
-
-# Histogram on a Categorical variable
-ggplot(gg_data, aes(x=sentiment, fill = dictionary, stat_count(n))) +
-  geom_col() +
-  facet_wrap(~headlines)
-
-df %>% tidyr::gather("id", "value", 1:4) %>% 
-  ggplot(., aes(Xax, value))+
-  geom_point()+
-  geom_smooth(method = "lm", se=FALSE, color="black")+
-  facet_wrap(~id)
-
-
-```
 
 
 
-# Other Types of Analysis
 
-## Utilizing the cleanNLP package:
-
-As usual, I am struggling to get this to work due to my inexperience with the python backend. What worked for me last time I ran this in a previous tutorial was no longer working, so I had to uninstall my miniconda installation and re-install it, but eventually it initialized so I could run the "cnlp_annotate" function.
-
-```{r code_folding = TRUE, message=FALSE}
-
-cnlp_init_udpipe()
-
-#first the main headlines
-
-main_tibble <- as_tibble(main_headlines) %>%
-  select(c("doc_id", "text"))
-main_tibble <- utf8::as_utf8(main_tibble$text)
-
-annotated_main <- cnlp_annotate(main_tibble)
-
-#then the print headlines
-
-print_tibble <- as_tibble(print_headlines) %>%
-  select(c("doc_id", "text"))
-print_tibble <- utf8::as_utf8(print_tibble$text)
-
-annotated_print <- cnlp_annotate(print_tibble)
-
-```
-
-## Using spaCyr
-
-### For Main Headlines
-
-```{r code_folding = TRUE, message=FALSE}
-
-parsed_main <- spacy_parse(main_headlines,
-                           lemma = TRUE,
-                           entity = TRUE,
-                           nounphrase = TRUE,
-                           sentiment = TRUE,
-                           additional_attributes = c("is_punct",
-                                                     "is_stop",
-                                                     "is_currency",
-                                                     "is_digit",
-                                                     "is_quote")) %>%
-  as_tibble %>%
-  select(-sentence_id)
-
-head(parsed_main)
-summary(parsed_main)
-```
-
-### For Print Headlines
-
-```{r code_folding = TRUE, message=FALSE}
-
-parsed_print <- spacy_parse(print_headlines,
-                           lemma = TRUE,
-                           entity = TRUE,
-                           nounphrase = TRUE,
-                           additional_attributes = c("is_punct",
-                                                     "is_stop",
-                                                     "is_currency",
-                                                     "is_digit",
-                                                     "is_quote",
-                                                     "sentiment")) %>%
-  as_tibble %>%
-  select(-sentence_id)
-
-head(parsed_print)
-summary(parsed_print)
-```
 
 # Citations
 

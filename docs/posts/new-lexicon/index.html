@@ -3129,28 +3129,49 @@ Program (My Academic Blog Link))<a href="https://kristinabecvar.com" class="uri"
 <ul>
 <li><a href="#using-new-dictionaries">Using New Dictionaries</a>
 <ul>
-<li><a href="#load-data">Load Data</a>
+<li><a href="#load-data">Load Data</a></li>
+<li><a href="#bing-lexicon">Bing Lexicon</a>
 <ul>
-<li><a href="#bing-lexicon">Bing Lexicon</a></li>
-<li><a href="#nrc">NRC</a></li>
-<li><a href="#afinn">AFINN</a></li>
-<li><a href="#comparing-results">Comparing Results</a></li>
+<li><a href="#create-function">Create Function</a></li>
+<li><a href="#apply-sentiments-and-function">Apply Sentiments and
+Function</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#preview-results">Preview Results</a></li>
 </ul></li>
-</ul></li>
-<li><a href="#other-types-of-analysis">Other Types of Analysis</a>
+<li><a href="#nrc">NRC</a>
 <ul>
-<li><a href="#utilizing-the-cleannlp-package">Utilizing the cleanNLP
-package:</a></li>
-<li><a href="#using-spacyr">Using spaCyr</a>
+<li><a href="#create-function-1">Create Function</a></li>
+<li><a href="#apply-function">Apply Function</a></li>
+<li><a href="#summary-1">Summary</a></li>
+<li><a href="#preview-results-1">Preview Results</a></li>
+<li><a href="#visualization">Visualization</a></li>
+</ul></li>
+<li><a href="#afinn">AFINN</a>
 <ul>
-<li><a href="#for-main-headlines">For Main Headlines</a></li>
-<li><a href="#for-print-headlines">For Print Headlines</a></li>
+<li><a href="#create-function-2">Create Function</a></li>
+<li><a href="#summary-2">Summary</a></li>
+<li><a href="#preview-results-2">Preview Results</a></li>
 </ul></li>
+<li><a href="#congruence">Congruence</a>
+<ul>
+<li><a href="#create-function-3">Create Function</a></li>
+<li><a href="#apply-function-1">Apply Function</a></li>
+<li><a href="#evaluation">Evaluation</a></li>
+<li><a href="#final-results">Final Results</a></li>
 </ul></li>
+<li><a href="#visualization-1">Visualization</a></li>
+</ul></li>
+<li><a href="#citations">Citations</a></li>
 </ul>
 </nav>
 </div>
 <h1 id="using-new-dictionaries">Using New Dictionaries</h1>
+<p>This time, my analysis will be through a different process of
+analysis than I used in my first two analyses.</p>
+<p>This anaysis will use an alternative sequence to analyze a different
+set of three sentiment datasets within the “tidytext” package.</p>
+<p>The dictionaries are “bing”, “nrc”, (which I used previously) and
+“AFINN”.</p>
 <h2 id="load-data">Load Data</h2>
 <p>Loading the data from the expanded analysis:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3169,7 +3190,9 @@ Show code
 </div>
 </details>
 </div>
-<h3 id="bing-lexicon">Bing Lexicon</h3>
+<h2 id="bing-lexicon">Bing Lexicon</h2>
+<p>The bing lexicon sorts words into positive or negative positions.</p>
+<p>First I’ll create tokens for the main and print headlines.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3263,6 +3286,8 @@ text...9   afghans
 text...10  riddled
 text...11 pentagon</code></pre>
 </div>
+<h3 id="create-function">Create Function</h3>
+<p>I need to next create a function to assign sentiment labels.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3281,6 +3306,10 @@ Show code
 </div>
 </details>
 </div>
+<h3 id="apply-sentiments-and-function">Apply Sentiments and
+Function</h3>
+<p>Then I can apply that sentiment function to the headline data
+sets</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3288,19 +3317,8 @@ Show code
 </summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">sentiments_bing</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">&quot;bing&quot;</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sentiments_bing</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>tibble [6,786 x 2] (S3: tbl_df/tbl/data.frame)
- $ word     : chr [1:6786] &quot;2-faces&quot; &quot;abnormal&quot; &quot;abolish&quot; &quot;abominable&quot; ...
- $ sentiment: chr [1:6786] &quot;negative&quot; &quot;negative&quot; &quot;negative&quot; &quot;negative&quot; ...</code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#apply sentiment to main headlines</span>
+
+<span class="co">#apply sentiment to main headlines</span>
 <span class="va">main_news_sentiment_bing</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">main_news_tokens</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="va">x</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">sentiments_bing</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">compute_sentiment</span><span class="op">(</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>
 <span class="co">#apply sentiment to print headlines</span>
 <span class="va">print_news_sentiment_bing</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">print_news_tokens</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="va">x</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">sentiments_bing</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">compute_sentiment</span><span class="op">(</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>
@@ -3308,28 +3326,8 @@ Show code
 </div>
 </details>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">main_news_sentiment_bing</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code> int [1:936] NA 1 NA -1 NA 1 -2 NA 1 NA ...</code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">print_news_sentiment_bing</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code> int [1:936] NA -1 NA -4 NA 1 -2 -1 NA -1 ...</code></pre>
-</div>
+<h3 id="summary">Summary</h3>
+<p>The summaries of each show the number of NA’s are minimal.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3354,13 +3352,18 @@ Show code
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 -4.0000 -1.0000 -1.0000 -0.6209  0.0000  3.0000     353 </code></pre>
 </div>
+<h3 id="preview-results">Preview Results</h3>
+<p>Now I can look at the first 10 headlines and the corresponding bing
+analysis scores. I can see that the scores vary, even in the first 10
+headlines.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">main_news_sentiment_bing_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text<span class="op">=</span><span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">main_news_sentiment_bing</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#head 10 main headlines with bing analysis scores</span>
+<span class="va">main_news_sentiment_bing_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text<span class="op">=</span><span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">main_news_sentiment_bing</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">main_news_sentiment_bing_df</span>, <span class="fl">10</span><span class="op">)</span>
 </code></pre>
 </div>
@@ -3392,7 +3395,8 @@ Show code
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">print_news_sentiment_bing_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>print_text<span class="op">=</span><span class="va">print_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">print_news_sentiment_bing</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#head 10 print headlines with bing analysis scores</span>
+<span class="va">print_news_sentiment_bing_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>print_text<span class="op">=</span><span class="va">print_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">print_news_sentiment_bing</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">print_news_sentiment_bing_df</span>, <span class="fl">10</span><span class="op">)</span>
 </code></pre>
 </div>
@@ -3420,7 +3424,10 @@ Show code
 9     NA
 10    -1</code></pre>
 </div>
-<h3 id="nrc">NRC</h3>
+<h2 id="nrc">NRC</h2>
+<p>As I saw in my first two analyses, the NRC lexicon uses 10 different
+sentiments, including negative and positive but with additional
+sentiments as well.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3436,6 +3443,10 @@ Show code
  [5] &quot;anger&quot;        &quot;surprise&quot;     &quot;positive&quot;     &quot;disgust&quot;     
  [9] &quot;joy&quot;          &quot;anticipation&quot;</code></pre>
 </div>
+<h3 id="create-function-1">Create Function</h3>
+<p>Next again I will create a function to assign sentiment labels that
+apply ‘positive’ and ‘negative’ in a binary interpretation of each of
+the 8 other sentiments.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3458,6 +3469,9 @@ Show code
 </div>
 </details>
 </div>
+<h3 id="apply-function">Apply Function</h3>
+<p>Then I can apply that sentiment function to the headline data
+sets</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3466,32 +3480,23 @@ Show code
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#calculating NRC sentiment for main headlines</span>
 <span class="va">main_news_sentiment_nrc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">main_news_tokens</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="va">x</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">nrc_sentiments_pos_neg_scale</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">compute_sentiment</span><span class="op">(</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">main_news_sentiment_nrc</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code> int [1:936] -2 0 -3 -3 -5 8 -4 6 1 -3 ...</code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#calculating NRC sentiment for print headlines</span>
+
+<span class="co">#calculating NRC sentiment for print headlines</span>
 <span class="va">print_news_sentiment_nrc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">print_news_tokens</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="va">x</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">nrc_sentiments_pos_neg_scale</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">compute_sentiment</span><span class="op">(</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">print_news_sentiment_nrc</span><span class="op">)</span>
 </code></pre>
 </div>
 </details>
-<pre><code> int [1:936] -2 -4 -1 -7 NA 8 -4 -3 2 -5 ...</code></pre>
 </div>
+<h3 id="summary-1">Summary</h3>
+<p>The summaries of each show the number of NA’s are even more
+minimal.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#data frame of main NRC sentiment</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">main_news_sentiment_nrc</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">main_news_sentiment_nrc</span><span class="op">)</span>
 </code></pre>
 </div>
 </details>
@@ -3502,7 +3507,25 @@ Show code
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">main_news_sentiment_nrc_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text<span class="op">=</span><span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">main_news_sentiment_nrc</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">print_news_sentiment_nrc</span><span class="op">)</span>
+</code></pre>
+</div>
+</details>
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA&#39;s 
+-12.0000  -3.0000  -1.0000  -0.4994   2.0000  13.0000      151 </code></pre>
+</div>
+<h3 id="preview-results-1">Preview Results</h3>
+<p>Now I can look at the first 10 headlines and the corresponding NRC
+analysis scores. I can see that the scores vary as well, even in the
+first 10 headlines.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#data frame of main NRC sentiment</span>
+<span class="va">main_news_sentiment_nrc_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text<span class="op">=</span><span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">main_news_sentiment_nrc</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">main_news_sentiment_nrc_df</span>, <span class="fl">10</span><span class="op">)</span>
 </code></pre>
 </div>
@@ -3535,18 +3558,7 @@ Show code
 </summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#data frame of print NRC sentiment</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">print_news_sentiment_nrc</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA&#39;s 
--12.0000  -3.0000  -1.0000  -0.4994   2.0000  13.0000      151 </code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">print_news_sentiment_nrc_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>print_text<span class="op">=</span><span class="va">print_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">print_news_sentiment_nrc</span><span class="op">)</span>
+<span class="va">print_news_sentiment_nrc_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>print_text<span class="op">=</span><span class="va">print_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">print_news_sentiment_nrc</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">print_news_sentiment_nrc_df</span>, <span class="fl">10</span><span class="op">)</span>
 </code></pre>
 </div>
@@ -3574,7 +3586,10 @@ Show code
 9      2
 10    -5</code></pre>
 </div>
-<h3 id="afinn">AFINN</h3>
+<h3 id="visualization">Visualization</h3>
+<h2 id="afinn">AFINN</h2>
+<p>The AFINN lexicon has valence ratings between -5 (negative) and +5
+(positive).</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3584,19 +3599,12 @@ Show code
 <pre class="sourceCode r"><code class="sourceCode r"><span class="va">sentiments_afinn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">&quot;afinn&quot;</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">sentiments_afinn</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;word&quot;</span>, <span class="st">&quot;sentiment&quot;</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sentiments_afinn</span><span class="op">)</span>
 </code></pre>
 </div>
 </details>
-<pre><code>spec_tbl_df [2,477 x 2] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ word     : chr [1:2477] &quot;abandon&quot; &quot;abandoned&quot; &quot;abandons&quot; &quot;abducted&quot; ...
- $ sentiment: num [1:2477] -2 -2 -2 -2 -2 -2 -3 -3 -3 -3 ...
- - attr(*, &quot;spec&quot;)=
-  .. cols(
-  ..   word = col_character(),
-  ..   value = col_double()
-  .. )</code></pre>
 </div>
+<h3 id="create-function-2">Create Function</h3>
+<p>Again I’ll create a function to assign sentiment labels.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3608,35 +3616,25 @@ Show code
 <span class="va">main_news_sentiment_afinn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">main_news_sentiment_afinn_df</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> 
       <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">sentiment</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span>
   <span class="op">}</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">main_news_sentiment_afinn</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code> num [1:936] NA 2 -1 -2 NA 1 -7 NA NA -2 ...</code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#applying AFINN sentiment to print headlines</span>
+<span class="co">#applying AFINN sentiment to print headlines</span>
 <span class="va">print_news_sentiment_afinn_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">print_news_tokens</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> <span class="va">x</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">sentiments_afinn</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>
 <span class="va">print_news_sentiment_afinn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">print_news_sentiment_afinn_df</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span> 
       <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">sentiment</span><span class="op">)</span>, <span class="cn">NA</span><span class="op">)</span>
   <span class="op">}</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">print_news_sentiment_afinn</span><span class="op">)</span>
 </code></pre>
 </div>
 </details>
-<pre><code> num [1:936] NA -2 NA -4 NA 1 -7 -3 NA -2 ...</code></pre>
 </div>
+<h3 id="summary-2">Summary</h3>
+<p>The summaries of each show the number of NA’s are similar to that in
+the bing lexicon.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#data frame of AFINN main headlines</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">main_news_sentiment_afinn</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">main_news_sentiment_afinn</span><span class="op">)</span>
 </code></pre>
 </div>
 </details>
@@ -3647,7 +3645,25 @@ Show code
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">main_news_sentiment_afinn_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text<span class="op">=</span><span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">main_news_sentiment_afinn</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">print_news_sentiment_afinn</span><span class="op">)</span>
+</code></pre>
+</div>
+</details>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+ -10.00   -3.00   -2.00   -1.52   -1.00    6.00     359 </code></pre>
+</div>
+<h3 id="preview-results-2">Preview Results</h3>
+<p>Now I can look at the first 10 headlines and the corresponding AFINN
+analysis scores. I can see that the scores vary a lot less than in the
+first two lexicons.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#data frame of AFINN main headlines</span>
+<span class="va">main_news_sentiment_afinn_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text<span class="op">=</span><span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">main_news_sentiment_afinn</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">main_news_sentiment_afinn_df</span>, <span class="fl">10</span><span class="op">)</span>
 </code></pre>
 </div>
@@ -3680,18 +3696,7 @@ Show code
 </summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#data frame of AFINN print headlines</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">print_news_sentiment_afinn</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
- -10.00   -3.00   -2.00   -1.52   -1.00    6.00     359 </code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">print_news_sentiment_afinn_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>print_text<span class="op">=</span><span class="va">print_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">print_news_sentiment_afinn</span><span class="op">)</span>
+<span class="va">print_news_sentiment_afinn_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>print_text<span class="op">=</span><span class="va">print_headlines</span><span class="op">$</span><span class="va">text</span>, score <span class="op">=</span> <span class="va">print_news_sentiment_afinn</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">print_news_sentiment_afinn_df</span>, <span class="fl">10</span><span class="op">)</span>
 </code></pre>
 </div>
@@ -3719,16 +3724,18 @@ Show code
 9     NA
 10    -2</code></pre>
 </div>
-<h3 id="comparing-results">Comparing Results</h3>
-<p>Having obtained for each news three potential results as sentiment
-evaluation, we would like to compare their congruency. As congruence we
-mean the fact that all three lexicons express the same positive or
-negative result, in other words the same score sign indipendently from
-its magnitude. If NA values are present, the congruence shall be
-computed until at least two non NA values are available, otherwise is
-equal to NA.</p>
-<p>Furthermore we compute the final news sentiment as based upon the sum
-of each lexicon sentiment score.</p>
+<h2 id="congruence">Congruence</h2>
+<p>Having obtained for each headline data set three potential results as
+sentiment evaluation, next I will calculate their congruence.</p>
+<p>By congruence, I am looking at the fact that all three lexicons
+express a positive or negative result. In other words, the same score
+signal the same sentiment independently from the lexicon’s respective
+scale of magnitude. If “NA” values are present, the congruence is
+computed until at least two non-“NA” values are available, otherwise the
+value is equal to “NA”.</p>
+<p>Then, I compute the final news sentiment as based upon the sum of
+each lexicon sentiment score.</p>
+<h3 id="create-function-3">Create Function</h3>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3771,23 +3778,16 @@ Show code
 </div>
 </details>
 </div>
+<h3 id="apply-function-1">Apply Function</h3>
+<p>Now I will put the sentiment results in new data frames and apply the
+analyses.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">all_sentiments_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text <span class="op">=</span> <span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, 
-                                 main_bing <span class="op">=</span> <span class="va">main_news_sentiment_bing</span>, 
-                                 main_nrc <span class="op">=</span> <span class="va">main_news_sentiment_nrc</span>, 
-                                 main_afinn <span class="op">=</span> <span class="va">main_news_sentiment_afinn</span>,
-                                 print_text <span class="op">=</span> <span class="va">print_headlines</span><span class="op">$</span><span class="va">text</span>, 
-                                 print_bing <span class="op">=</span> <span class="va">print_news_sentiment_bing</span>, 
-                                 print_nrc <span class="op">=</span> <span class="va">print_news_sentiment_nrc</span>, 
-                                 print_afinn <span class="op">=</span> <span class="va">print_news_sentiment_afinn</span>,
-                                 stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="va">main_sentiments_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text <span class="op">=</span> <span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, 
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">main_sentiments_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>main_text <span class="op">=</span> <span class="va">main_headlines</span><span class="op">$</span><span class="va">text</span>, 
                                  bing_score <span class="op">=</span> <span class="va">main_news_sentiment_bing</span>, 
                                  nrc_score <span class="op">=</span> <span class="va">main_news_sentiment_nrc</span>, 
                                  afinn_score <span class="op">=</span> <span class="va">main_news_sentiment_afinn</span>,
@@ -3852,6 +3852,9 @@ Show code
 10 &quot;As Pandemic Take~         -1        -5          -2 negative       
 # ... with 1 more variable: congruence &lt;lgl&gt;</code></pre>
 </div>
+<h3 id="evaluation">Evaluation</h3>
+<p>It seems like I need to do more work on the congruence function, as I
+have all “NA” results.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -3865,7 +3868,20 @@ Show code
   <span class="va">v_score</span><span class="op">[</span><span class="va">v_score</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">&quot;neutral&quot;</span>
   <span class="va">v_score</span>
 <span class="op">}</span> 
-<span class="co">#apply scale to main results</span>
+</code></pre>
+</div>
+</details>
+</div>
+<p>I’ll combine all of the normalized and binary ‘positive’ and
+‘negative’ sentiments from all three lexicons into one data frame for
+each headline set.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#apply scale to main results</span>
 <span class="va">main_sentiments_results</span><span class="op">$</span><span class="va">bing_score</span> <span class="op">&lt;-</span> <span class="fu">replace_score_with_sentiment</span><span class="op">(</span><span class="va">main_sentiments_results</span><span class="op">$</span><span class="va">bing_score</span><span class="op">)</span>
 <span class="va">main_sentiments_results</span><span class="op">$</span><span class="va">nrc_score</span> <span class="op">&lt;-</span> <span class="fu">replace_score_with_sentiment</span><span class="op">(</span><span class="va">main_sentiments_results</span><span class="op">$</span><span class="va">nrc_score</span><span class="op">)</span>
 <span class="va">main_sentiments_results</span><span class="op">$</span><span class="va">afinn_score</span> <span class="op">&lt;-</span> <span class="fu">replace_score_with_sentiment</span><span class="op">(</span><span class="va">main_sentiments_results</span><span class="op">$</span><span class="va">afinn_score</span><span class="op">)</span>
@@ -3919,406 +3935,56 @@ Show code
 10 &quot;As Pandemic Take~ negative   negative  negative    negative       
 # ... with 30 more rows, and 1 more variable: congruence &lt;lgl&gt;</code></pre>
 </div>
-<h4 id="final-results">Final Results</h4>
+<h3 id="final-results">Final Results</h3>
+<p>I’ll take the overall sentiment score and join them in one data frame
+and visualize it. After taking the value ‘positive’ or ‘negative’ that
+is in the majority of the 3 evaluations, the dataset is overwhelmingly
+‘negative’ (100%).</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">main_sentiments_results</span><span class="op">$</span><span class="va">congruence</span>, <span class="va">main_sentiments_results</span><span class="op">$</span><span class="va">final_sentiment</span>, dnn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;congruence&quot;</span>, <span class="st">&quot;final&quot;</span><span class="op">)</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>&lt; table of extent 0 x 1 &gt;</code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">print_sentiments_results</span><span class="op">$</span><span class="va">congruence</span>, <span class="va">print_sentiments_results</span><span class="op">$</span><span class="va">final_sentiment</span>, dnn <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;congruence&quot;</span>, <span class="st">&quot;final&quot;</span><span class="op">)</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>&lt; table of extent 0 x 1 &gt;</code></pre>
-</div>
-<h1 id="other-types-of-analysis">Other Types of Analysis</h1>
-<h2 id="utilizing-the-cleannlp-package">Utilizing the cleanNLP
-package:</h2>
-<p>As usual, I am struggling to get this to work due to my inexperience
-with the python backend. What worked for me last time I ran this in a
-previous tutorial was no longer working, so I had to uninstall my
-miniconda installation and re-install it, but eventually it initialized
-so I could run the “cnlp_annotate” function.</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/pkg/cleanNLP/man/cnlp_init_udpipe.html">cnlp_init_udpipe</a></span><span class="op">(</span><span class="op">)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="va">final_total</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">&quot;all_sentiments_binary.csv&quot;</span><span class="op">)</span>
 
-<span class="co">#first the main headlines</span>
-
-<span class="va">main_tibble</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">main_headlines</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;doc_id&quot;</span>, <span class="st">&quot;text&quot;</span><span class="op">)</span><span class="op">)</span>
-<span class="va">main_tibble</span> <span class="op">&lt;-</span> <span class="fu">utf8</span><span class="fu">::</span><span class="fu"><a href="https://ptrckprry.com/r-utf8/reference/as_utf8.html">as_utf8</a></span><span class="op">(</span><span class="va">main_tibble</span><span class="op">$</span><span class="va">text</span><span class="op">)</span>
-
-<span class="va">annotated_main</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cleanNLP/man/cnlp_annotate.html">cnlp_annotate</a></span><span class="op">(</span><span class="va">main_tibble</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">final_total</span><span class="op">)</span>
 </code></pre>
 </div>
 </details>
-<pre><code>Processed document 10 of 936
-Processed document 20 of 936
-Processed document 30 of 936
-Processed document 40 of 936
-Processed document 50 of 936
-Processed document 60 of 936
-Processed document 70 of 936
-Processed document 80 of 936
-Processed document 90 of 936
-Processed document 100 of 936
-Processed document 110 of 936
-Processed document 120 of 936
-Processed document 130 of 936
-Processed document 140 of 936
-Processed document 150 of 936
-Processed document 160 of 936
-Processed document 170 of 936
-Processed document 180 of 936
-Processed document 190 of 936
-Processed document 200 of 936
-Processed document 210 of 936
-Processed document 220 of 936
-Processed document 230 of 936
-Processed document 240 of 936
-Processed document 250 of 936
-Processed document 260 of 936
-Processed document 270 of 936
-Processed document 280 of 936
-Processed document 290 of 936
-Processed document 300 of 936
-Processed document 310 of 936
-Processed document 320 of 936
-Processed document 330 of 936
-Processed document 340 of 936
-Processed document 350 of 936
-Processed document 360 of 936
-Processed document 370 of 936
-Processed document 380 of 936
-Processed document 390 of 936
-Processed document 400 of 936
-Processed document 410 of 936
-Processed document 420 of 936
-Processed document 430 of 936
-Processed document 440 of 936
-Processed document 450 of 936
-Processed document 460 of 936
-Processed document 470 of 936
-Processed document 480 of 936
-Processed document 490 of 936
-Processed document 500 of 936
-Processed document 510 of 936
-Processed document 520 of 936
-Processed document 530 of 936
-Processed document 540 of 936
-Processed document 550 of 936
-Processed document 560 of 936
-Processed document 570 of 936
-Processed document 580 of 936
-Processed document 590 of 936
-Processed document 600 of 936
-Processed document 610 of 936
-Processed document 620 of 936
-Processed document 630 of 936
-Processed document 640 of 936
-Processed document 650 of 936
-Processed document 660 of 936
-Processed document 670 of 936
-Processed document 680 of 936
-Processed document 690 of 936
-Processed document 700 of 936
-Processed document 710 of 936
-Processed document 720 of 936
-Processed document 730 of 936
-Processed document 740 of 936
-Processed document 750 of 936
-Processed document 760 of 936
-Processed document 770 of 936
-Processed document 780 of 936
-Processed document 790 of 936
-Processed document 800 of 936
-Processed document 810 of 936
-Processed document 820 of 936
-Processed document 830 of 936
-Processed document 840 of 936
-Processed document 850 of 936
-Processed document 860 of 936
-Processed document 870 of 936
-Processed document 880 of 936
-Processed document 890 of 936
-Processed document 900 of 936
-Processed document 910 of 936
-Processed document 920 of 936
-Processed document 930 of 936</code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#then the print headlines</span>
-
-<span class="va">print_tibble</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">print_headlines</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;doc_id&quot;</span>, <span class="st">&quot;text&quot;</span><span class="op">)</span><span class="op">)</span>
-<span class="va">print_tibble</span> <span class="op">&lt;-</span> <span class="fu">utf8</span><span class="fu">::</span><span class="fu"><a href="https://ptrckprry.com/r-utf8/reference/as_utf8.html">as_utf8</a></span><span class="op">(</span><span class="va">print_tibble</span><span class="op">$</span><span class="va">text</span><span class="op">)</span>
-
-<span class="va">annotated_print</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cleanNLP/man/cnlp_annotate.html">cnlp_annotate</a></span><span class="op">(</span><span class="va">print_tibble</span><span class="op">)</span>
-</code></pre>
+<pre><code>  article print_bing print_nrc print_afinn print_final main_bing
+1       1       &lt;NA&gt;  negative        &lt;NA&gt;    negative      &lt;NA&gt;
+2       2   negative  negative    negative    negative  positive
+3       3       &lt;NA&gt;  negative        &lt;NA&gt;    negative      &lt;NA&gt;
+4       4   negative  negative    negative    negative  negative
+5       5       &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;    negative      &lt;NA&gt;
+6       6   positive  positive    positive    negative  positive
+  main_nrc main_afinn main_final
+1 negative       &lt;NA&gt;   negative
+2  neutral   positive   negative
+3 negative   negative   negative
+4 negative   negative   negative
+5 negative       &lt;NA&gt;   negative
+6 positive   positive   negative</code></pre>
 </div>
-</details>
-<pre><code>Processed document 10 of 936
-Processed document 20 of 936
-Processed document 30 of 936
-Processed document 40 of 936
-Processed document 50 of 936
-Processed document 60 of 936
-Processed document 70 of 936
-Processed document 80 of 936
-Processed document 90 of 936
-Processed document 100 of 936
-Processed document 110 of 936
-Processed document 120 of 936
-Processed document 130 of 936
-Processed document 140 of 936
-Processed document 150 of 936
-Processed document 160 of 936
-Processed document 170 of 936
-Processed document 180 of 936
-Processed document 190 of 936
-Processed document 200 of 936
-Processed document 210 of 936
-Processed document 220 of 936
-Processed document 230 of 936
-Processed document 240 of 936
-Processed document 250 of 936
-Processed document 260 of 936
-Processed document 270 of 936
-Processed document 280 of 936
-Processed document 290 of 936
-Processed document 300 of 936
-Processed document 310 of 936
-Processed document 320 of 936
-Processed document 330 of 936
-Processed document 340 of 936
-Processed document 350 of 936
-Processed document 360 of 936
-Processed document 370 of 936
-Processed document 380 of 936
-Processed document 390 of 936
-Processed document 400 of 936
-Processed document 410 of 936
-Processed document 420 of 936
-Processed document 430 of 936
-Processed document 440 of 936
-Processed document 450 of 936
-Processed document 460 of 936
-Processed document 470 of 936
-Processed document 480 of 936
-Processed document 490 of 936
-Processed document 500 of 936
-Processed document 510 of 936
-Processed document 520 of 936
-Processed document 530 of 936
-Processed document 540 of 936
-Processed document 550 of 936
-Processed document 560 of 936
-Processed document 570 of 936
-Processed document 580 of 936
-Processed document 590 of 936
-Processed document 600 of 936
-Processed document 610 of 936
-Processed document 620 of 936
-Processed document 630 of 936
-Processed document 640 of 936
-Processed document 650 of 936
-Processed document 660 of 936
-Processed document 670 of 936
-Processed document 680 of 936
-Processed document 690 of 936
-Processed document 700 of 936
-Processed document 710 of 936
-Processed document 720 of 936
-Processed document 730 of 936
-Processed document 740 of 936
-Processed document 750 of 936
-Processed document 760 of 936
-Processed document 770 of 936
-Processed document 780 of 936
-Processed document 790 of 936
-Processed document 800 of 936
-Processed document 810 of 936
-Processed document 820 of 936
-Processed document 830 of 936
-Processed document 840 of 936
-Processed document 850 of 936
-Processed document 860 of 936
-Processed document 870 of 936
-Processed document 880 of 936
-Processed document 890 of 936
-Processed document 900 of 936
-Processed document 910 of 936
-Processed document 920 of 936
-Processed document 930 of 936</code></pre>
-</div>
-<h2 id="using-spacyr">Using spaCyr</h2>
-<h3 id="for-main-headlines">For Main Headlines</h3>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">parsed_main</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://spacyr.quanteda.io/reference/spacy_parse.html">spacy_parse</a></span><span class="op">(</span><span class="va">main_headlines</span>,
-                           lemma <span class="op">=</span> <span class="cn">TRUE</span>,
-                           entity <span class="op">=</span> <span class="cn">TRUE</span>,
-                           nounphrase <span class="op">=</span> <span class="cn">TRUE</span>,
-                           sentiment <span class="op">=</span> <span class="cn">TRUE</span>,
-                           additional_attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;is_punct&quot;</span>,
-                                                     <span class="st">&quot;is_stop&quot;</span>,
-                                                     <span class="st">&quot;is_currency&quot;</span>,
-                                                     <span class="st">&quot;is_digit&quot;</span>,
-                                                     <span class="st">&quot;is_quote&quot;</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="va">as_tibble</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">sentence_id</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">parsed_main</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code># A tibble: 6 x 13
-  doc_id token_id token   lemma   pos   entity   nounphrase whitespace
-  &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;lgl&gt;     
-1 1             1 $       $       SYM   &quot;MONEY_~ beg        FALSE     
-2 1             2 174     174     NUM   &quot;MONEY_~ mid        TRUE      
-3 1             3 Million million NUM   &quot;MONEY_~ mid        TRUE      
-4 1             4 Afghan  Afghan  PROPN &quot;&quot;       mid        TRUE      
-5 1             5 Drone   Drone   PROPN &quot;&quot;       mid        TRUE      
-6 1             6 Program Program PROPN &quot;&quot;       end_root   TRUE      
-# ... with 5 more variables: is_punct &lt;lgl&gt;, is_stop &lt;lgl&gt;,
-#   is_currency &lt;lgl&gt;, is_digit &lt;lgl&gt;, is_quote &lt;lgl&gt;</code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">parsed_main</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>    doc_id             token_id         token          
- Length:11027       Min.   : 1.000   Length:11027      
- Class :character   1st Qu.: 3.000   Class :character  
- Mode  :character   Median : 6.000   Mode  :character  
-                    Mean   : 6.241                     
-                    3rd Qu.: 9.000                     
-                    Max.   :22.000                     
-    lemma               pos               entity         
- Length:11027       Length:11027       Length:11027      
- Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character  
-                                                         
-                                                         
-                                                         
-  nounphrase        whitespace       is_punct        is_stop       
- Length:11027       Mode :logical   Mode :logical   Mode :logical  
- Class :character   FALSE:2127      FALSE:10095     FALSE:7566     
- Mode  :character   TRUE :8900      TRUE :932       TRUE :3461     
-                                                                   
-                                                                   
-                                                                   
- is_currency      is_digit        is_quote      
- Mode :logical   Mode :logical   Mode :logical  
- FALSE:11021     FALSE:10927     FALSE:10847    
- TRUE :6         TRUE :100       TRUE :180      
-                                                
-                                                
-                                                </code></pre>
-</div>
-<h3 id="for-print-headlines">For Print Headlines</h3>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="va">parsed_print</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://spacyr.quanteda.io/reference/spacy_parse.html">spacy_parse</a></span><span class="op">(</span><span class="va">print_headlines</span>,
-                           lemma <span class="op">=</span> <span class="cn">TRUE</span>,
-                           entity <span class="op">=</span> <span class="cn">TRUE</span>,
-                           nounphrase <span class="op">=</span> <span class="cn">TRUE</span>,
-                           additional_attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">&quot;is_punct&quot;</span>,
-                                                     <span class="st">&quot;is_stop&quot;</span>,
-                                                     <span class="st">&quot;is_currency&quot;</span>,
-                                                     <span class="st">&quot;is_digit&quot;</span>,
-                                                     <span class="st">&quot;is_quote&quot;</span>,
-                                                     <span class="st">&quot;sentiment&quot;</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="va">as_tibble</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">sentence_id</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">parsed_print</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code># A tibble: 6 x 14
-  doc_id token_id token   lemma   pos   entity   nounphrase whitespace
-  &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;lgl&gt;     
-1 1             1 $       $       SYM   &quot;MONEY_~ &quot;beg&quot;      FALSE     
-2 1             2 174     174     NUM   &quot;MONEY_~ &quot;mid&quot;      TRUE      
-3 1             3 Million million NUM   &quot;MONEY_~ &quot;mid&quot;      TRUE      
-4 1             4 Drone   Drone   PROPN &quot;&quot;       &quot;mid&quot;      TRUE      
-5 1             5 Program Program PROPN &quot;&quot;       &quot;end_root&quot; TRUE      
-6 1             6 for     for     ADP   &quot;&quot;       &quot;&quot;         TRUE      
-# ... with 6 more variables: is_punct &lt;lgl&gt;, is_stop &lt;lgl&gt;,
-#   is_currency &lt;lgl&gt;, is_digit &lt;lgl&gt;, is_quote &lt;lgl&gt;,
-#   sentiment &lt;dbl&gt;</code></pre>
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">parsed_print</span><span class="op">)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>    doc_id             token_id         token          
- Length:9805        Min.   : 1.000   Length:9805       
- Class :character   1st Qu.: 3.000   Class :character  
- Mode  :character   Median : 5.000   Mode  :character  
-                    Mean   : 5.775                     
-                    3rd Qu.: 8.000                     
-                    Max.   :19.000                     
-    lemma               pos               entity         
- Length:9805        Length:9805        Length:9805       
- Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character  
-                                                         
-                                                         
-                                                         
-  nounphrase        whitespace       is_punct        is_stop       
- Length:9805        Mode :logical   Mode :logical   Mode :logical  
- Class :character   FALSE:2022      FALSE:9102      FALSE:6927     
- Mode  :character   TRUE :7783      TRUE :703       TRUE :2878     
-                                                                   
-                                                                   
-                                                                   
- is_currency      is_digit        is_quote         sentiment
- Mode :logical   Mode :logical   Mode :logical   Min.   :0  
- FALSE:9797      FALSE:9699      FALSE:9643      1st Qu.:0  
- TRUE :8         TRUE :106       TRUE :162       Median :0  
-                                                 Mean   :0  
-                                                 3rd Qu.:0  
-                                                 Max.   :0  </code></pre>
-</div>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="visualization-1">Visualization</h2>
+<h1 id="citations">Citations</h1>
+<p>Citations:</p>
+<ul>
+<li><p>This research makes use of the <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm">NRC
+Word-Emotion Association Lexicon</a>, created by Saif Mohammad and Peter
+Turney at the National Research Council Canada.</p></li>
+<li><p>This research makes use of the <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html">Bing
+Lexicon</a>. This dataset was first published in Minqing Hu and Bing
+Liu, ``Mining and summarizing customer reviews.’’, Proceedings of the
+ACM SIGKDD International Conference on Knowledge Discovery &amp; Data
+Mining (KDD-2004), 2004.</p></li>
+<li><p>This research makes use of the <a href="http://www2.compute.dtu.dk/pubdb/pubs/6010-full.html">AFINN
+Lexicon</a>, Nielsen, F. Å. (2011). A new ANEW: Evaluation of a word
+list for sentiment analysis in microblogs. arXiv preprint
+arXiv:1103.2903.</p></li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

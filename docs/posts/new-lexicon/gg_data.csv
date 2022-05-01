@@ -1,0 +1,7 @@
+headline,dictionary,positive,neutral,negative,na
+print,bing,139,56,388,353
+print,nrc,321,59,405,151
+print,afinn,117,27,433,359
+main,bing,149,66,372,349
+main,nrc,298,66,422,150
+main,afinn,103,20,445,368

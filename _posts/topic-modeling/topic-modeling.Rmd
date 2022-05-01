@@ -15,6 +15,7 @@ date: 2022-04-28
 output:
   distill::distill_article:
     toc: true
+    code_folding: true
 ---
 
 
@@ -47,6 +48,9 @@ library(flextable)
 
 # Getting Started
 
+
+# Topic Modeling
+
 I am using code from a wonderfully helpful tutorial to do some exploratory topic modeling with the headline data. 
 
 *Schweinberger, Martin. 2022. Topic Modeling with R. Brisbane: The University of Queensland. url: https://slcladal.github.io/topicmodels.html (Version 2022.03.18).*
@@ -57,7 +61,7 @@ Loading the entirety of the headlines pulled from the New York Times API, I will
 
 I am transforming to lower case, removing English stopwords, removing punctuation, numbers, and stripping white space. I am going to use stemming, to begin the analysis, though I may go back and change this.
 
-*added on after first run*
+*Added on after running analyses in this post*
 
 I had to create a function to remove 'curly' apostrophes after they showed up as top results in 2 models
 
@@ -371,4 +375,9 @@ ggplot(vizDataFrame, aes(x=month, y=value, fill=variable)) +
 ```
 
 
+library(ggplot2)
+
+ggplot(jane_austen_sentiment, aes(index, sentiment, fill = book)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~book, ncol = 2, scales = "free_x")
 

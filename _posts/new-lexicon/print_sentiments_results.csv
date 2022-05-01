@@ -1,0 +1,937 @@
+"","print_text","bing_score","nrc_score","afinn_score","final_sentiment","congruence"
+"1","$174 Million Drone Program for Afghans Is Riddled With Problems, Pentagon Says",NA,"negative",NA,"negative",NA
+"2","Psychedelic Therapy In the Jungle Soothes The Pain for Veterans","negative","negative","negative","negative",NA
+"3","Morocco Sends Spanish Outpost a Migrant Influx",NA,"negative",NA,"negative",NA
+"4","‘It’s a Lie’: Denial and Skepticism Permeate a Nation Embroiled in War","negative","negative","negative","negative",NA
+"5","‘Everything Changed’: Media Face Crackdown",NA,NA,NA,"negative",NA
+"6","‘Finally, I Am Safe’: Thousands Find Temporary Refuge at U.S. Air Base","positive","positive","positive","negative",NA
+"7","‘Find Him and Kill Him’: A Pilot’s Desperate Escape From Kabul","negative","negative","negative","negative",NA
+"8","Soccer Players Under Threat Escape to Italy","negative","negative","negative","negative",NA
+"9","Plan Would Inject $1 Trillion Into Economy  ",NA,"positive",NA,"negative",NA
+"10","As Pandemic Takes Toll on Afghan Doctors, Hospitals Still Tend to War Wounded","negative","negative","negative","negative",NA
+"11","In Kabul, Slips of Paper to Avert Nameless Death","negative","negative","negative","negative",NA
+"12","Surrounded by Violence, Yet Captivated by a Virtual Battlefield",NA,"negative","neutral","negative",NA
+"13","Floods Compound Afghanistan’s Misery of Pandemic and Unrelenting War","negative","negative","negative","negative",NA
+"14","In Secret Taliban Prisons, Each Day Brings Terror","negative","negative","negative","negative",NA
+"15","Veterans Feel Urgency to Aid Afghan Allies",NA,"positive",NA,"negative",NA
+"16","Crisis Erases Farmers’ Income From a Reliable Crop: Hashish","neutral","positive","negative","negative",NA
+"17","Vietnamese Veterans See Echoes of 1975 in Afghanistan",NA,NA,NA,"negative",NA
+"18","How Biden’s Defense Nominee Overcame Barriers to Diversity",NA,"neutral",NA,"negative",NA
+"19","Israeli C.E.O.s and Emirati Investors Click in the Desert","negative","negative",NA,"negative",NA
+"20","Women on Loving, Fearing, and Leaving Afghanistan","positive","positive","neutral","negative",NA
+"21","‘No One Quite Knows What to Say’: 20-Year War Ends With Few Answers",NA,"negative","negative","negative",NA
+"22","Veterans of Afghan War Feel Torn Over Pullout",NA,"negative","negative","negative",NA
+"23","‘We Risk Everything’: Whisper Opposition Takes Hold in Belarus","negative","negative","negative","negative",NA
+"24","Taliban Use Lethal ‘Sticky Bombs’ Nearly Daily to Terrorize Afghans","negative","negative","negative","negative",NA
+"25","How Biden, by Turns Genial and Blunt, Built Diplomatic Bridges","positive","positive","positive","negative",NA
+"26","Fear of Sudden Death Governs Capital as Attacks Pick Off Afghans","negative","negative","negative","negative",NA
+"27","Turkey Fumes While Accusing Greece of Setting Migrants Adrift at Sea","negative","negative","negative","negative",NA
+"28","Blinken Rejects Criticism Of Afghanistan Pullout","negative","negative","negative","negative",NA
+"29","As Panicked Afghans Seek Help, Lawmakers Say, ‘We Have to Try’","negative","positive","negative","negative",NA
+"30","‘Our Hearts Are Crying’ For Family Left Behind",NA,"negative","negative","negative",NA
+"31","‘She Was Alone’: One Official’s Harrowing Escape From Kabul",NA,"negative","negative","negative",NA
+"32","After Escaping Kabul, Afghans Are Struck With Worry, Uncertainty and Despair","negative","negative","negative","negative",NA
+"33","‘Why Do We Deserve to Die?’ Burying Hazara Girls in Kabul","negative","negative","negative","negative",NA
+"34","Man Armed With Knife Kills 2 in French Town Under Lockdown","negative","negative","negative","negative",NA
+"35","Journalists Killed in Burkina Faso","negative",NA,"negative","negative",NA
+"36","Members of Congress Ducked Into Kabul to See Evacuations",NA,"neutral",NA,"negative",NA
+"37","A War Rages On In the Shadows",NA,"negative","negative","negative",NA
+"38","29 Are Dead in 2-Day Islamic State Raid on Afghan Prison","negative","negative","negative","negative",NA
+"39","Militants Kill 4 Pakistani Aid Workers in District Near Afghan Border","negative","negative","negative","negative",NA
+"40","Table Is Set For a Pullout And Talks",NA,NA,NA,"negative",NA
+"41","Trudeau Absorbs Attacks In the Election Debates Among Five Candidates","negative",NA,"negative","negative",NA
+"42","New Wave of Refugees Faces A Much Chillier U.S. Welcome",NA,NA,NA,"negative",NA
+"43","98 Countries Pledge to Accept Afghans After U.S. Departure",NA,"positive","positive","negative",NA
+"44","Boy, 17, Died in Fall From U.S. Plane","negative","negative","negative","negative",NA
+"45","Rescue Flight To Germany Inspires Name For Newborn",NA,"positive","positive","negative",NA
+"46","E.U. Tries to Tread Line In Greek-Turkish Clash On Admitting Migrants","negative","negative","negative","negative",NA
+"47","Marines Put Black Leader In Charge Of Top Unit","positive","positive","positive","negative",NA
+"48","Canada Opens to Vaccinated, But It’s a Trickle at the Border",NA,NA,NA,"negative",NA
+"49","A Botched U.S. Drone Strike in Kabul Started With the Wrong Car","negative","negative","negative","negative",NA
+"50","A Call for the Return of Civility, And Truth as a Guiding Light","positive","positive",NA,"negative",NA
+"51","‘I Was Drugged and Raped,’ Heard in a Candidate’s #MeToo-Tinged Ad","negative","negative",NA,"negative",NA
+"52","A City’s Last Defenders as the Taliban Closes In",NA,NA,"positive","negative",NA
+"53","Worried About His Students, College President Moves Into the Dorms","negative","neutral","negative","negative",NA
+"54","Public Apathy and Conspiracy Theories Are Feeding a Second Wave","negative","negative","negative","negative",NA
+"55","A Desperate Evacuation of Afghan Nonprofit Workers","negative","negative","negative","negative",NA
+"56","A ‘Digital Dunkirk’: U.S. Veterans Scramble to Help Afghan Allies","negative",NA,NA,"negative",NA
+"57","An Officer’s Double Life Puts Germany on Trial",NA,NA,NA,"negative",NA
+"58","Fragile Cease-Fire in Afghanistan Lets Muslims Risk Travel for Holiday","negative","negative","negative","negative",NA
+"59","A Town Warily Considers a Future Without a Large U.S. Presence","negative","positive",NA,"negative",NA
+"60","Behind a Girl’s Gunfight With the Taliban: A Family Feud",NA,"negative",NA,"negative",NA
+"61","Grim New Reality for Afghan Women and Girls","negative","negative",NA,"negative",NA
+"62","Scenes From the Fall of a City, And a Farewell to Hopeful Days","neutral","positive","positive","negative",NA
+"63","Millions of Afghans Are in Peril As Food Runs Out, U.N. Warns","negative","positive","negative","negative",NA
+"64","Empty Pockets and No Home After 1,500 Miles",NA,NA,"negative","negative",NA
+"65","How Kyiv Rescued 96 Afghans. Nerves of Steel Helped.","positive",NA,"positive","negative",NA
+"66","Away From Buckingham Palace but Not Out of the Spotlight",NA,NA,NA,"negative",NA
+"67","U.S. Officials Warn Russia Of China’s Nuclear Threat","negative","negative","negative","negative",NA
+"68","Man Who Shot U.S. Advisers Is Set Free In Afghanistan","positive","negative","positive","negative",NA
+"69","Extremist Cleric Is a Reminder of Taliban Rule, and Perhaps a Preview","negative","neutral",NA,"negative",NA
+"70","An Anti-Tank Guided Missile  Strikes an Afghan Helicopter For the 2nd Time This Year","negative","neutral","negative","negative",NA
+"71","Urban Climbing Calmed His PTSD, but May Land Him in Prison","negative","negative","neutral","negative",NA
+"72","U.S. Lawmakers Balk Over Secret Benchmarks Within Taliban Peace Accord","neutral","positive","positive","negative",NA
+"73","Return Mission Finds Ruins of Failed U.S. Policy","negative","positive","negative","negative",NA
+"74","Taliban Claims to Defeat Revered Female Warlord, Seizing Propaganda Win","positive","negative","positive","negative",NA
+"75","Stranded Interpreter, Increasingly in Danger, And His U.S. Soldiers","negative","negative","negative","negative",NA
+"76","President Says Military Fuels War Industry. Pentagon Erupts.",NA,"negative","negative","negative",NA
+"77","He Fled Afghanistan, And Headed for Open Water",NA,"negative",NA,"negative",NA
+"78","Women Warned to Stay  Home to Avoid Fighters","negative","negative","negative","negative",NA
+"79","Top Democrat Doesn’t Want Troops to Quit Afghanistan","positive","positive","positive","negative",NA
+"80","A Top Woman in Canada’s Military Issues a Rebuke","negative","positive","positive","negative",NA
+"81","A Transfixed World Awaits What’s Next in America",NA,NA,"negative","negative",NA
+"82","Awaiting Term’s End, Defense Secretary Is Already Acting Like an Ex-Official",NA,"positive",NA,"negative",NA
+"83","A Pennsylvania Town Exhales at a War’s End",NA,NA,NA,"negative",NA
+"84","Afghan Bases Fall to Taliban as U.S. Heads Out","negative","negative",NA,"negative",NA
+"85","After Week Under New Rulers,  Kunduz May Be Hint of Future",NA,NA,NA,"negative",NA
+"86"," The Year in Pictures: Scenes From a Defining Era",NA,NA,NA,"negative",NA
+"87","McMaster Was Said to Be Target In Plot to Vilify Trump ‘Enemies’","negative","positive","negative","negative",NA
+"88","Lonely Quest To Repudiate Trump Wing","negative","negative","negative","negative",NA
+"89","Afghans Agree  With Taliban  On Procedure  For Peace Talks","positive","positive","positive","negative",NA
+"90","Afghan Attack Kills 27 In Sign Peace Deal Is Off","negative","positive","negative","negative",NA
+"91","Afghan Civilian Deaths Soar, Monitors Say",NA,NA,NA,"negative",NA
+"92","Afghan Civilian Casualties Rose After Peace Talks’ Start","positive","positive","positive","negative",NA
+"93","Afghan Contractor Gave Out Russian Cash, Officials Say",NA,"positive",NA,"negative",NA
+"94","Despite Peace Deal, Violence in Afghanistan Surges","positive","positive","negative","negative",NA
+"95","In Kabul, Kin Say 10 Died  In Errant Hit By U.S. Drone","negative","negative","negative","negative",NA
+"96","Afghan Fiasco Shows Fault Lines in NATO","negative","negative","negative","negative",NA
+"97","Afghanistan  Files Brief For Return  Of Detainee",NA,"negative",NA,"negative",NA
+"98","Afghan Journalist Is Killed in Latest Attack on Media","negative","negative","negative","negative",NA
+"99","Afghan Leader Hampers Peace Talks, Officials Say","positive","positive","positive","negative",NA
+"100","Media Clampdown Stifles Data on Afghan War Deaths",NA,"negative","negative","negative",NA
+"101","First Stumble on Road To Peace Deal: Release Of Taliban Prisoners","neutral","positive","neutral","negative",NA
+"102","Afghanistan And Taliban Set to Begin Peace Talks","positive","positive","positive","negative",NA
+"103","Afghan Talks Set to Begin  As Prisoner Swap Finishes","negative","negative","negative","negative",NA
+"104","Ally Pilots Who Had Escaped to Safety In Uzbekistan Are Taken to U.S. Base",NA,"positive","positive","negative",NA
+"105","Afghans’ Power-Sharing Accord  Honors Official Accused in Rape","negative","negative","negative","negative",NA
+"106","Afghan Security Fears Mount As Leader’s Influence Withers","negative","neutral",NA,"negative",NA
+"107","In a Reversal, Afghanistan’s Leader Agrees to a Phased Release of Taliban Fighters",NA,"neutral","positive","negative",NA
+"108","Taliban Pulls Out of Talks as Prisoner Swap Collapses, Imperiling U.S. Deal","negative","neutral","negative","negative",NA
+"109","A 1,400-Mile Trek to Turkey Only to Be Told to Turn Back",NA,NA,NA,"negative",NA
+"110","Afghan Rivals Divide Power, Ending Fight Over Election",NA,"negative","negative","negative",NA
+"111","For the First Time Since 2018, the Taliban Agree to a Cease-Fire With Afghan Forces",NA,"positive","negative","negative",NA
+"112","Soccer Official Evades Arrest By Afghan Forces for Assault","negative","negative","negative","negative",NA
+"113","Uyghurs Fear Taliban Will Deport Them to China","negative","negative","negative","negative",NA
+"114","Afghan Vice President, Staunch Taliban Foe, Survives Blast That Kills 10","negative","negative","negative","negative",NA
+"115","221 Afghans Arrive in U.S. As Visa Evacuations Begin",NA,"positive",NA,"negative",NA
+"116","With Much to Lose, Afghan Women Fear Stifling Return to Past","negative","negative","negative","negative",NA
+"117","Afghanistan Before the Fall","negative","negative",NA,"negative",NA
+"118","Two Major Cities on Brink of Takeover",NA,"positive",NA,"negative",NA
+"119","Collapse of Afghanistan And Strikes in Somalia Raise Questions on Drones","negative","negative","negative","negative",NA
+"120","Afghans Say Iran Killed Dozens of Migrants","negative",NA,"negative","negative",NA
+"121","Afghanistan Peace Talks Open, Seeking to End 40 Years of Bloodshed","neutral","neutral","positive","negative",NA
+"122","Afghanistan to Investigate Film Of Mutilation of Taliban Bodies",NA,"negative",NA,"negative",NA
+"123","Afghan Council Agrees to Release Taliban Prisoners",NA,"positive","negative","negative",NA
+"124","A Mission Shift for Afghanistan",NA,NA,NA,"negative",NA
+"125","U.S. Afghan Departure Strikes Another Blow To American Credibility","negative","neutral","negative","negative",NA
+"126","Afghans Flee to Pakistan.  Uncertain Future Awaits.","negative","negative","negative","negative",NA
+"127","Desperate Afghans Flee Home, Taking Grim Jobs in Istanbul","negative","negative","negative","negative",NA
+"128","Stranded and Afraid, Afghans Who Worked for U.S. Seek Any Way Out","negative","negative","negative","negative",NA
+"129","After 2 Decades of Turmoil, Afghans Face Still More Uncertainty","negative","negative",NA,"negative",NA
+"130","Africa Cheers As Wild Polio Is Eradicated","negative","negative","positive","negative",NA
+"131","Black Troops Fight at the Front, But Rarely Get Jobs at the Top","positive","neutral","positive","negative",NA
+"132","Taliban Leader Faces Charges In Abduction Of Journalist",NA,"positive","negative","negative",NA
+"133","Sudanese Militia Leader, a Fugitive for 13 Years, Appears in Court","negative","negative",NA,"negative",NA
+"134","Will Truce Lead to Lasting Peace? For Trump, It May Not Matter","positive","positive","positive","negative",NA
+"135","‘He’s a Coward’: Ghani’s Exit Infuriates His Countrymen","negative","negative","negative","negative",NA
+"136","Afghan Women Celebrate a Small Victory","positive","positive","positive","negative",NA
+"137","Family That Worked With U.S. Buries a Father and Their Hopes",NA,"positive","positive","negative",NA
+"138","For Biden Nominee, a Chance to Use Soft Power to Ease Global Conflicts","positive","positive","positive","negative",NA
+"139","3 Women Take Lead Roles On Capitol Security Team","positive","positive",NA,"negative",NA
+"140","As Capitols Become Citadels, Far-Right Protesters Are Mostly No-Shows",NA,NA,"negative","negative",NA
+"141","An ISIS Offshoot Claims Responsibility As Terror Groups Find a New Foothold","negative","negative","negative","negative",NA
+"142","Migrant Fatigue Grips an Apathetic Europe","negative","negative","negative","negative",NA
+"143","Their Camp in Ashes, Refugees Fear It Will Be Rebuilt","negative","negative","negative","negative",NA
+"144","After Swift Victory, Taliban Scramble to Govern","positive","positive","positive","negative",NA
+"145","Democrats See a Chance To Earn Military Votes",NA,"positive","positive","negative",NA
+"146","Democrats See a Chance To Earn Military Votes",NA,"positive","positive","negative",NA
+"147","After 9/11, Boston Sought Someone to Fault. It Settled on Her.","negative","negative",NA,"negative",NA
+"148","U.S. Enters ‘Cooperative’ Phase With Taliban, Drawing Criticism From All Sides","neutral","negative","negative","negative",NA
+"149","Troops Shaken By War Tactics In City Streets",NA,"negative","negative","negative",NA
+"150","For the Aid Workers Still in Afghanistan, Hurdles at Every Turn",NA,"positive",NA,"negative",NA
+"151","Al Qaeda Suffers Losses to Leadership, Yet Remains Resilient","negative","neutral","negative","negative",NA
+"152","Qaeda’s No. 2  Killed in August  In Iran Capital ","negative","positive","negative","negative",NA
+"153","Biden Saw Afghan Choice As Either All In, or All Out",NA,"positive",NA,"negative",NA
+"154","America’s Afghan War: Drawing Down an Unwinnable Conflict","negative","negative","negative","negative",NA
+"155","‘It Shakes the World’: Allies Voice Shock and Dismay at Incursion","negative","negative","negative","negative",NA
+"156","College Students Dodging Taliban  Are Left Behind, Fearing for Lives",NA,"negative","negative","negative",NA
+"157","Americans Held in Iran And Lebanon Are Freed","positive",NA,NA,"negative",NA
+"158","With Masks at Beaches, Nation Marks Muted Holiday",NA,"positive",NA,"negative",NA
+"159","The Welcome Mat Is Out for Afghan Refugees",NA,NA,NA,"negative",NA
+"160","Leaning on ‘Powerful’ and ‘Strong,’ Trump Has No Words for Grief","positive","negative","positive","negative",NA
+"161","Kabul Bombing Derails C.I.A.’s Pivot Away From Counterterrorism",NA,"positive","negative","negative",NA
+"162","Amid Tensions With U.S., Erdogan Meets With Putin to Talk Military Deals",NA,"neutral",NA,"negative",NA
+"163","Americans Mourn 13 Fallen Troops In Final Days of War in Afghanistan","negative","negative","negative","negative",NA
+"164","Rare Response to Accusations Afghan Boy Was Fatally Raped: Arrests","negative",NA,"negative","negative",NA
+"165","China Takes Message on the Road, Challenging U.S. for Global Leader Role","negative","positive",NA,"negative",NA
+"166","‘It Makes My Hair Stand Up’: A Vacated Afghan Post Haunts Marines",NA,NA,"negative","negative",NA
+"167","A Soviet Echo  As Forces Flee Over a Bridge","negative","negative",NA,"negative",NA
+"168","Ex-Green Beret at Center  Of Failed Venezuela Plot","negative","positive","negative","negative",NA
+"169","Some on Left Fear Biden’s Situation Room May Look a Lot Like Obama’s","negative","negative","negative","negative",NA
+"170","An Old Legal Doctrine Puts War Crime Suspects Within the Reach of Justice","negative","positive","negative","negative",NA
+"171","Leader of ISIS Task Force Ousted in Pentagon Purge",NA,"negative",NA,"negative",NA
+"172","Afghan Car Bomb Dims Another Promising Light","neutral","negative","negative","negative",NA
+"173","Pentagon Panel Overturns Army Judge’s Ruling on Use of Torture for Evidence","negative","negative","negative","negative",NA
+"174","Arizona’s Embattled Governor Joins G.O.P. Anti-Mask Cause","negative","positive","negative","negative",NA
+"175","Armed Attackers Kidnap and Kill 11 Miners in Pakistan","negative","negative","negative","negative",NA
+"176","Promotion Pulled for Officer Over Niger Ambush","negative","positive",NA,"negative",NA
+"177","3 Afghan Cities  Fall to Taliban","negative","negative",NA,"negative",NA
+"178","In Kabul, High Tension and an Air of Unreality","negative","negative","negative","negative",NA
+"179","As Afghan Refugee Crisis Unfolds, Koreans Recall ‘Miracle’ Evacuation","neutral","positive","positive","negative",NA
+"180","20 Years Ago, a Lone U.S. Representative Warned Against ‘Perpetual War’","negative","negative","negative","negative",NA
+"181","A Pivotal Reset On China Policy By Biden’s Team",NA,"positive",NA,"negative",NA
+"182","As Biden Faces Political Crisis, the Democratic Party Looks On in Alarm","negative","negative","negative","negative",NA
+"183","Facing a More Skeptical U.S., Erdogan Tempers His Defiant Tone","negative","negative","negative","negative",NA
+"184","Virus Closed Schools, and World’s Poorest Children Went to Work","negative","negative","negative","negative",NA
+"185","As Taliban Stoke Fear, Multitudes Flee Afghanistan","negative","negative","negative","negative",NA
+"186","Democrats’ Strategy on Debt Ceiling: Discredit McConnell","negative","negative","negative","negative",NA
+"187","Diversity Push Inside Military Spurs Backlash",NA,"negative",NA,"negative",NA
+"188","As a Crisis in Afghanistan  Is Growing Dire, Aid Groups  Are Pleading for Assistance","negative","negative","negative","negative",NA
+"189","German Force  Fears Inroads  By Neo-Nazis","negative","negative",NA,"negative",NA
+"190","As Others Condemn Dissident’s Poisoning, Trump Just Wants to ‘Get Along’","neutral","negative","negative","negative",NA
+"191","U.S. Strengthens Its Warning on Travel","negative","negative","negative","negative",NA
+"192","Pompeo Sees Negotiators Just After Kabul Attack","negative","negative","negative","negative",NA
+"193","Family of Saudi Ex-Officer Who Is Hiding in Canada Became a Target at Home",NA,"positive","negative","negative",NA
+"194","As Taliban Advance, U.S. Clings to Hope for Peace","positive","positive","positive","negative",NA
+"195","Signal as U.S. Mission Ends: You’re on Your Own",NA,NA,NA,"negative",NA
+"196","As Taliban Crush Dissent, New Leaders Face Cascading Challenges","negative",NA,"negative","negative",NA
+"197","Pressure on Pakistan as Taliban Advance",NA,"positive","negative","negative",NA
+"198","Reports of Detentions and Executions Despite Taliban Vow of Amnesty",NA,"positive",NA,"negative",NA
+"199","Last Stand in Exit Plan Is Kabul Airport Security",NA,"positive",NA,"negative",NA
+"200","The United Nations Turns 75 Amid Calamity and Conflict","negative","negative","negative","negative",NA
+"201","As U.S. Exits Afghanistan, History Implies It May Have to Return",NA,NA,NA,"negative",NA
+"202","U.S. Troops’ Afghan Exit Ties Embassy’s Fate to a Fragile Peace Process","neutral","positive","positive","negative",NA
+"203","In Frantic Crowd, a Suicide Bomber Hid in Plain Sight","negative","negative","negative","negative",NA
+"204","U.S. Visas Can Be a Life-or-Death Matter for Afghan Interpreters","negative","negative","negative","negative",NA
+"205","As Toll Preoccupies U.S., Rivals Test the Limits of American Power","negative",NA,"negative","negative",NA
+"206","Congress Revisits President’s Powers To Authorize Use of Military Force",NA,"negative",NA,"negative",NA
+"207","Asylum Seeker Faces Charges in Son’s Death at Sea","negative","negative","negative","negative",NA
+"208","It Was Their Fathers’ War. They Aim to End It.",NA,"negative","negative","negative",NA
+"209","New Taliban Chancellor Bars Women From Kabul University",NA,"positive",NA,"negative",NA
+"210","At the Center of the Taliban Deal, a U.S. Envoy Who Made It Personal",NA,"positive",NA,"negative",NA
+"211","U.S. Rescue of All Afghan Allies by Deadline Appears Increasingly Unlikely",NA,"positive","positive","negative",NA
+"212","Boat Sinks In Turkey; At Least 60 Are Dead","negative",NA,"negative","negative",NA
+"213","Flash Flood  Kills Scores  In Area Run  By Taliban","negative","negative","negative","negative",NA
+"214","At Least 9 Die in Crash of Afghan Military Copter After Clashes With Local Militia","negative","negative","negative","negative",NA
+"215","Harris Speaks of ‘Fragile’ World at Naval Academy Commencement","negative","negative",NA,"negative",NA
+"216","Pentagon Leaders Worry Trump Will Drag Military Into Election","negative","negative","negative","negative",NA
+"217","At Pro-Taliban Rally, a Sign of America’s Failure: Droves of Veiled Faces","negative","negative","negative","negative",NA
+"218","Biden Reasserts Role of America In World Affairs",NA,NA,NA,"negative",NA
+"219","Afghan Attack Kills 10  From Land Mine Charity","negative","neutral","negative","negative",NA
+"220","As Taliban Attack, Civilians Are Taking Up Arms","negative","negative","negative","negative",NA
+"221","Australia Condemns Chinese Official’s ‘Disgusting Slur’ of Soldiers","negative","negative","negative","negative",NA
+"222","Australian Military to Dismiss Soldiers After Report on Killings And Cover-Up in Afghanistan",NA,"neutral",NA,"negative",NA
+"223","A Country Returns to Militias, and an Old, Chaotic Path","negative","negative","negative","negative",NA
+"224","Quest to Curb War Powers Of President Faces New Test",NA,"positive","negative","negative",NA
+"225","E.U. Hails Covid Success but Warns of ‘Pandemic of the Unvaccinated’","positive","neutral","neutral","negative",NA
+"226","Before Disaster, India Ignored Warnings of Dams’ Risks","negative","negative","negative","negative",NA
+"227","Before Capitol Riot, Thousands Made Small Donations Online",NA,"negative","negative","negative",NA
+"228","Haiti Assassination Spotlights Colombia’s Growing Mercenary Industry",NA,"negative","negative","negative",NA
+"229","One Year After He Crushed Protests, Belarus Leader Lashes Out at West","negative","negative","negative","negative",NA
+"230","E.U. Leaders Press China on Trade Talks, With Scant Results","negative","positive",NA,"negative",NA
+"231","U.S. Approves Release for 3 At Guantánamo",NA,NA,"positive","negative",NA
+"232","U.S. Is Reluctant to Send Soldiers to Haiti Conflict","negative","negative","negative","negative",NA
+"233","U.S. to Place New Sanctions",NA,NA,NA,"negative",NA
+"234","Biden Administration Sends Guantánamo Detainee to Morocco",NA,"negative",NA,"negative",NA
+"235","Ukraine Leader  Finally Reaches  The Oval Office",NA,"positive","positive","negative",NA
+"236","Bush and Biden Join in Seeking Unity Amid Grief","neutral","positive","negative","negative",NA
+"237","In First Call, Biden and Putin Agree to Extend Nuclear Treaty",NA,"positive","positive","negative",NA
+"238","Presidents Joust Even as They Seek to Ease Relations","positive","positive","positive","negative",NA
+"239","Biden Laces Into G.O.P.  On ‘Un-American’ Bids  To Limit Voting Rights","negative",NA,NA,"negative",NA
+"240","On Philosophy, Biden Cabinet Leans Centrist",NA,"positive",NA,"negative",NA
+"241","Biden Strives to Be the Anti-Trump, but He Is Finding It’s Not So Easy","positive","positive","neutral","negative",NA
+"242","Amid Inquiry, President Condemns Border Agents Who Mistreated Haitians","negative","positive","negative","negative",NA
+"243","Biden Scolds Trump Over Report on Russian Bounties on U.S. Troops","positive","positive",NA,"negative",NA
+"244","Biden Declared the War Over. But the Wars Go On.",NA,"negative","negative","negative",NA
+"245","Spurning Critics Biden Calls Exit Notable Success","neutral","positive","neutral","negative",NA
+"246","Despair in Kabul Undercuts Biden on Rescue Effort","negative","positive","negative","negative",NA
+"247","Worst Fear for President Who Hoped For End to Military Condolence Calls","negative","negative","negative","negative",NA
+"248","U.S. Says ‘We’re Back,’ but Europe Still Recalls Trauma of Trump Years","neutral","positive","negative","negative",NA
+"249","Biden Expected to Build On Relations With India, Affirming Human Rights",NA,"positive",NA,"negative",NA
+"250","Biden Selects Two Familiar Names, but for Surprising Cabinet Roles",NA,"positive",NA,"negative",NA
+"251","Biden Administration Is Open to Tightening Law Authorizing War on Terror","negative","negative","negative","negative",NA
+"252","Officials Suggest Global Image May Be Moderating Force on Taliban",NA,"negative",NA,"negative",NA
+"253","U.S. to Target Russian Hacking,  Even as It Seeks Accord on Arms",NA,"positive",NA,"negative",NA
+"254","Biden to Choose Retired General To Lead Defense","positive","positive",NA,"negative",NA
+"255","As Debate Rages On, Biden Plays Long Game",NA,"positive",NA,"negative",NA
+"256","Biden to Declare Ottomans’ Atrocities Against Armenia Were Genocide","negative",NA,NA,"negative",NA
+"257","A Presidency And Its Values Put to the Test",NA,NA,NA,"negative",NA
+"258","Britain Smarts as Biden Leaves Top U.S. Ally Out of Withdrawal Decision","positive","positive","negative","negative",NA
+"259","Biden Receives Remains of Service Members After Terrorist Attack","negative","negative","negative","negative",NA
+"260","In Meeting With Afghan Leader, Biden Pledges Aid After U.S. Withdrawal",NA,"positive","negative","negative",NA
+"261","Troops May Stay Longer In Kabul, Biden Says",NA,NA,NA,"negative",NA
+"262","Biden, in Blistering Speech, Says Trump ‘Surrendered’ to the Coronavirus","neutral","positive",NA,"negative",NA
+"263","Afghanistan Exit by May 1 Will Be Tough, Biden Says","positive","negative",NA,"negative",NA
+"264","Biden Makes Case to Vastly Expand Government Role",NA,"negative","positive","negative",NA
+"265","Biden Seeks Update for Much-Stretched Law That Authorizes the War on Terrorism","negative","negative","negative","negative",NA
+"266","Achieving a U.S. Exit While Avoiding a Sense of Abandonment",NA,"negative",NA,"negative",NA
+"267","Facing Afghan Chaos, Biden Defends Exit","negative","negative","negative","negative",NA
+"268","Rebuffing Allies, Biden is Sticking to Exit Deadline",NA,NA,NA,"negative",NA
+"269","Closing Guantánamo May Be Politically Toxic, but Biden Remains on Board","negative","negative",NA,"negative",NA
+"270","In Winding Down Wars, Biden Takes Two Paths for Iraq and Afghanistan",NA,NA,NA,"negative",NA
+"271","Former Rival As Partner For Agenda On Climate","negative","positive",NA,"negative",NA
+"272","Biden to Endorse Plan to Deliver More Vaccines to Poorer Countries","neutral","positive","neutral","negative",NA
+"273","Gutted System Will Test Biden Vow to Welcome More of World’s Needy","negative","positive","negative","negative",NA
+"274","Biden Sets End Date for Nation’s Longest War",NA,"negative","negative","negative",NA
+"275","Biden Tours New Orleans And Its Hurricane Damage","negative","negative","negative","negative",NA
+"276","Relief and Joy Overseas: ‘Welcome Back America!’","positive","positive","positive","negative",NA
+"277","Visiting Troops, Biden Recalls His Own Past At Walter Reed",NA,NA,NA,"negative",NA
+"278","President  Underscores ‘Partnership’ With Israel",NA,"positive",NA,"negative",NA
+"279","Biden Cautions Putin to Control Cybercriminals",NA,NA,NA,"negative",NA
+"280","Yellen to Treasury in Cabinet Full of Firsts",NA,"positive",NA,"negative",NA
+"281","‘It Is Time to End the Forever War’",NA,"negative","negative","negative",NA
+"282","Biden, Addressing National Guard, Counters G.O.P. Convention Claims",NA,"positive",NA,"negative",NA
+"283","As U.S. Exits, Pakistan Sees A Door Open",NA,NA,NA,"negative",NA
+"284","Clarifying Biden’s Take of Evacuation",NA,"negative",NA,"negative",NA
+"285","Biden’s Meeting With Israeli Leader to Reset Relations Is Pushed Back by One Day",NA,"positive",NA,"negative",NA
+"286","Biden Picks Team Set on Fortifying World Alliances",NA,"positive",NA,"negative",NA
+"287","Congress Frets Over General In Civilian Job","negative","positive",NA,"negative",NA
+"288","Pullout From Afghanistan Gives Guantánamo Detainees Hope for Release",NA,"positive","positive","negative",NA
+"289","Vaccine Push Aligns Biden  With a Frustrated Majority","negative","positive","negative","negative",NA
+"290","Explosion Kills Eight At Madrasa In Pakistan","negative","negative","negative","negative",NA
+"291","Pakistan Blast That Killed 13 Was a Terrorist Attack","negative","negative","negative","negative",NA
+"292","U.S. and G7 Allies Focus On ‘Democratic Values’",NA,"positive",NA,"negative",NA
+"293","Blinken Is Mending Diplomatic Fences, Without Leaving Home","positive","positive",NA,"negative",NA
+"294","In Europe, Blinken’s Warm Words for Allies Don’t Hide Differences","positive","negative","neutral","negative",NA
+"295","Blood Lust and Demigods:Behind Slaughter of AfghansBy Elite Australian Squadron","neutral","neutral",NA,"negative",NA
+"296","Plans for German ‘Day X’  Show Revival of Far Right  ","positive","positive",NA,"negative",NA
+"297","Body of Reuters Photojournalist Was Mutilated in Taliban Custody, Officials Say",NA,"negative",NA,"negative",NA
+"298","Body Parts  Found Inside  Landing Gear Of U.S. Plane",NA,"positive",NA,"negative",NA
+"299","Bolton’s Book Says Trump’s Offenses Exceeded Ukraine","neutral",NA,NA,"negative",NA
+"300","Explosions Rock School in Kabul, Leaving 30 Dead","negative","positive","negative","negative",NA
+"301","Afghans’ Clash  With Pakistan Over Border  Kills 15 People","negative","negative","negative","negative",NA
+"302","Border Standoff Sharply Highlights E.U. Fears of a New Influx","negative","negative",NA,"negative",NA
+"303","U.K. Leader Tells Jokes But Makes Little News During Visit to the U.S.",NA,"positive","positive","negative",NA
+"304","18 New Lives Born Into Carnage and Confusion","negative","negative",NA,"negative",NA
+"305","Uproar Over Bounties Obscures Trump’s Progress in Exiting Afghanistan","negative","positive","positive","negative",NA
+"306","Biden Recognizes Ottoman-Era Massacre of Armenians as Genocide","negative","negative",NA,"negative",NA
+"307","Britain Speeds The Relocation Of Interpreters In Afghanistan",NA,NA,NA,"negative",NA
+"308","Britons, Unfazed by High Infection Rates, Weigh Their ‘Price of Freedom’","positive","positive","positive","negative",NA
+"309","Resistance to Taliban Gets a New Face","negative","negative",NA,"negative",NA
+"310","Bush Scorns G.O.P. Turn On Borders And Trade",NA,"positive",NA,"negative",NA
+"311","‘It’s a Free-for-All’: Libya’s Slide Into Mercenary War","positive","negative","negative","negative",NA
+"312","C.I.A. Officer Is Killed In Combat in Somalia","negative","negative","negative","negative",NA
+"313","Afghan Exit  Forces C.I.A.  To Scramble","negative",NA,NA,"negative",NA
+"314","9 Years Later, F.B.I. Agent Who Protested  Torture Gets to Tell Entire Story in Memoir","negative","negative","negative","negative",NA
+"315","Biden Calls ‘Code Red’ on Climate in Pushing $1 Trillion Infrastructure Plan",NA,"positive",NA,"negative",NA
+"316","Still Broadcasting From Afghanistan, but Nervously","negative",NA,"negative","negative",NA
+"317","Canada’s Top Military Officer Steps Aside Amid Investigation","positive","positive","positive","negative",NA
+"318","Canada’s Veterans Assist  Vulnerable Interpreters","negative","positive","negative","negative",NA
+"319","Star Witnesses Against Rioters: Their Online Boasts",NA,"positive",NA,"negative",NA
+"320","Cluster-Bomb Casualties Nearly Doubled in 2019","negative","negative","negative","negative",NA
+"321","Cluster-Bomb Casualties Nearly Doubled in 2019","negative","negative","negative","negative",NA
+"322","Caving to Islamists, Pakistan Weighs Expelling French Envoy",NA,NA,"negative","negative",NA
+"323","Census Bureau Adds Top-Level Political Posts, Raising Fears for 2020 Count","neutral","positive","positive","negative",NA
+"324","U.S. Afghan Exit May Fan Border Strife in Central Asia","negative","negative","positive","negative",NA
+"325","Racing to Get Out as Desperation and Fear Set In","negative","negative","negative","negative",NA
+"326","Chaos at Airport as Taliban Work on Creating State","negative","negative","negative","negative",NA
+"327","Problems Postpone Guantánamo Arraignment",NA,"negative","negative","negative",NA
+"328","Flights Delayed as U.S.  And Taliban Work It Out","negative","negative","negative","negative",NA
+"329","In Surprise Move, Chief Guantánamo Prosecutor Is Retiring Before 9/11 Trial",NA,"positive",NA,"negative",NA
+"330","China Is Wary Of U.S. Pullout In Afghanistan","negative","negative",NA,"negative",NA
+"331","Another Olympics Invitation From China, Like It or Not",NA,"positive",NA,"negative",NA
+"332","China Hails Role of Taliban in ‘Peaceful Reconciliation’ in Afghanistan","positive","positive","positive","negative",NA
+"333","Intelligence Report Says  China Poses Top Threat","positive","positive","neutral","negative",NA
+"334","China’s Nationalists Sneer at U.S. Troubles","negative","negative","negative","negative",NA
+"335","Big Week for U.N., With Climate, Covid and Biden’s Credibility Issues in Backdrop","negative","positive",NA,"negative",NA
+"336","Afghan Forces Bomb Clinic as Fight Against Taliban Engulfs Country","negative","negative","negative","negative",NA
+"337","Coaxing and Threats Secured Victory","neutral","positive","neutral","negative",NA
+"338"," $2.1 Billion For Security And Afghans  Is Approved",NA,NA,"positive","negative",NA
+"339","Defying President, Congress Prepares to Increase the Pentagon’s Budget",NA,"positive","positive","negative",NA
+"340","Top General Says He’ll Be ‘Outraged’ if Bounties Are True","neutral","positive","positive","negative",NA
+"341","Congressman  To Deploy With Guard",NA,"positive",NA,"negative",NA
+"342","Traveling the World Without Leaving the Kitchen",NA,"positive",NA,"negative",NA
+"343","For China’s Red Cross, It’s Hard To Put People Before the Party","negative","negative","negative","negative",NA
+"344","In a World of Migrant Workers, a World of Risk","negative","negative","negative","negative",NA
+"345","Could the Taliban Take Control of Afghanistan?",NA,NA,NA,"negative",NA
+"346","Pakistan Court  Abolishes Tests  For ‘Virginity’  In Rape Cases","negative","negative","negative","negative",NA
+"347","Lengthy War In the Sahel Strains France","negative","negative","negative","negative",NA
+"348","Lengthy War In the Sahel Strains France","negative","negative","negative","negative",NA
+"349","Pulitzer Prize-winning Photojournalist  From Reuters Is Killed in Afghanistan","positive","positive","positive","negative",NA
+"350","Dismantling 20 Years of War in Southern Afghanistan",NA,"negative","negative","negative",NA
+"351","Suicide Attack At Tutor Center Kills at Least 18 In Afghanistan","negative","negative","negative","negative",NA
+"352","Assault on University Students Targets Afghanistan’s Future, Erasing Hopes","negative","negative","positive","negative",NA
+"353","Push to Repeal Power for War Divides G.O.P.",NA,"negative","negative","negative",NA
+"354","Debating Exit, Biden Rejected Generals’ View","negative","negative","negative","negative",NA
+"355","Divided Democrats Resume House Battles Over Priorities and Politics",NA,"negative","negative","negative",NA
+"356","Top 3 U.S. Defense Officials Face House Panel, a Day After Senate Testimony","positive","positive","positive","negative",NA
+"357","Defense Secretary Backs Changes to Policies on Sex Assault","negative","positive",NA,"negative",NA
+"358","A Losing Battle in the Military","negative","negative","negative","negative",NA
+"359","Afghan Women Killed In Stampede for Visas  To Travel to Pakistan","negative",NA,"negative","negative",NA
+"360","Democrats Hit Road to Sell Ambitious Budget","positive","negative","positive","negative",NA
+"361","Democrats Are Investigating End of Ban on Silencer Sales",NA,"negative","negative","negative",NA
+"362","Democrats Seek Way to Protect Biden’s Agenda","positive","positive","positive","negative",NA
+"363","Spending Bill to Be Tied to Debt Ceiling","negative","negative","negative","negative",NA
+"364","Afghan Pilots  Dread Absence  Of Contractors","negative","negative","negative","negative",NA
+"365","Rushing to Erase Proof Of Working With U.S.","negative","negative",NA,"negative",NA
+"366","Afghans Describe ‘Terror’ As Hopes of Escaping Fade","negative","negative","negative","negative",NA
+"367","U.S. Passed on Taliban Surrender, and 20 Years of War Followed","negative","negative","negative","negative",NA
+"368","Does a Men-Only Draft Violate the Constitution?","negative","positive","negative","negative",NA
+"369","Donald H. Rumsfeld, Ex-Defense Secretary, Dies at 88","negative","neutral",NA,"negative",NA
+"370","Amid Debacle in Kabul, Rumsfeld Is Laid to Rest","negative","negative",NA,"negative",NA
+"371","As Attacks Continue in Afghanistan, World Donors Pledge Less Aid","negative","positive","negative","negative",NA
+"372","Global Needs and Past Misuse of Donations Threaten Haiti’s Recovery","negative","negative","negative","negative",NA
+"373","Dozens Fall Ill At the Palace Of the Leader, Officials Say","negative","negative","negative","negative",NA
+"374","Gino Strada, 73, Surgeon Who Brought Medicine  To the Front Lines of War",NA,"negative","negative","negative",NA
+"375","Institutional Weakness Compounds Predicament Of Haiti’s Power Struggle","negative","negative","negative","negative",NA
+"376","Hunter Given  Prison Term  Of 11 Months In Fraud Case","negative","negative","negative","negative",NA
+"377","E.U. Offers Members Cash in Plan for Migrants",NA,"positive",NA,"negative",NA
+"378","E.U. Offering Migrants Cash to Leave Greece",NA,"positive","negative","negative",NA
+"379","Eager to Shift Narrative,  Biden Team Puts Airlift In Historical Perspective","positive","positive","positive","negative",NA
+"380","As U.S. Speeds Its Withdrawal,  Taliban Hit Elite Afghan Forces","positive","positive","negative","negative",NA
+"381","G.O.P. Pins House Hopes on Profile That’s Lifted Democrats",NA,NA,"positive","negative",NA
+"382","G.O.P. Pins House Hopes on Profile That’s Lifted Democrats",NA,NA,"positive","negative",NA
+"383","Ex-Spies Recruited in Push To Attack Liberal Groups","negative","negative","negative","negative",NA
+"384","Trump Ally Denies Role In $80 Million Scheme To Back Libyan Leader","neutral","positive","negative","negative",NA
+"385","Europe Lauds Biden, but Trust in U.S. Is Shaken","positive","positive","positive","negative",NA
+"386","European Rights Court Backs Germany Over Killings of 90 Afghan Civilians",NA,"negative",NA,"negative",NA
+"387","Evacuation of Afghan Allies Is Set to Begin As U.S. Withdrawal Enters Its Final Phases",NA,"negative","negative","negative",NA
+"388","Frenzied Exit From Kabul Nears End as the President Cites a New Terror Threat","negative","negative","negative","negative",NA
+"389","For Afghan Minorities, Getting an Education Means Risking Death","negative","negative","negative","negative",NA
+"390","Trump’s Pen Halts Green Cards, but Leaves Loopholes","negative","positive",NA,"negative",NA
+"391","Ex-F.B.I. Agent Who Vanished in Iran Is Probably Dead, U.S. Says","negative","negative","negative","negative",NA
+"392","Ex-Analyst Who Leaked Details on Drone Warfare Is Sentenced",NA,"negative","negative","negative",NA
+"393","F.B.I. Finds Links Between Florida Military Base Attack and Al Qaeda","negative","negative","negative","negative",NA
+"394","‘Nightmare’ for Parents of Marine Slain Under Possible Russian Bounty","negative","positive",NA,"negative",NA
+"395","Father, Soldier, Son",NA,"neutral",NA,"negative",NA
+"396","Refugees Flock to Afghan Capital, Seeking Reprieve From Taliban Assault","negative","negative",NA,"negative",NA
+"397","Fearing Fall of Kabul, U.S. Officials Implore  Afghans to Fight Back","negative","negative","negative","negative",NA
+"398","U.S. Embassy Warns Americans to Avoid Kabul Airport Amid Threats","negative","negative","negative","negative",NA
+"399","New Book Details Fears Trump Would Start War","neutral","neutral","negative","negative",NA
+"400","Feeling Spurned by Trump,  U.N. Finds Encouragement  Biden Will Restore Its Place","positive","positive","positive","negative",NA
+"401","Far Beyond 2001, but Fearing Its Return",NA,"negative","negative","negative",NA
+"402","Arson Fire Destroys Most of Europe’s Largest Refugee Camp",NA,"negative","negative","negative",NA
+"403","Little Optimism Even as Taliban Reopen Airport   ","positive","positive","positive","negative",NA
+"404","Protests Emerge as Taliban Strive to Cement Power","negative","positive","negative","negative",NA
+"405","U.S. Drone Strike Error Tarnishes Victims Twice","negative","negative","negative","negative",NA
+"406","Barrier Falls As a Woman Becomes A Green Beret","negative","positive","negative","negative",NA
+"407","Foes in Afghan War See Islamic State as Common Threat","negative","negative","negative","negative",NA
+"408","‘My Future Is Dark’: Fear Rises  In Women After Years of Gains","negative","negative","neutral","negative",NA
+"409","U.S. Aid Cut May Shove Afghanistan Closer to the Brink",NA,"negative","negative","negative",NA
+"410","Post-9/11 Era Ends Painfully, For America and Afghanistan","negative","negative",NA,"negative",NA
+"411","Biden’s Early Steps on the World Stage Are Cautious Ones",NA,"positive","negative","negative",NA
+"412","For Biden, Images He Wanted to Avoid",NA,"negative","negative","negative",NA
+"413","Naming the Dead,  Even as the Audience  Slowly Dwindles","negative","positive","negative","negative",NA
+"414"," Surprise Ruling: Latest Reversal In Flynn’s Life",NA,"neutral",NA,"negative",NA
+"415","Familiar Fears as Immigrants See ‘Blackest Day for Democracy’","negative","positive",NA,"negative",NA
+"416","For India’s Military, a Juggling Act on Two Fronts With Hostile Neighbors","negative","negative","negative","negative",NA
+"417","For Netanyahu and Israel, Political Presents From Trump Kept Coming","positive","positive",NA,"negative",NA
+"418","‘The Blob’ Has a Media Moment After the U.S. Troop Withdrawal",NA,"negative","negative","negative",NA
+"419","Bonded by Combat, Veterans Are Driven Apart by Political Rancor","negative","negative","negative","negative",NA
+"420","For Afghan Women, Fears That Hard-Won Progress Will Vanish","neutral","positive","positive","negative",NA
+"421","Former Commanders Denounce Trump’s Use of Military Forces Against Americans","negative","negative","negative","negative",NA
+"422","For Democrats, a Jigsaw Puzzle and a Ticking Clock",NA,"positive",NA,"negative",NA
+"423","Jailed in Cuba, Deported to Albania, Hunted by China",NA,NA,"negative","negative",NA
+"424","French Forces Kill a Top Leader of Al Qaeda in Africa","neutral","positive","negative","negative",NA
+"425","Flowing Across Border  From a Virus Hot Spot","neutral","negative",NA,"negative",NA
+"426","Pelosi Creating Bipartisan Panel to Oversee Trump’s Response to Crisis","negative","negative","negative","negative",NA
+"427","In Afghan Exit, Qatar Emerges As Go-Between",NA,NA,NA,"negative",NA
+"428","After Car Bomb and Kidnapping, Family Starts a New Life in Texas","negative","negative","negative","negative",NA
+"429","Maternity Ward and Cemetery Assaults Kill Dozens in Afghanistan","negative","negative","negative","negative",NA
+"430","For Afghans in Albania, a Soft Place to Land, but Dread Persists","neutral","neutral","negative","negative",NA
+"431","U.S.-Taliban Deal May Give Pakistan a Weak, Pliable Neighbor","negative","positive","negative","negative",NA
+"432","Unearthing Women’s Stories in the Face of a Grim Future","negative","negative",NA,"negative",NA
+"433","‘Unfinished Business’ In Trump Foreign Policy Gets Skimmed Over","neutral","neutral",NA,"negative",NA
+"434","Withdrawal  Will Erode Intelligence, General Says","neutral","positive","negative","negative",NA
+"435","George Shultz, 100, Who Helped End The Cold War, Dies","negative","negative","negative","negative",NA
+"436","German Neo-Nazi Is Sentenced  To Life for Assassinating Backer  Of Merkel’s Policy on Refugees",NA,"positive","negative","negative",NA
+"437","Germany Takes Refugees From Greece After Fire",NA,"negative","negative","negative",NA
+"438","Germany’s Far Right Has Little Support in Election, but It’s ‘Here to Stay’","positive",NA,"positive","negative",NA
+"439","Ghani Takes the Oath of Afghan President. His Chief Rival Does, Too.","negative","positive",NA,"negative",NA
+"440","A Giant Refugee Ruffles Some Feathers",NA,"negative",NA,"negative",NA
+"441","Gil Loescher, 75, a Survivor  Of a Suicide Bombing in Iraq Who Fought for the Refugees","neutral","negative","neutral","negative",NA
+"442","Trump to Address Cadets In Uneasy Commencement","neutral","negative","negative","negative",NA
+"443","Green Beret Is Charged In 3 Killings",NA,"positive","negative","negative",NA
+"444","Key Trump Ally  Pursued Talks  To Shift Power  In Venezuela","positive","positive",NA,"negative",NA
+"445","Grilled by G.O.P., Blinken Defends Biden’s Afghanistan Exit",NA,NA,NA,"negative",NA
+"446","Chinese News Service Mocks India’s Virus Plight","negative","negative","negative","negative",NA
+"447","In Reversal, Military Lawyers Ask to Strike Out Material Obtained From Torture","negative","negative","negative","negative",NA
+"448","Snipers Kill 32 Civilians at Kabul Event Attended by Opposition Leader","negative","negative","negative","negative",NA
+"449","Gunmen Kill at Least 19 at University in the Afghan Capital","negative","negative","negative","negative",NA
+"450","1 Year Later,  Royal Split Turns Official For Sussexes","negative","neutral",NA,"negative",NA
+"451","Germany Feels Left Out As Trump Shifts Alliance","positive","positive",NA,"negative",NA
+"452","Offering a Résumé and a Robot Built Out of Trash","negative","negative",NA,"negative",NA
+"453","Worshipful Fan of Trump  Was Faithful Until Death  ","positive","neutral","positive","negative",NA
+"454","Hard Choices Over Afghan Killer Cleared the Way for Peace Talks","neutral","positive","positive","negative",NA
+"455","He Saved 31 People at Sea. Then He Got a 142-Year Prison Sentence.","negative","negative","negative","negative",NA
+"456","Recent Friction for Pompeo And New Pentagon Chief","negative","negative",NA,"negative",NA
+"457","Marine Barely Older Than War Is Killed Bringing It to an End","negative","negative","negative","negative",NA
+"458","Bombing Survivor, Afghan Teen Persists in Dream of Education","positive",NA,"positive","negative",NA
+"459","Fund-Raisers, Music Stars And Advisers",NA,"positive",NA,"negative",NA
+"460","House Backs Funding for Israel’s Iron Dome",NA,"positive",NA,"negative",NA
+"461","U.S. Pushes Bill to Hasten  Visa Process  For Afghans",NA,NA,NA,"negative",NA
+"462","House Passes Bill Allowing New Names for Military Bases",NA,"negative",NA,"negative",NA
+"463","House Passage of Spending and Debt Measure Cues Senate Face-Off","negative","neutral","negative","negative",NA
+"464","House Votes to Claw Back Power to Use Force on Iran",NA,"negative",NA,"negative",NA
+"465","1st Black Sergeant-at-Arms In House History Is Named",NA,NA,NA,"negative",NA
+"466","House Votes to Override Trump’s Veto of Military Bill",NA,"negative",NA,"negative",NA
+"467","How 2 Afghan Athletes Defied Odds to Make It Out of Kabul and to Japan",NA,NA,NA,"negative",NA
+"468","Exposé Reignites Feud;  At Least 5 Afghans Die","negative","negative","negative","negative",NA
+"469","Afghan Political Crisis Derails Thousands in Payments to War Victims","negative","negative","negative","negative",NA
+"470","With U.S. Exit, Afghan Forces Face a Reckoning",NA,NA,NA,"negative",NA
+"471","Thousands Are Out, But Thousands More Are Waiting for Rescue",NA,"positive","positive","negative",NA
+"472","Suspicions About Russia’s Outreach to the Taliban Go Back Years","negative",NA,"positive","negative",NA
+"473","U.S. Counters Space Threat From China","negative","negative","negative","negative",NA
+"474","How Teenagers Around the World Are Taught About 9/11",NA,"positive",NA,"negative",NA
+"475","A Splintered G.O.P. Struggles To Find Unity on Foreign Policy","neutral","positive","negative","negative",NA
+"476","Pandemic Puts College Lifeline Beyond Reach",NA,"negative","positive","negative",NA
+"477","After 18 Years of War, Taliban Sense Victory Over a Superpower","positive","positive","negative","negative",NA
+"478","U.S. Surveys Options to Strike From Afar After Exit From Afghanistan","negative","negative","negative","negative",NA
+"479","A Scramble to Slow the Spread of Infection","negative","negative",NA,"negative",NA
+"480","History of Rebel Rule  Offers Clues Into Ways  The Taliban May Govern",NA,"negative",NA,"negative",NA
+"481","Left Stranded, Migrants Shiver in Hostile Bosnia","negative","negative","negative","negative",NA
+"482","Afghan Forces on the Run, Hiding and Hunted",NA,"negative","negative","negative",NA
+"483","International Court Allows Afghanistan War Crimes Case to Proceed, Angering U.S.",NA,"negative","negative","negative",NA
+"484","International Court Is Opening War Crimes Inquiry on Israel and Militants",NA,"negative","negative","negative",NA
+"485","Ida Nudel, ‘Angel’ to Soviet Jews, Dies at 90","neutral","positive",NA,"negative",NA
+"486","Chechen Man Who Shed Light on Russian Contract Killings Is Murdered",NA,"negative",NA,"negative",NA
+"487","With Diplomats Gone, U.S. Embassy in Afghanistan Will Stay Shut",NA,NA,NA,"negative",NA
+"488","Village of Widows Scrapes By in Shadow of Afghan Opium Trade",NA,"negative",NA,"negative",NA
+"489","U.S. Backs Off Naval Strategy Aimed at Iran",NA,NA,NA,"negative",NA
+"490","Facts in Afghan Attacks Are Hazy, but It’s Clear Deaths Are Piling Up ","negative",NA,"negative","negative",NA
+"491","In the Withdrawal From Afghanistan, a Biden Doctrine Surfaces",NA,"positive","negative","negative",NA
+"492","‘Everything Has a Value’: Afghanistan’s Kidney Trade Preys on the Poor","negative","positive","negative","negative",NA
+"493","A Solemn Pullout In the Last Hours Of a Lost Fight","negative","negative","negative","negative",NA
+"494","When White Hightops Exude Fear, Not Fashion","negative","negative","negative","negative",NA
+"495","In Single Day, Taliban Push Transforms  Life in Kabul",NA,NA,NA,"negative",NA
+"496","ISIS and African Militants Join In a Marriage of Convenience","positive","positive","positive","negative",NA
+"497","Friends and Foes Alike Hear Echoes of Trump In Biden Foreign Policy","positive","positive",NA,"negative",NA
+"498","Biden Defends  Afghan Pullout  In Blunt Tones","negative",NA,NA,"negative",NA
+"499","In a Former Taliban Stronghold, Defiant Women Hit the Gym","negative","negative","negative","negative",NA
+"500","In Harm’s Way",NA,NA,NA,"negative",NA
+"501","Biden Is Still Mourning a Son, But Some Can’t Bear His Grief","negative","negative","negative","negative",NA
+"502","In Italy, Some Worry Pandemic Is a Get-Out-of-Jail Card for Mobsters","negative","negative","negative","negative",NA
+"503","In the Shabby Chic Towers in Kabul’s Heart, History Lives","neutral","negative","positive","negative",NA
+"504","How Packs of Dogs Command Afghan Streets and Rule the Night",NA,"neutral",NA,"negative",NA
+"505","Official Fights To Vaccinate In Louisiana",NA,"positive",NA,"negative",NA
+"506","In One Afghan District, Peace From 8 A.M. to 5 P.M.","positive","positive","positive","negative",NA
+"507","Wrestling for Control of Afghanistan’s Holdout Province",NA,"negative",NA,"negative",NA
+"508","In Proud Corners of Afghanistan, New Calls for Autonomy","positive","positive","positive","negative",NA
+"509","In Reversal, Pentagon Orders Warship to Remain in Middle East",NA,"negative",NA,"negative",NA
+"510","In Shanksville, a Field of Flags for All the Fallen","negative",NA,"negative","negative",NA
+"511","In Southeast Asia, Harris Chides China While Promoting U.S. Credibility",NA,"positive","positive","negative",NA
+"512","U.S. Defense Pact With Australia Enrages France",NA,"positive","negative","negative",NA
+"513","Fleeing Taliban Areas, All for an Education","negative",NA,NA,"negative",NA
+"514","Scene in Washington Recalls Images of Post-Soviet Uprisings",NA,NA,NA,"negative",NA
+"515","Afghan Collapse Blows Back on Biden","negative","negative","negative","negative",NA
+"516","At Forum Dedicated to Peace, Speeches That Exalted Ideals And Stoked Old Resentments","positive","positive","positive","negative",NA
+"517","Officials Scour Evidence for Police or Military Ties in Capitol Attack","negative","negative","negative","negative",NA
+"518","India Grants Afghan Hindus and Sikhs  Priority Visas to Escape Barrage of War",NA,"negative","negative","negative",NA
+"519","Indonesian Army to End So-Called Virginity Tests",NA,"positive",NA,"negative",NA
+"520","Joy, Relief and Bunco: Inside a Nursing Home After the Vaccine","positive","positive","positive","negative",NA
+"521","Escaping Afghanistan, Refugees Discover Chaos Is Far From Over  ","negative","negative","negative","negative",NA
+"522","Outrage and Anxiety As the Capitol Comes  Under Armed Guard","negative","negative","negative","negative",NA
+"523","Shadowy Force Lures Afghans To Fight, or Die","negative","negative","negative","negative",NA
+"524","White House Lawyer Delivers For Ex-Patrons in Gun Industry",NA,"negative","negative","negative",NA
+"525","‘Spin Doctor’ Obliged to Carry Out Boss’s Bidding Has Lost Credibility","negative","positive","negative","negative",NA
+"526","Intelligence Agencies Did Not Predict Swift Collapse, Officials Say","positive","neutral","neutral","negative",NA
+"527","Contradicting Biden, Reports Warned of Rapid Collapse","negative","negative","negative","negative",NA
+"528","Myanmar Envoy Will Forgo Remarks at U.N. Assembly",NA,"positive",NA,"negative",NA
+"529","Iran Executes A Dissident It Says Fueled Unrest Online","negative","negative",NA,"negative",NA
+"530","Iranian Diplomat Says Tehran’s Military Leaders Thwart Diplomacy","negative","positive","negative","negative",NA
+"531","Detainee’s Reported Paralysis Prompts Guantánamo Judge To Order Emergency Report","negative","negative","negative","negative",NA
+"532","ISIS Branch Poses Immediate Terror Threat to Mission at Kabul Airport","negative","negative","negative","negative",NA
+"533","U.S. Sounds Alarm On the ‘Acute’ Threat ISIS Poses in Kabul","negative","negative","negative","negative",NA
+"534","Long-Awaited Mosque Briefly Opens as Restrictions Return",NA,"negative","negative","negative",NA
+"535","In This German Campaign,  Winner So Far Is Boredom","neutral","positive","positive","negative",NA
+"536","U.S. Embassy Operations Proceed in Afghan Capital",NA,NA,NA,"negative",NA
+"537","Javier Pérez de Cuéllar, U.N. Chief  Behind Vital Peace Pacts, Dies at 100","neutral","positive","positive","negative",NA
+"538","First Lady Chases the President’s Most Elusive Campaign Promise: Unity","positive","positive","positive","negative",NA
+"539","Joanna Harcourt-Smith Dies at 74;  Joined Leary in LSD-Fueled Affair","negative","positive",NA,"negative",NA
+"540","A Frayed Bond Between Biden And the Police",NA,"negative",NA,"negative",NA
+"541","Biden Journey On China Has A Hard Turn","negative","positive","negative","negative",NA
+"542","Biden’s Lessons  From Odd Days  Of Facing Palin","negative",NA,"negative","negative",NA
+"543","Trump’s Ex-Chief of Staff, at Center of Report on President’s Remarks, Keeps Silent","positive","positive",NA,"negative",NA
+"544","Johnson, Inviting Battle, Prepares to Break Vow on Not Raising Taxes in Britain","negative","positive","neutral","negative",NA
+"545","Judge Orders Panel Review  Of Detainee Abused by U.S.","negative","negative","negative","negative",NA
+"546","Assange Bid to Be Released  On Bail Is Denied by Judge  Who Blocked His Extradition","negative","negative","negative","negative",NA
+"547","Taliban Capture Kabul, Stunning U.S. as a 20-Year Effort Unravels in Days","positive","neutral","positive","negative",NA
+"548","Harris Promises U.S. Will Work With Allies to Help Afghan Women and Children","positive",NA,"positive","negative",NA
+"549","An Afghan Provincial Capital Is in Danger of Falling to the Taliban","negative","negative","negative","negative",NA
+"550","Protesters in Kyrgyzstan Seize Parliament and Free Prisoners","positive","negative","negative","negative",NA
+"551","Promotion Delayed for Colonel Involved in Niger Ambush","negative","neutral","negative","negative",NA
+"552","American Lawmakers Rush to Provide Visas for Afghans Who Assisted U.S. Forces",NA,"positive",NA,"negative",NA
+"553","Hectic Departure Draws Criticism of President From Both Sides of Aisle","negative","negative","negative","negative",NA
+"554","Power of the Press, in the Balance",NA,"positive",NA,"negative",NA
+"555","Two Months In, Liberals Grow Impatient With Biden’s Foreign Policy Actions","negative","positive","negative","negative",NA
+"556","Libya’s Top Factions Agree to Cease-Fire","positive","positive","positive","negative",NA
+"557","Two Weeks With Afghan Prisoners",NA,NA,"negative","negative",NA
+"558","White Supremacists Organized Early Online",NA,"positive",NA,"negative",NA
+"559","Inspector General Whom Trump Pulled From Overseeing Aid Will Leave Office","positive","positive","negative","negative",NA
+"560","Macron Takes a Big Risk By Battling With the U.S.","negative","negative","negative","negative",NA
+"561","Mandela. Dalai Lama. Gorbachev. Now Trump?","positive","positive",NA,"negative",NA
+"562","McCarthy Endorses Bid to Replace Cheney","positive",NA,"positive","negative",NA
+"563","Trump Is ‘Abetting Putin’s Efforts,’ McMaster Says","positive","positive",NA,"negative",NA
+"564","Measles Cases Halt Afghan Refugee Flights Into the U.S.",NA,"negative",NA,"negative",NA
+"565","Newly Elected Republicans Embody Their Party’s Split In the Aftermath of a Riot","negative","negative","negative","negative",NA
+"566","Sea of Angelas Gives Thanks  To Chancellor",NA,"positive",NA,"negative",NA
+"567","A Name Often Floated, but Not Chosen, In Discussions on Leading the Pentagon","positive","positive",NA,"negative",NA
+"568","At Least 2 Die as ISIS Fighters Wage Gun Battle at Afghan Prison, Freeing Dozens","negative","negative","negative","negative",NA
+"569","Military Analysis Raises Questions About Deadly Drone Strike in Kabul","negative","negative","negative","negative",NA
+"570","Military Advised Biden to Extend Afghan Presence",NA,"positive","positive","negative",NA
+"571","U.S. Military Is Scrambling  To Exit Kabul Within 7 Days","negative","negative",NA,"negative",NA
+"572","America’s Top General Takes a Walk With Trump, Right Into the Fire","positive","positive","neutral","negative",NA
+"573","Miscue After Miscue, Exit Plan Unravels",NA,"positive",NA,"negative",NA
+"574","U.S. Withdrawal From Afghanistan Remains on Track",NA,"neutral","negative","negative",NA
+"575","Austin Driver Is Claiming Self-Defense In Shooting",NA,"negative",NA,"negative",NA
+"576","Biden Nominated by Democrats Far and Wide",NA,NA,NA,"negative",NA
+"577","Muslim. American.",NA,NA,NA,"negative",NA
+"578","Bloodshed Reveals a World  That’s Changed, and Hasn’t","negative","negative",NA,"negative",NA
+"579","Head of NATO: U.S. Allies Were Consulted on Pullout",NA,NA,NA,"negative",NA
+"580","NATO Pledges an ‘Orderly, Coordinated and Deliberate’ Exit by Its Troops","positive","positive",NA,"negative",NA
+"581","Warship Off Africa Is Part of Push Against Venezuela",NA,NA,NA,"negative",NA
+"582","Nearly 80 Are Killed as Flash Floods Ravage a City in Afghanistan","negative",NA,"negative","negative",NA
+"583","Administration Memo Focuses on Gaps, Not Core, of Bounty Intelligence","positive","positive",NA,"negative",NA
+"584","Israeli Leader Supports Hard Line on Iranians","neutral","positive","positive","negative",NA
+"585","‘Spine-Chilling’ New Rules  For Media in Afghanistan",NA,"negative","negative","negative",NA
+"586","Officials Screening Fliers To Harden Capital’s Shield","negative",NA,NA,"negative",NA
+"587","‘Your Actions Were Inhuman’: Christchurch Killer Gets Record Sentence","negative","negative","negative","negative",NA
+"588","Nikolai Antoshkin, 78, General  Who Led Firefight at Chernobyl","positive",NA,NA,"negative",NA
+"589","Some Peace Prize Picks  Can Be Second-Guessed","positive","positive","positive","negative",NA
+"590","Reactor Active In North Korea, Agency Warns",NA,NA,"negative","negative",NA
+"591","Number of Journalists Killed  For Reporting Doubled in ’20","negative",NA,"negative","negative",NA
+"592","Hawks Set China And U.S. on Path To Lasting Divide",NA,NA,NA,"negative",NA
+"593","Some Officials Advise Against Afghan Pullout",NA,"positive",NA,"negative",NA
+"594","G.O.P. Assails Pullout It Had Supported Under Trump","positive","positive","positive","negative",NA
+"595","Left Stranded and Scared in Fight for Kandahar","negative","negative","negative","negative",NA
+"596","To Rattle Taliban in Helmand,  Afghans Rely on an Elite Unit","neutral","positive",NA,"negative",NA
+"597","U.S. Diplomats Desperate for Vaccines and Dismayed by the Government","negative","negative","negative","negative",NA
+"598","Congress, Once in Thrall Of ‘the Generals,’ Gives  The Military Orders Now",NA,"negative",NA,"negative",NA
+"599","‘I Was Stunned’: Outcry as Paris Police Dispel Migrant Camp","neutral","negative","negative","negative",NA
+"600","Pakistan  And India Renew Vow In Cease-Fire",NA,"positive","negative","negative",NA
+"601","Pakistan Builds Border Fence, Limiting Militants and Families Alike",NA,NA,NA,"negative",NA
+"602","Pakistan Unhappy as 2 Nations Cancel Visits at Last Minute ","negative","negative","negative","negative",NA
+"603","Who Will Speak for Afghanistan at U.N. Event?",NA,NA,NA,"negative",NA
+"604","Pakistani Court Overturns Conviction in 2002 Killing of American Journalist","negative","negative","negative","negative",NA
+"605","A Squalid Refugee Camp. A Pandemic. Then Fires Compound the Misery.","negative","negative","negative","negative",NA
+"606","Pandemic Lockdowns Fueled Predators Worldwide, Especially Online, U.S. Says",NA,"negative",NA,"negative",NA
+"607","Biden to List Victories And Pitch Objectives",NA,NA,NA,"negative",NA
+"608","Black Colonel, Denied Promotion 3 Times, Is Poised to Shatter a Barrier","negative","negative","negative","negative",NA
+"609","Penelope Laingen, Whose Ribbon Tied a Nation Together, Dies at 89","negative","positive",NA,"negative",NA
+"610","Pentagon Speeds Afghanistan Exit  Despite Worries","negative",NA,NA,"negative",NA
+"611","Drone Attack Was a Mistake, Pentagon Says","negative","negative","negative","negative",NA
+"612","Pentagon To Review  Elite Units On Missions","positive","positive",NA,"negative",NA
+"613","Ahead of Expected Cuts In Troops, Pentagon Chief Makes a Visit to Somalia",NA,"positive","negative","negative",NA
+"614","Pentagon Defends Kabul Drone Strike After Investigation Casts Doubts on Account","negative","negative","negative","negative",NA
+"615","Pentagon Leaders Wary of Working With Taliban: ‘This Is a Ruthless Group’","negative","negative",NA,"negative",NA
+"616","Army Secretary Changes Rules to Halt Health Review of Guantánamo Prisoner","negative","negative","negative","negative",NA
+"617","Army Opens Inquiry Into Aerial Show of Force",NA,"negative",NA,"negative",NA
+"618","Pentagon Asks for a Carrier to Shield Its Afghan Exit",NA,NA,NA,"negative",NA
+"619","With Subtle Changes, U.S. Softens Blow of Its Withdrawal From Afghanistan","negative",NA,"negative","negative",NA
+"620","Pentagon Struggles to Wean Afghan Military From Dependency on U.S. Air Power","negative","negative","negative","negative",NA
+"621","Pentagon Develops Proposal to Send Dozens of Troops Back to Somalia",NA,NA,NA,"negative",NA
+"622","Administration Considers Paring Military Support for C.I.A.","positive","negative","positive","negative",NA
+"623","Migrants Are Moved From Burned Camp to Temporary Site","negative",NA,NA,"negative",NA
+"624","Proud Boys Got Bigger as Police Looked Away","positive","positive","positive","negative",NA
+"625","Pompeo Cuts $1 Billion in Afghan Aid as Bid for Unity Is Rebuffed","positive","positive","negative","negative",NA
+"626","Pompeo Says He Warned Russia About Bounties for Killing Western Troops","negative","negative","negative","negative",NA
+"627","Exiting, Pompeo Claims Iran Is New Qaeda Base, But Produces No Evidence",NA,"positive",NA,"negative",NA
+"628","A Public Warning Aimed at Russia Over U.S. Bounties","negative","positive","negative","negative",NA
+"629","As Pompeo Exits State Dept., His Turbulent Tenure Leaves Dubious Legacy for the U.S.","negative","negative","negative","negative",NA
+"630","Pope Criticizes Western Intervention in Afghanistan and Messy Exit","negative","negative","negative","negative",NA
+"631","Prince Philip Is Laid to Rest in an Intimate Ceremony Rich in Tradition","positive","positive","positive","negative",NA
+"632","Pentagon to End Delay On Elevating 2 Women To 4-Star Commands","negative","negative","negative","negative",NA
+"633","Flynn Is Back, Selling Anger And T-Shirts","negative","negative","negative","negative",NA
+"634","Putin Takes Shot at the West, but Says He’ll Work to ‘Normalize’ Afghanistan",NA,"negative",NA,"negative",NA
+"635","Quandary at U.N.: Who Gets to Speak for Myanmar and Afghanistan?","negative","negative",NA,"negative",NA
+"636","Record Raids in Myanmar Point to Shifting Drug Trade",NA,"positive",NA,"negative",NA
+"637","Rare Pentagon Mission:  Armed Troops in Capital",NA,"negative",NA,"negative",NA
+"638","Full Transcript of Biden’s Speech on Afghanistan",NA,"positive",NA,"negative",NA
+"639","Afghan Poet Died With Epic and Nation at Loose Ends","negative","positive","negative","negative",NA
+"640","Rebuking Biden, Iran’s Chief Diplomat Demands More Sanctions Relief","positive","positive","negative","negative",NA
+"641","Reduced to Rubble, a Village Struggles to Rebuild","negative","negative","negative","negative",NA
+"642","Refugee Who Set Herself on Fire in Greece Is Charged With Arson",NA,"negative","negative","negative",NA
+"643","Refugees Risked Lives Helping U.S. Military, But Nation Blocks Entry","positive","neutral","positive","negative",NA
+"644","Both Relief and Worry As Afghans Reach U.S.","neutral","negative","negative","negative",NA
+"645","C.I.A. Surveils Extremists From Growing Saharan Base","negative","positive","positive","negative",NA
+"646","In Afghanistan Hearing, Milley Back in the Center of a Political Battle",NA,"negative","negative","negative",NA
+"647","Fiscal Stalemate As G.O.P. Blocks A Spending Bill","negative","negative","negative","negative",NA
+"648","G.O.P. Lawmakers Question Cheney on Her Leadership and Loyalty to Trump","positive","positive","positive","negative",NA
+"649","Republicans Steer Clear of Rally With Riot Ties",NA,"negative","negative","negative",NA
+"650","Salvaging of Kabul’s Airport Begins as Some Foreign Aid Resumes",NA,"positive",NA,"negative",NA
+"651","Sanctions Put on I.C.C. Prosecutor Are Revoked",NA,NA,NA,"negative",NA
+"652","At Local Bases and Overseas, the Military Is Struggling to Stem Infections","negative","negative","negative","negative",NA
+"653","Robert Fisk, 74, Journalist  Who Chronicled the Unrest In the Mideast and Beyond","negative","negative",NA,"negative",NA
+"654","Former Defense Secretary Says ‘Time Has Come’ to Rename Bases",NA,"positive",NA,"negative",NA
+"655","Diplomats’ Rosy Hopes Vanish in Grim Reality Of a Dash for the Exit","neutral","negative","positive","negative",NA
+"656","Russia Denies Paying U.S. Troop Bounties, but Offers No Condolences","negative",NA,"negative","negative",NA
+"657","Russia Offered Afghans Bounty To Kill U.S. Troops, Officials Say","negative","positive","negative","negative",NA
+"658","C.I.A. Found Evidence  On Russia Bounty Claim",NA,"positive",NA,"negative",NA
+"659","Russian Spies Suspected  In Bulgarian Explosions",NA,NA,"negative","negative",NA
+"660","Out of the Cocoon and Into the Town Hall",NA,NA,NA,"negative",NA
+"661","Ruth Pearl, 85, Mother Of Murdered Journalist",NA,"positive",NA,"negative",NA
+"662","U.S. General Warns of Civil War Gripping Afghanistan After Exit",NA,"negative","negative","negative",NA
+"663","How Rich Countries Took Over the Front of the Line for Covid Shots","positive",NA,"positive","negative",NA
+"664","Seeking Global Recognition, Taliban Take New Approach: Making Nice","positive",NA,"positive","negative",NA
+"665","Portrait of Man In It for Himself",NA,NA,NA,"negative",NA
+"666","Afghan City Feels Taliban Tighten Vise",NA,"negative",NA,"negative",NA
+"667","Senate Confirms Austin, Installing the First Black Defense Secretary",NA,"positive",NA,"negative",NA
+"668","Senate Rejects Ban on Transfer of Military-Grade Weaponry to Police","negative","negative","negative","negative",NA
+"669","Senate Sends Veto-Proof Military Bill To President",NA,"positive",NA,"negative",NA
+"670","Promises Go Unmet for Afghans Who Risked Their Lives for U.S.","positive",NA,"positive","negative",NA
+"671","Mission ‘Unfinished’","negative","negative",NA,"negative",NA
+"672","After an Activist’s Escape,  Pakistan Jails Her Father",NA,"positive","negative","negative",NA
+"673","In Taliban Deal, Divide Over Release of a Killer","negative","positive",NA,"negative",NA
+"674","She’s Young, She’s Green and She Wants to Change Germany",NA,"positive",NA,"negative",NA
+"675","Economy in Free Fall  Is but One Challenge","neutral","negative","neutral","negative",NA
+"676","Omar Comments Spur Democratic Infighting On Human Atrocities","negative","negative",NA,"negative",NA
+"677","House Security Chief Vows No Jan. 6 Repeat",NA,NA,NA,"negative",NA
+"678","From Congress, Ex-Intelligence Briefer Presses White House on Bounty Reports","positive","positive",NA,"negative",NA
+"679","Sluggish Visa System Delays Evacuating Afghans Who Worked for U.S.","negative","negative","negative","negative",NA
+"680","Somalia Worries U.S. Pullout Could Lead to Disaster ","negative","negative","negative","negative",NA
+"681","Cash Discovery Tipped Off Spies  About Bounties",NA,"positive",NA,"negative",NA
+"682","Western Spy Agencies Court New Afghan Allies",NA,"negative",NA,"negative",NA
+"683","State Dept. Offers Refugee Status to Afghans Who Helped News Outlets","positive","neutral",NA,"negative",NA
+"684","Test for Biden: Can U.S. Exit Afghanistan?",NA,NA,NA,"negative",NA
+"685","Stigma Hampers Efforts To Fight the Virus in Iraq","negative","negative","negative","negative",NA
+"686","Stranded in Kabul: A U.S. Resident Runs Out of Options",NA,"neutral",NA,"negative",NA
+"687","Attacks in Kabul Have Afghans Pointing a Finger at Their Government","negative","negative","negative","negative",NA
+"688","Voters Throng Polls In Myanmar Elections",NA,NA,NA,"negative",NA
+"689","Anti-Taliban Leader in Afghanistan Hires Lobbyist to Seek Military and Financial Help in the U.S.",NA,"positive","negative","negative",NA
+"690","Britain Returns to Global Stage As Broker in U.S.-Australia Deal",NA,"positive",NA,"negative",NA
+"691","Suhaila Siddiq, General  And Doctor in Afghanistan",NA,"positive",NA,"negative",NA
+"692","U.S. Troops Among Dozens Dead in Blasts As Biden Vows, ‘We Will Hunt You Down’","negative",NA,"negative","negative",NA
+"693","Supreme Court Will Not Hear Case on Military Draft","positive","neutral",NA,"negative",NA
+"694","Money Transfers Bolstered Belief in Russian Scheme",NA,"positive",NA,"negative",NA
+"695","Red-District Democrats, Defying Predictions, Poised to Keep House Seats","positive",NA,"negative","negative",NA
+"696","Leaving a ‘Forever War’  Could Backfire on Biden",NA,"negative","negative","negative",NA
+"697","U.S. and Taliban Sign Withdrawal Accord",NA,"positive","negative","negative",NA
+"698","Taliban-Afghan Peace Talks May Start After a Cease-Fire for a Muslim Festival","positive","positive","neutral","negative",NA
+"699","Taliban Officials  From Old Regime  Assume Key Posts",NA,NA,NA,"negative",NA
+"700","Taliban Keep Up March Into North Afghanistan And Release Prisoners",NA,"positive","negative","negative",NA
+"701","Taliban Attacks Continue Despite Outbreak Threat","negative","neutral","negative","negative",NA
+"702","Free Fall in Afghanistan Prompts U.S. to Deploy Another 1,000 Soldiers","neutral","negative","positive","negative",NA
+"703","Taliban Claim to Control Panjshir Valley, Last Hold of Afghan Resistance","negative","negative",NA,"negative",NA
+"704","Taliban Claim Responsibility For Attack In Kabul","negative","negative","negative","negative",NA
+"705","Bucking the U.N., Taliban Refuse to Include Women in Afghan Government","negative","negative","negative","negative",NA
+"706","Taliban Enter Kandahar, Second-Largest Afghan City",NA,NA,NA,"negative",NA
+"707","Afghans Fail To Prevent  Key Captures  By Taliban","negative","negative","negative","negative",NA
+"708","Female Guard Is Latest Target of Taliban Violence",NA,"negative","negative","negative",NA
+"709","Taliban Fighters Crush Women’s Protest Amid Flickers of Resistance","negative","negative","negative","negative",NA
+"710","Taliban Hit Kills 24 Afghans At Police and Army Outpost","negative","negative","negative","negative",NA
+"711","Taking Hold  In Provinces, Taliban Rout 3 More Cities",NA,"negative",NA,"negative",NA
+"712","Violent History Clouds Taliban’s Vows","negative","negative","negative","negative",NA
+"713","Tightening Grip, Taliban Silence Foes and Dissent","negative",NA,NA,"negative",NA
+"714","Dozens of Daily Taliban Strikes Besiege Afghan Forces, Undermining Peace Accord","negative","positive","negative","negative",NA
+"715","Attacks on Afghans by Taliban Rise After Signing of Peace Deal","neutral","positive","positive","negative",NA
+"716","Taliban Demand August Pullout As the U.S. Rushes to Evacuate",NA,"negative","negative","negative",NA
+"717","Taliban Secure A Regional Hub Without a Fight","positive","negative","positive","negative",NA
+"718","Ministry For Women Now Houses Vice Police","negative","positive",NA,"negative",NA
+"719","Taliban Stage Major Attack; Violence Intensifies in North","negative","negative","negative","negative",NA
+"720","Misjudging the Pace of Taliban Sweep",NA,NA,NA,"negative",NA
+"721","‘Nothing Is Left’: Taliban Take Second Afghan City in 2 Days",NA,NA,NA,"negative",NA
+"722","Taliban Takeover Could Halt U.S. Influence in Kabul After 20 Years of Diplomacy",NA,"positive",NA,"negative",NA
+"723","As Districts Fall, Taliban Focus on Governing","negative","negative",NA,"negative",NA
+"724","Taliban Violated Peace Deal With Shelling of Bases, U.S. Officials Say","positive","positive","neutral","negative",NA
+"725","Senator Describes Push to Stop Deportation of Veterans",NA,"negative","negative","negative",NA
+"726","Early Adversity Drives Graham Toward Power","negative","negative",NA,"negative",NA
+"727","Afghans Living In Fear as More Become Targets","negative","negative","negative","negative",NA
+"728","Testy Exchange Shows the U.S. A Bolder China","negative","positive",NA,"negative",NA
+"729","Over 15 Cities Slip Out of the Grasp of Afghan Forces",NA,"neutral",NA,"negative",NA
+"730","The Arms Dealer in the Crosshairs of Russia’s Elite Assassination Squad","positive","neutral","negative","negative",NA
+"731","After Decades, It’s Klain’s Turn As Chief of Staff",NA,NA,NA,"negative",NA
+"732","Some Afghan Applicants For Visas to Be Brought To Virginia Army Base",NA,"positive",NA,"negative",NA
+"733","C.I.A. Director Traveled to Kabul for Secret Talks With Taliban Leaders",NA,"positive",NA,"negative",NA
+"734","The Contradiction That Doomed America’s Mission in Afghanistan","negative","negative","negative","negative",NA
+"735","Looking to End ‘America First’ And Re-engage With the World",NA,NA,"positive","negative",NA
+"736","In Command: The Few, the Proud, the White","positive","positive","positive","negative",NA
+"737","First Afghan Rhodes Scholar Got Her Father Out, and Wants to Do More",NA,"positive",NA,"negative",NA
+"738","In Phone Transcripts, the Kindling of a Kremlin-Fueled Fire",NA,"negative","negative","negative",NA
+"739","‘It Was My Only Wish’: Muslims Share Grief as Hajj Is Canceled","negative","positive","negative","negative",NA
+"740","Negotiations With Iran To Restore Nuclear Deal Could Take a Long Time",NA,"positive","positive","negative",NA
+"741","U.K. Judge Set to Consider Whether to Send Assange  To U.S. for Espionage Trial",NA,"negative",NA,"negative",NA
+"742","Lax Vetting Let A Saudi Trainee Shoot Up a Base",NA,"negative","negative","negative",NA
+"743","Resettlement of Afghan Allies Has Revealed the Latest G.O.P. Schism",NA,"negative",NA,"negative",NA
+"744","One Legacy of Sept. 11: A Torture Policy’s Stain","negative","negative","negative","negative",NA
+"745","20 Years of Enmity Aside, U.S. And Taliban Need Each Other","negative","negative",NA,"negative",NA
+"746","Making Friends in a Pandemic By Using Vaccine Diplomacy",NA,"positive",NA,"negative",NA
+"747","After Rally and Riot, a Virginia County Fractures",NA,"negative","negative","negative",NA
+"748","Nearly 20 Years After 9/11, 20 Diverging Paths",NA,NA,NA,"negative",NA
+"749","The Photographs of 9/11",NA,NA,NA,"negative",NA
+"750","As the Taliban Seize More Cities, the Propaganda War Grows in Importance","negative","negative","negative","negative",NA
+"751","Pakistan Has Future Riding on Taliban",NA,NA,NA,"negative",NA
+"752","The Salvaged Relics of a Very Long War",NA,"negative","negative","negative",NA
+"753","Public Lies and Secret Truths","negative","positive",NA,"negative",NA
+"754","Europe Is Thrown Off Balance by U.S. Alliance With Australia",NA,"positive",NA,"negative",NA
+"755","With Taliban Back, Will Terror Groups Have a Safe Haven Again?","neutral","positive","negative","negative",NA
+"756","The Taliban Celebrate Victory, With a Crisis Looming","positive","positive","negative","negative",NA
+"757","Taliban Circle Afghan Cities,  Provoking U.S.",NA,"negative","negative","negative",NA
+"758","Taliban Takeover Could Halt U.S. Influence in Kabul After 20 Years of Diplomacy",NA,"positive",NA,"negative",NA
+"759","Taliban Believe  The War’s Over  And They Won","positive",NA,"positive","negative",NA
+"760","After 20 Years of War, Afghans Wonder How the Insurgency’s Leaders Will Govern",NA,"neutral","negative","negative",NA
+"761","America’s War in Afghanistan: How It Started and How It Is Ending",NA,"negative","negative","negative",NA
+"762","Two Neighborhoods: One Rich, One Poor. One Spared.","neutral",NA,"neutral","negative",NA
+"763","Ugandan Leader’s Brutal Grip on Power Is Testing Patience of the West","neutral","neutral",NA,"negative",NA
+"764","Sounding Alarms, Seeking Conciliation: Australia Is Conflicted on China","negative","positive",NA,"negative",NA
+"765","Prospect of Taliban Advance Puts a Pastoral Corridor on Edge",NA,"positive","positive","negative",NA
+"766","Libraries Built as Monuments To Two Slain Afghan Women",NA,NA,NA,"negative",NA
+"767","20 Lives Weigh On Plan to Shut Guantánamo",NA,"positive",NA,"negative",NA
+"768","Where Being a Journalist, and a Woman, Could Cost You Your Life",NA,"positive",NA,"negative",NA
+"769","Nepali Former Security Contractors Worry They Will Be Unable to Get Home","negative","negative","negative","negative",NA
+"770","Haiti Arrests 3rd Man With U.S. Ties in Assassination",NA,"negative","negative","negative",NA
+"771","Prominent Retired General Joins Taliban, Stunning the Afghan Government","positive","negative","positive","negative",NA
+"772","How a Former Taliban Commander Became the Face of Afghan Security",NA,NA,NA,"negative",NA
+"773","Violence Ebbs But Pain Lasts Outside Kabul","negative","negative","negative","negative",NA
+"774","Thomas Sullivan, 91, Dies;  Rooted Out Case-Fixing In Chicago’s Court System","negative","positive",NA,"negative",NA
+"775","Thousands of Afghans on U.S. Military Bases Await Resettlement",NA,"neutral","negative","negative",NA
+"776","Surge Leaves 9,000 Migrants Crammed Under a Texas Bridge",NA,"positive",NA,"negative",NA
+"777","A Frantic Demand For U.S. Visas","negative","negative","negative","negative",NA
+"778","Women’s Shelters Close As the Taliban Advance",NA,"positive",NA,"negative",NA
+"779","3 Guantánamo Detainees Formally Face Charges Linked to 2002 Bali Bombing",NA,NA,"negative","negative",NA
+"780","A Blast. A Bounty Claim. A Battle With No End.",NA,"neutral","negative","negative",NA
+"781","Three Women Working for a News Outlet Are Gunned Down in Afghanistan",NA,NA,NA,"negative",NA
+"782","3 Polio Vaccine Workers  Are Killed in Afghanistan","negative","negative","negative","negative",NA
+"783","Evidence Disputes U.S. Claim of ISIS Bomb in Kabul Drone Strike","negative","negative","negative","negative",NA
+"784","Outlining Goals in First News Conference, Biden Hails ‘Art of the Possible’",NA,"positive",NA,"negative",NA
+"785","China Sees U.S. Hubris, but Afghanistan Offers No Easy Choices","neutral",NA,"positive","negative",NA
+"786","Pentagon Orders B-52s  To Fly to Persian Gulf  As Deterrent to Tehran","negative",NA,NA,"negative",NA
+"787","Last-Second Deals Underscore Frailty of Afghan-Taliban Peace Talks","positive","positive","positive","negative",NA
+"788","Facebook Hides Friend Lists To Protect Its Afghan Users","positive","positive","neutral","negative",NA
+"789","To Save Peace Deal With Taliban, U.S. May Reduce C.I.A. Presence in Afghanistan","positive","positive","positive","negative",NA
+"790","General Tempers White House Chatter on Paring Troops in Afghanistan","negative",NA,NA,"negative",NA
+"791","Top G.O.P. Security Officials Back Biden, Calling Trump ‘Unfit to Lead’","positive","positive","positive","negative",NA
+"792","Top U.S. General Leaves as Afghan Withdrawal Continues","positive","positive","negative","negative",NA
+"793","Full Transcript of Biden’s Remarks on Afghanistan",NA,"positive",NA,"negative",NA
+"794","Leahy Juggles His Responsibilities as Judge, Juror and Witness",NA,"positive",NA,"negative",NA
+"795","Trump Officials Distorted Intelligence on Foreign Meddling, Report Finds","positive","neutral","negative","negative",NA
+"796","Administration Sues to Delay Bolton’s Memoir","negative","negative","negative","negative",NA
+"797","Military Vets Break Silence On President","negative","positive",NA,"negative",NA
+"798","Trump Appointee Will Lead Pentagon Until Biden’s Pick Is Confirmed","positive","positive",NA,"negative",NA
+"799","As Numbers Sink In, New Reality Confronts A More Somber Trump","negative","negative","negative","negative",NA
+"800","Before Virtual U.N. Assembly, Trump Casts China as Villain in Pandemic","positive","negative",NA,"negative",NA
+"801","A Furor Erupts Over President And War Dead","negative","negative","negative","negative",NA
+"802","Trump Fires Esper Amid Fears Of Purge at Security Agencies","neutral","negative",NA,"negative",NA
+"803","Trump Given Brief in February On Possible Russian Bounties ","positive","positive",NA,"negative",NA
+"804","Trump Is Said to Plan Reduction of Forces in Afghanistan, Iraq and Somalia","positive","positive",NA,"negative",NA
+"805","President Lashes Out At His Aides With Calls To Indict Political Rivals",NA,"neutral",NA,"negative",NA
+"806","President Exaggerates His Own Record On Funding Pentagon and Ending Wars",NA,"positive","negative","negative",NA
+"807","Trump Orders Pullout Of Troops From Somalia Before End of His Term","positive","positive",NA,"negative",NA
+"808","President’s Pentagon Purge Could Accelerate Pullout Of Troops in Afghanistan",NA,"negative",NA,"negative",NA
+"809","A Losing Battle in the Military","negative","negative","negative","negative",NA
+"810","Trump Says He and Putin Didn’t Talk About Bounties","positive","positive",NA,"negative",NA
+"811","Trump Says Troops’ Paper Won’t Shutter After All","positive","positive",NA,"negative",NA
+"812","Pursuing Exit, Trump Talks  To a Leader Of the Taliban","positive","positive",NA,"negative",NA
+"813","Atop Pentagon, A Fresh Group Of Hard-Liners","neutral",NA,"neutral","negative",NA
+"814","Trump Still Defers to Putin As He Dismisses Intelligence","positive","positive",NA,"negative",NA
+"815","‘They Want to Hug Me’: Trump Suggests That Gold Star Families May Have Infected Him","positive","positive","neutral","negative",NA
+"816","A Post-Watergate Reform  Under Pressure by Trump","positive","positive","negative","negative",NA
+"817","Trump Stays Quiet on Toll As U.S. Nears a Milestone","positive","positive",NA,"negative",NA
+"818","President Moves To Hem Biden In On U.S. Policies",NA,"positive",NA,"negative",NA
+"819","As Putin Rushes Vaccine, U.S. Experts Fear Pharmaceutical Manhood Contest","negative","neutral","negative","negative",NA
+"820","Trump Wants Troops in Afghanistan Home by Election Day","positive","positive",NA,"negative",NA
+"821","U.S. ‘Disaster Diplomacy’ Yields Few Results","negative","negative","negative","negative",NA
+"822","Trump Boasts of Withdrawing Troops, but Thousands Remain in Harm’s Way","positive","positive",NA,"negative",NA
+"823","Critical of President, Trump and Pompeo Face Own Attacks","negative","positive","negative","negative",NA
+"824","Pushback on DeVos Debt Policy Puts Pressure on Trump","neutral","negative","negative","negative",NA
+"825","Inspector General Pick Casts Doubt on Powers Allowed of Congress","negative","neutral","negative","negative",NA
+"826","Putin on Offense  As Trump Stands  On the Sidelines","positive","negative",NA,"negative",NA
+"827","Allies Balk at U.S. Sanctions on Rights Lawyer","negative","negative",NA,"negative",NA
+"828","Trump Rules for Drone Strikes Are Disclosed","positive","positive","negative","negative",NA
+"829","Trump’s New Push to Withdraw Troops Catches Pentagon Off Guard",NA,"negative",NA,"negative",NA
+"830","2 Guantánamo Inmates Are Cleared for Transfer","positive",NA,"positive","negative",NA
+"831","Britain’s Leader Shakes Up Cabinet in a Blow to His Global Ambitions","negative","positive",NA,"negative",NA
+"832","Citing Mental Health, Judge Blocks Extradition for Assange",NA,NA,"negative","negative",NA
+"833","‘This Is About Buying Time’: U.S. Launches Round of Afghan Airstrikes",NA,"positive",NA,"negative",NA
+"834","U.S. Troop Reduction Begins in Afghanistan",NA,NA,NA,"negative",NA
+"835","U.S. Urges Indefinite Iran Embargo to No Avail",NA,"negative",NA,"negative",NA
+"836","1,000 Spend Fifth Day Waiting at Northern Airport for Taliban to Let Planes Leave",NA,"neutral","negative","negative",NA
+"837","U.S. Kills Qaeda Leader With Secretive Missile","negative","neutral","negative","negative",NA
+"838","Amid Terror Threat, a Hurried Airlift of Afghans Ends","negative","negative","negative","negative",NA
+"839"," U.S. Contractor Warned of Explosive Material in Beirut Years Ago","negative","neutral","negative","negative",NA
+"840","U.S. Defends Detention of Afghan Citizen, Even as It Withdraws From Afghanistan",NA,"negative","negative","negative",NA
+"841","Defense Chief Under Biden Secretly Visits Afghanistan",NA,"neutral",NA,"negative",NA
+"842","As U.S. Diplomats Fell Sick, Washington Minimized the Danger","negative","negative","negative","negative",NA
+"843","U.S. Forces Were Training Guinean Troops Who Took Off to Mount Coup",NA,"neutral",NA,"negative",NA
+"844","Top U.S. General Hints Airstrikes on Taliban May Continue Past an August Cutoff","positive","positive","positive","negative",NA
+"845","As Biden Mulls Afghan Exit, U.S. Discloses 1,000 More Troops in Area",NA,NA,NA,"negative",NA
+"846","A U.S. Effort to Ease a Mideast Rivalry (and Hurt Iran)","negative","negative","neutral","negative",NA
+"847","U.S. Sends Troops to Aid Evacuation as Taliban Surge",NA,"positive",NA,"negative",NA
+"848","U.S. Strikes ISIS Branch as Bombing’s Death Toll Soars","negative","negative","negative","negative",NA
+"849","U.S. Troops Seized Their Land. Angry Afghans Still Want It Back.","negative","negative","negative","negative",NA
+"850","U.S. Departs Last Afghanistan Base, Effectively Ending 20 Years of War","positive","negative","neutral","negative",NA
+"851","U.S. Looks to Build on Secret Parts of Taliban Deal to Reduce Violence",NA,"positive","negative","negative",NA
+"852","U.S. Military  Begins Task Of Leaving  Afghanistan",NA,"neutral",NA,"negative",NA
+"853","U.S. Military Cuts Back On Medical Evacuation For Troops in Africa",NA,"neutral","negative","negative",NA
+"854","Pentagon Tally of Civilians  U.S. Killed in 2019 Is 132","negative",NA,"negative","negative",NA
+"855","U.S. Moves to Jump-Start Talks  For Afghan Truce With Taliban",NA,"positive",NA,"negative",NA
+"856","U.S. to Reimpose U.N. Sanctions on Iran Over Western Allies’ Objections","negative",NA,NA,"negative",NA
+"857","1,500 Citizens Remain In Afghanistan as U.S. Intensifies Rush to Exit",NA,NA,NA,"negative",NA
+"858","U.S. Says Most of Beijing’s Claims in South China Sea Are Illegal","negative","negative","negative","negative",NA
+"859","U.S. to Cut Troops in Afghanistan to 2,500",NA,NA,"negative","negative",NA
+"860","Military Reinforcements To Be Deployed to Syria",NA,"neutral",NA,"negative",NA
+"861","U.S. Is Urged To Slow Pullout In Afghanistan","negative",NA,NA,"negative",NA
+"862","Alarmed by Taliban’s Surge, U.S. Launches 11th-Hour Airstrikes","negative","positive","negative","negative",NA
+"863","With Biden in Wings,  U.S. Ready to Adjust  Its Posture on Turkey","positive","positive",NA,"negative",NA
+"864","U.S. Is Set to Announce Troop Drawdown From Iraq, at Least on Paper",NA,NA,NA,"negative",NA
+"865","U.S. to Reopen To Vaccinated From Overseas",NA,NA,NA,"negative",NA
+"866","U.S. to Relocate Afghan Allies, Like Interpreters, While Special Visas Are Processed",NA,"positive",NA,"negative",NA
+"867","War Crimes Investigators Face Punishment by U.S.",NA,"negative","negative","negative",NA
+"868","U.S. to Reduce Troops in Iraq to 3,000, Helping to Fulfill a Goal on Overseas Cuts","positive","positive","positive","negative",NA
+"869","U.S. to Halve Afghan Force by Inauguration Day",NA,"positive",NA,"negative",NA
+"870","Deploying to Iraq, Even as Afghan War Ends",NA,"negative","negative","negative",NA
+"871","Afghans Look to Biden for Stability as U.S. Troops Leave","positive","negative","negative","negative",NA
+"872","Despite Surging Violence, U.S. Urges Afghanistan to Respect Peace Accord","positive","positive","negative","negative",NA
+"873","U.S. Used Secret Weapon, Missile With Blades, to Kill Qaeda Leader in Syria","negative","negative","negative","negative",NA
+"874","For Veterans, Pain, Anguish And Sorrows","negative","negative","negative","negative",NA
+"875","U.S. Forces Leave Kabul; Evacuation Ends",NA,"negative","negative","negative",NA
+"876","Pentagon Eyes  Future Strikes  At the Taliban",NA,NA,"negative","negative",NA
+"877","U.S. Will Pull 12,000 Troops From Germany, Defense Chief Says",NA,"positive",NA,"negative",NA
+"878","Test for U.S.: Aid Afghans, Not Taliban",NA,"positive",NA,"negative",NA
+"879","U.S. Says Little as Military Tensions Flare Globally With Russia","negative","negative",NA,"negative",NA
+"880","U.S. Says Little as Military Tensions Flare Globally With Russia","negative","negative",NA,"negative",NA
+"881","Ugandan President Retains 35-Year Grip on Power",NA,"positive",NA,"negative",NA
+"882","Ukraine’s Leader Seeks Assurances From Biden","positive","positive",NA,"negative",NA
+"883","In Kabul Streets, Eerie Quiet and a Struggle to Make Ends Meet","neutral","negative","negative","negative",NA
+"884","U.S. ‘Forever War’ Veterans Back Biden on Withdrawal",NA,"negative","negative","negative",NA
+"885","Ultimatum in Pakistan:  Vaccine or Cell Service","negative","negative",NA,"negative",NA
+"886","Veterans Fortify the Ranks of Militias That Align With Trump’s Views",NA,"positive",NA,"negative",NA
+"887","For Veterans, The Trauma Doesn’t End With Service","negative",NA,"negative","negative",NA
+"888","Vietnam War Victims Say South Korea Still Owes Them Answers",NA,"negative","negative","negative",NA
+"889","In Greek Shift, Vigilante Teams Target Migrants",NA,NA,NA,"negative",NA
+"890","In Greek Shift, Vigilante Teams Target Migrants",NA,NA,NA,"negative",NA
+"891","India’s Treatment of Muslims Threatens Its Global Ambitions",NA,NA,"negative","negative",NA
+"892","Wave of Violence Across Afghanistan May Delay U.S. Troop Withdrawal","negative","negative","negative","negative",NA
+"893","In Clash on Virus, Harris Puts Pence on the Defensive","negative","negative","negative","negative",NA
+"894","Lost in Rhetorical Weeds, Biden Struggles to Inspire","negative","neutral","negative","negative",NA
+"895","Juggling Votes, Deployment and a Baby",NA,"positive",NA,"negative",NA
+"896","In Yet Another Crisis, Afghans Waive Rent and Make Masks","negative","negative","negative","negative",NA
+"897","Walter Mondale, Former Vice President, Dies at 93","negative","positive",NA,"negative",NA
+"898","How Will Biden Lead? Look to His Campaign","positive","positive",NA,"negative",NA
+"899","Saudi Strikes in Yemen Put U.S.  In Danger of War Crime Charges","negative","negative","negative","negative",NA
+"900","War, Peace and Spreadsheets In a Countdown to Withdrawal","positive","positive","negative","negative",NA
+"901","Transfer of Power Brings Respite To City Where a Mob Held Sway","positive","neutral",NA,"negative",NA
+"902","Classified, Until It’s Not",NA,NA,NA,"negative",NA
+"903","Weighing Haiti Intervention, U.S. Faces an All-Too-Familiar Dilemma","negative","positive","negative","negative",NA
+"904","Welcoming a New Year at an Ancient Kalash Festival",NA,"positive",NA,"negative",NA
+"905","West Virginia  Is Struggling Against Delta","negative",NA,"negative","negative",NA
+"906","What the Polls Say About Impeachment",NA,"negative",NA,"negative",NA
+"907","Troubled Afghan-Taliban Peace Talks Set to Enter Next Phase","neutral","positive","neutral","negative",NA
+"908","War and Virus Wear Down One Swing District’s Voters","negative","negative","negative","negative",NA
+"909","Heartbreak After Heroes Died Going ‘Through the Gates of Hell’ in Kabul","negative","negative","negative","negative",NA
+"910","Thrust Into Hardship, Humans Adapt and Cope in Remarkable Ways","neutral","positive","neutral","negative",NA
+"911","When a Vigilante’s Call to Action Is Only a Facebook Post Away",NA,"positive",NA,"negative",NA
+"912","Where a Vaccination Campaign Faces Skepticism, War and Corruption","negative","negative","negative","negative",NA
+"913","Taliban Attacks Ravage Pomegranate Country","negative",NA,"negative","negative",NA
+"914","The White House Maintains Trump Knew Nothing of Russian Bounties","positive","positive",NA,"negative",NA
+"915","White House Pushes for Return of Americans Being Held Hostage Overseas","negative","negative",NA,"negative",NA
+"916","White House Stops Short of Sanctions Over Bounties",NA,NA,"negative","negative",NA
+"917","Afghanistan’s Once and Current Rulers",NA,NA,NA,"negative",NA
+"918","Who Are New Leaders Appointed to Positions In the Taliban Cabinet?",NA,"positive",NA,"negative",NA
+"919","Opulent Mansion in Canada Ignites Rage as Haiti Unravels","neutral","negative","negative","negative",NA
+"920","Who Are Contenders  For Biden’s Cabinet?",NA,"positive",NA,"negative",NA
+"921","Why Afghanistan Became an Invisible War","negative","negative","negative","negative",NA
+"922","How a $110 Million Mansion in India Ended Up in a Diplomatic Dispute","neutral","neutral","negative","negative",NA
+"923","Biden’s Pick for Iran Envoy Resurrects Bitter Debate Over Nuclear Pact","negative","positive","negative","negative",NA
+"924","Memory of Migrant Crisis Haunts Europe as First Afghan Refugees Land","negative","neutral","negative","negative",NA
+"925","Why $13 Billion in Aid Didn’t Erase Troubles","negative","negative","negative","negative",NA
+"926","With Americans Gone, Will Afghanistan Return As a Haven for Terror?","negative","neutral","negative","negative",NA
+"927","Even With a To-Do List at Home, Biden Vows to Build Rapport Abroad","positive","positive",NA,"negative",NA
+"928","Lawyer and Partner: A Look at Legal Work by Harris’s Husband",NA,"negative","positive","negative",NA
+"929","The Taliban Must Overcome Big Obstacles to Obtain International Recognition",NA,NA,"negative","negative",NA
+"930","With U.S. Exit, Russia’s Power in Central Asia Grows Ever Stronger","positive",NA,"positive","negative",NA
+"931","Biden’s Decision Prioritizes Nation-Building at Home, Not in Kabul",NA,"positive",NA,"negative",NA
+"932","In Pulling Troops Out,  A President Becomes An Unlikely Insurgent",NA,"positive",NA,"negative",NA
+"933","Taliban Tighten ‘Ring of Siege’ Around Afghan Capital","negative","negative",NA,"negative",NA
+"934","A Meeting of Cordial Words and Muted Tensions",NA,"negative",NA,"negative",NA
+"935","Supporters Push for Pardon for Assange as the President’s Term Comes to a Close","positive","positive","positive","negative",NA
+"936","Woman Killed Storming Capitol Discovered Political Side After Time in Military","negative","negative","negative","negative",NA

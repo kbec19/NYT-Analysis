@@ -94,10 +94,10 @@ processedCorpus <- tm_map(processedCorpus, exchanger2)
 
 ## Create Document Term Matrix
 
-I will use the threshold with a minimum frequency of 2.
+The "topicmodels" package requires a Document Term Matrix. 
 
 ```{r code_folding=TRUE}
-minimumFrequency <- 2
+minimumFrequency <- 1
 DTM <- DocumentTermMatrix(processedCorpus, control = list(bounds = list(global = c(minimumFrequency, Inf))))
 #preview
 dim(DTM)
@@ -216,24 +216,6 @@ ggplot(data = vizDataFrame, aes(topic, value, fill = document), ylab = "proporti
   facet_wrap(~ document, ncol = N)
 ```
 
-### Wordcloud of Topic
-
-The wordcloud is a good preliminary way to look at the topics. I'll choose topic "5", because in all three sample documents, topic "5" seems to be the most broad capture of the headline topic prevalence over the time period.
-
-```{r code_folding=TRUE}
-# visualize topics as word cloud
-topicToViz <- 2 # change for your own topic of interest
-#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
-# select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
-top40terms <- sort(tmResult$terms[topicToViz,], decreasing=TRUE)[1:40]
-words <- names(top40terms)
-# extract the probabilites of each of the 40 terms
-probabilities <- sort(tmResult$terms[topicToViz,], decreasing=TRUE)[1:40]
-# visualize the terms as wordcloud
-mycolors <- brewer.pal(8, "Dark2")
-wordcloud(words, probabilities, random.order = FALSE, color = mycolors)
-```
-
 ### Topic Ranking
 
 I will try to get a more meaningful order of top terms per topic by re-ranking them with a specific score (Chang et al. 2009).
@@ -275,6 +257,24 @@ sort(countsOfPrimaryTopics, decreasing = TRUE)
 ```
 
 Sorting topics by the Rank-1 method places topics with rather specific thematic coherences in upper ranks of the list.
+
+### Wordcloud of Topic
+
+The wordcloud is a good preliminary way to look at the topics. I'll choose topic "3", because across the five sample documents, topic "3" seems to be the most broad capture of the headline topic prevalence over the time period in the modeling. It is also intuitively not an unreasonable choice.
+
+```{r code_folding=TRUE}
+# visualize topics as word cloud
+topicToViz <- 3 # change for your own topic of interest
+#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
+# select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
+top40terms <- sort(tmResult$terms[topicToViz,], decreasing=TRUE)[1:40]
+words <- names(top40terms)
+# extract the probabilites of each of the 40 terms
+probabilities <- sort(tmResult$terms[topicToViz,], decreasing=TRUE)[1:40]
+# visualize the terms as wordcloud
+mycolors <- brewer.pal(8, "Dark2")
+wordcloud(words, probabilities, random.order = FALSE, color = mycolors)
+```
 
 ## Topic Distribution Adjustment
 
@@ -342,24 +342,6 @@ ggplot(data = vizDataFrameb, aes(topic, value, fill = document), ylab = "proport
   facet_wrap(~ document, ncol = N)
 ```
 
-### Wordcloud of New Topic Model
-
-The wordcloud is a good preliminary way to look at the topics. But it is clearly more difficult to know the overall topic model prevalence with the lower alpha and its more granular results.
-
-```{r code_folding=TRUE}
-# visualize topics as word cloud
-topicToVizb <- 2 # change for your own topic of interest
-#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
-# select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
-top40termsb <- sort(tmResultb$terms[topicToVizb,], decreasing=TRUE)[1:40]
-wordsb <- names(top40termsb)
-# extract the probabilites of each of the 40 terms
-probabilitiesb <- sort(tmResultb$terms[topicToVizb,], decreasing=TRUE)[1:40]
-# visualize the terms as wordcloud
-mycolors <- brewer.pal(8, "Dark2")
-wordcloud(wordsb, probabilitiesb, random.order = FALSE, color = mycolors)
-```
-
 ### Topic Ranking
 
 I will try to get a more meaningful order of top terms per topic by re-ranking them with a specific score (Chang et al. 2009).
@@ -402,14 +384,32 @@ sort(countsOfPrimaryTopicsb, decreasing = TRUE)
 
 Sorting topics by the Rank-1 method places topics with rather specific thematic coherences in upper ranks of the list.
 
-## Filtering Documents by "Withdrawal"
+### Wordcloud of New Topic Model
 
-The fact that a topic model conveys of topic probabilities for each document, resp. paragraph in our case, makes it possible to use it for thematic filtering of a collection. AS filter we select only those documents which exceed a certain threshold of their probability value for certain topics (for example, each document which contains the topic "Withdrawal" to more than 20 percent).
+The wordcloud is a good preliminary way to look at the topics. It is clearly more difficult to know the overall topic model prevalence with the lower alpha and its more granular results in the visualization, but using the ranking I'll look at "4".
 
 ```{r code_folding=TRUE}
-#topicToFilter <- 2  # you can set this manually ...
+# visualize topics as word cloud
+topicToVizb <- 4 # change for your own topic of interest
+#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
+# select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
+top40termsb <- sort(tmResultb$terms[topicToVizb,], decreasing=TRUE)[1:40]
+wordsb <- names(top40termsb)
+# extract the probabilites of each of the 40 terms
+probabilitiesb <- sort(tmResultb$terms[topicToVizb,], decreasing=TRUE)[1:40]
+# visualize the terms as wordcloud
+mycolors <- brewer.pal(8, "Dark2")
+wordcloud(wordsb, probabilitiesb, random.order = FALSE, color = mycolors)
+```
+
+## Filtering Documents by "Withdrawal"
+
+The fact that a topic model conveys of topic probabilities for each document, resp. paragraph in our case, makes it possible to use it for thematic filtering of a collection. AS filter we select only those documents which exceed a certain threshold of their probability value for certain topics (for example, each document which contains topic 4 to more than 20 percent).
+
+```{r code_folding=TRUE}
+topicToFilterb <- 4  # you can set this manually ...
 # ... or have it selected by a term in the topic name (e.g. 'children')
-topicToFilterb <- grep('withdrawal', topicNamesb)[1] 
+#topicToFilterb <- grep('withdrawal', topicNamesb)[1] 
 topicThresholdb <- 0.2
 selectedDocumentIndexesb <- which(thetab[, topicToFilterb] >= topicThresholdb)
 filteredCorpusb <- corpus[selectedDocumentIndexesb]
@@ -534,26 +534,6 @@ ggplot(data = vizDataFrame2, aes(topic, value, fill = document), ylab = "proport
   facet_wrap(~ document, ncol = N)
 ```
 
-### Wordcloud of Topic
-
-The wordcloud is a good preliminary way to look at the topics. I'll look at topic 2, though in this model the topics are all distributed so broadly this doesn't help much in this case.
-
-```{r code_folding=TRUE}
-#visualize topics as word cloud
-topicToViz2 <- 2 # change for your own topic of interest
-#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
-#select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
-top40terms2 <- sort(tmResult2$terms[topicToViz2,], decreasing=TRUE)[1:40]
-words2 <- names(top40terms2)
-#convert non-graph characters to combat error in wordcloud
-words2=str_replace_all(words2,"[^[:graph:]]", " ") 
-#extract the probabilites of each of the 40 terms
-probabilities2 <- sort(tmResult2$terms[topicToViz2,], decreasing=TRUE)[1:40]
-#visualize the terms as wordcloud
-mycolors <- brewer.pal(8, "Dark2")
-wordcloud(words2, probabilities2, random.order = FALSE, color = mycolors)
-```
-
 ### Topic Ranking
 
 I will try to get a more meaningful order of top terms per topic by re-ranking them with a specific score (Chang et al. 2009).
@@ -596,15 +576,35 @@ sort(countsOfPrimaryTopics2, decreasing = TRUE)
 
 Sorting topics by the Rank-1 method places topics with rather specific thematic coherences in upper ranks of the list.
 
+### Wordcloud of Topic
+
+The wordcloud is a good preliminary way to look at the topics. I'll look at topic 2, because the ranking validates what was my intuitive guess. In the visualization of this model the topics are all distributed so broadly this doesn't help much in this case.
+
+```{r code_folding=TRUE}
+#visualize topics as word cloud
+topicToViz2 <- 2 # change for your own topic of interest
+#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
+#select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
+top40terms2 <- sort(tmResult2$terms[topicToViz2,], decreasing=TRUE)[1:40]
+words2 <- names(top40terms2)
+#convert non-graph characters to combat error in wordcloud
+words2=str_replace_all(words2,"[^[:graph:]]", " ") 
+#extract the probabilites of each of the 40 terms
+probabilities2 <- sort(tmResult2$terms[topicToViz2,], decreasing=TRUE)[1:40]
+#visualize the terms as wordcloud
+mycolors <- brewer.pal(8, "Dark2")
+wordcloud(words2, probabilities2, random.order = FALSE, color = mycolors)
+```
+
 ## Topic Distribution Adjustment
 
-Changing the alpha to the lower level from 0.3019 to 0.1
+Changing the alpha to the lower level from 0.1228 to 0.03
 
 ```{r code_folding=TRUE}
 # see alpha from previous model
 attr(topicModel2, "alpha") 
 
-topicModel2b <- LDA(DTM, K2, method="VEM", control=list(alpha = 0.1))
+topicModel2b <- LDA(DTM, K2, method="VEM", control=list(alpha = 0.03))
 ```
 
 ### Model Details
@@ -660,26 +660,6 @@ ggplot(data = vizDataFrame2b, aes(topic, value, fill = document), ylab = "propor
 
 ```
 
-### Wordcloud of Topic
-
-The wordcloud is a good preliminary way to look at the topics. I'll look at topic 2, though in this model the topics are all distributed so broadly this doesn't help much in this case.
-
-```{r code_folding=TRUE}
-#visualize topics as word cloud
-topicToViz2b <- 2 # change for your own topic of interest
-#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
-#select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
-top40terms2b <- sort(tmResult2b$terms[topicToViz2b,], decreasing=TRUE)[1:40]
-words2b <- names(top40terms2b)
-#convert non-graph characters to combat error in wordcloud
-words2b=str_replace_all(words2,"[^[:graph:]]", " ") 
-#extract the probabilites of each of the 40 terms
-probabilities2b <- sort(tmResult2b$terms[topicToViz2b,], decreasing=TRUE)[1:40]
-#visualize the terms as wordcloud
-mycolors <- brewer.pal(8, "Dark2")
-wordcloud(words2b, probabilities2b, random.order = FALSE, color = mycolors)
-```
-
 ### Topic Ranking
 
 I will try to get a more meaningful order of top terms per topic by re-ranking them with a specific score (Chang et al. 2009).
@@ -722,14 +702,34 @@ sort(countsOfPrimaryTopics2b, decreasing = TRUE)
 
 Sorting topics by the Rank-1 method places topics with rather specific thematic coherences in upper ranks of the list.
 
+### Wordcloud of Topic
+
+The wordcloud is a good preliminary way to look at the topics. I'll look at topic 3, again based on the ranking predominance.
+
+```{r code_folding=TRUE}
+#visualize topics as word cloud
+topicToViz2b <- 3 # change for your own topic of interest
+#topicToViz <- grep('fear', topicNames)[1] # Or select a topic by a term contained in its name
+#select to 40 most probable terms from the topic by sorting the term-topic-probability vector in decreasing order
+top40terms2b <- sort(tmResult2b$terms[topicToViz2b,], decreasing=TRUE)[1:40]
+words2b <- names(top40terms2b)
+#convert non-graph characters to combat error in wordcloud
+words2b=str_replace_all(words2,"[^[:graph:]]", " ") 
+#extract the probabilites of each of the 40 terms
+probabilities2b <- sort(tmResult2b$terms[topicToViz2b,], decreasing=TRUE)[1:40]
+#visualize the terms as wordcloud
+mycolors <- brewer.pal(8, "Dark2")
+wordcloud(words2b, probabilities2b, random.order = FALSE, color = mycolors)
+```
+
 ## Filtering Documents by "Withdrawal"
 
 The fact that a topic model conveys of topic probabilities for each document, resp. paragraph in our case, makes it possible to use it for thematic filtering of a collection. AS filter we select only those documents which exceed a certain threshold of their probability value for certain topics (for example, each document which contains the topic "Withdrawal" (topic 2) to more than 20 percent).
 
 ```{r code_folding=TRUE}
-#topicToFilter2 <- 3  # you can set this manually ...
+topicToFilter2b <- 3  # you can set this manually ...
 # ... or have it selected by a term in the topic name (e.g. 'children')
-topicToFilter2b <- grep('withdrawal', topicNames2)[1] 
+#topicToFilter2b <- grep('withdrawal', topicNames2)[1] 
 topicThreshold2b <- 0.2
 selectedDocumentIndexes2b <- which(theta2b[, topicToFilter2b] >= topicThreshold2b)
 filteredCorpus2b <- corpus[selectedDocumentIndexes2b]

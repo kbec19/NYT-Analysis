@@ -77,6 +77,7 @@ print_headlines <- as.data.frame(print_headlines)
 #inspect data
 head(main_headlines)
 head(print_headlines)
+all_results <- read.csv("all_results.csv")
 ```
 
 ### Create Corpus
@@ -179,7 +180,7 @@ main_fcm <- fcm(main_dfm)
 # of the matrix we created
 dim(main_fcm)
 # pull the top features
-myFeatures <- names(topfeatures(main_fcm, 20))
+myFeatures <- names(topfeatures(main_fcm, 30))
 # retain only those top features as part of our matrix
 smaller_main_fcm <- fcm_select(main_fcm, pattern = myFeatures, selection = "keep")
 # check dimensions
@@ -199,7 +200,7 @@ print_fcm <- fcm(print_dfm)
 # of the matrix we created
 dim(print_fcm)
 # pull the top features
-myFeatures <- names(topfeatures(print_fcm, 20))
+myFeatures <- names(topfeatures(print_fcm, 30))
 # retain only those top features as part of our matrix
 smaller_print_fcm <- fcm_select(print_fcm, pattern = myFeatures, selection = "keep")
 # check dimensions
@@ -582,7 +583,7 @@ ggplot(df_dual,
   theme_minimal()
 ```
 
-### Summary
+# Summary
 
 Although I was not able to find any statistically meaningful, measurable difference between the sentiments of print vs. main headlines analyzed in this project, it is still a valid observation that there is an overall pattern to be observed.
 

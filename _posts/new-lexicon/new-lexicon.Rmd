@@ -383,8 +383,6 @@ main_plot <- main_graph %>%
   scale_fill_manual(values=c("#993333", "#336699", "#669900")) +
   theme_minimal()
 main_plot
-ggsave("new_sentiment.pdf", device="pdf", width=8, height=8, units="in",dpi=300)
-
 ```
 
 

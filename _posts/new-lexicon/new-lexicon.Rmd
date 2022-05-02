@@ -2,7 +2,7 @@
 title: "New Direction of Sentiment Analysis"
 description: |
   Adding on to my initial sentiment analysis using new methods and dictionaries.
-preview: photo1.png
+preview: new_sentiment.png
 categories:
   - text as data
   - NYT text analysis project
@@ -379,8 +379,11 @@ library(ggplot2)
 main_plot <- main_graph %>%
   ggplot(aes(date, sentiment, fill = lexicon)) +
   geom_col(show.legend = FALSE) +
-  facet_wrap(~lexicon, ncol = 1, scales = "free_y")
+  facet_wrap(~lexicon, ncol = 1, scales = "free_y") +
+  scale_fill_manual(values=c("#993333", "#336699", "#669900")) +
+  theme_minimal()
 main_plot
+ggsave("new_sentiment.pdf", device="pdf", width=8, height=8, units="in",dpi=300)
 
 ```
 

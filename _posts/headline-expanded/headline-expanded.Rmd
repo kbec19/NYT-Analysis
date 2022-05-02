@@ -525,7 +525,68 @@ tidy_all
                  
 ```
 
+## Visualizing NRC Sentiment
 
+### Main Headlines
+
+```{r code_folding=TRUE}
+#main headlines
+head(main_nrc)
+#transpose
+main_df <-data.frame(t(main_nrc))
+#The function rowSums computes column sums across rows for each level of a grouping variable.
+df_new <- data.frame(rowSums(main_df[2:937]))
+#Transformation and cleaning
+names(df_new)[1] <- "count"
+df_new <- cbind("sentiment" = rownames(df_new), df_new)
+rownames(df_new) <- NULL
+df_new2<-df_new[1:10,]
+df_new2 <- read.csv("df_new2.csv")
+#Plot One - count of words associated with each sentiment
+quickplot(sentiment, data=df_new2, weight=count, geom="bar", fill=sentiment, ylab="count")+ggtitle("Main Headline Sentiments")
+```
+
+### Print Headlines
+
+```{r code_folding=TRUE}
+#print headlines
+head(print_nrc)
+#transpose
+main_df2 <-data.frame(t(print_nrc))
+#The function rowSums computes column sums across rows for each level of a grouping variable.
+df_new3 <- data.frame(rowSums(main_df2[2:937]))
+#Transformation and cleaning
+names(df_new3)[1] <- "count"
+df_new3 <- cbind("sentiment" = rownames(df_new3), df_new3)
+rownames(df_new3) <- NULL
+df_new4<-df_new3[1:10,]
+df_new4 <- read.csv("df_new4.csv")
+#Plot One - count of words associated with each sentiment
+quickplot(sentiment, data=df_new4, weight=count, geom="bar", fill=sentiment, ylab="count")+ggtitle("Print Headline Sentiments")
+```
+
+### Clustered Bar Chart
+
+```{r code_folding=TRUE}
+
+#load data frame with both headline sentiments from NRC
+df_dual <- read.csv("df_dual.csv")
+
+ggplot(df_dual,
+       aes(x = sentiment,
+           y = count,
+           fill = headline)) +
+  geom_bar(stat = "identity",
+           position = "dodge") +
+  scale_fill_manual(values=c("#993333", "#336699")) +
+  theme_minimal()
+```
+
+### Summary
+
+Although I was not able to find any statistically meaningful, measurable difference between the sentiments of print vs. main headlines analyzed in this project, it is still a valid observation that there is an overall pattern to be observed.
+
+Specifically, there is a pattern that the print headlines carry a lower level of emotionally weighted words than the online headlines. I can't make a factual observation, but I would like to do further, expanded studies in articles in this research path to investigate the hypothesis.
 
 # Citations
 

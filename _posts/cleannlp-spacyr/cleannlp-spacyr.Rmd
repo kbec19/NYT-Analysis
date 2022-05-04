@@ -1,28 +1,77 @@
 ---
-title: "cleanNLP and spaCyr"
+title: "Topic Modeling"
 description: |
-  A short description of the post.
+  Text as Data Project: Headline Topic Modeling
+preview: photoc.png
+categories:
+  - text as data
+  - NYT text analysis project
 author:
   - name: Kristina Becvar
     url: https://kbec19.github.io/NYT-Analysis/
-date: 2022-05-01
+    affiliation: UMass DACSS Program (My Academic Blog Link)
+    affiliation_url: https://kristinabecvar.com
+slug: cleannlp-spacyr
+
+date: 2022-04-30
 output:
   distill::distill_article:
-    self_contained: false
+    toc: true
+    code_folding: true
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Other Types of Analysis
-Utilizing the cleanNLP package:
+# Other Types of Analysis
+
+## Utilizing the cleanNLP package
+
 As usual, I am struggling to get this to work due to my inexperience with the python backend. What worked for me last time I ran this in a previous tutorial was no longer working, so I had to uninstall my miniconda installation and re-install it, but eventually it initialized so I could run the “cnlp_annotate” function.
 
-Show code
-cnlp_init_udpipe()
+```{r include=FALSE}
+# load libraries
 
+library(cleanNLP)
+library(tidytext)
+library(tidyverse)
+library(quanteda)
+library(reticulate)
+library(spacyr)
+library(plyr); library(dplyr)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(quanteda.dictionaries)
+library(quanteda.sentiment)
+library(jsonlite)
+library(caret)
+library(magrittr)
+library(stringr)
+library(tidyr)
+library(widyr)
+library(ggplot2)
+suppressWarnings(expr)
+```
+
+## Load Data
+
+Loading the data from the expanded analysis:
+
+```{r code_folding = TRUE}
+#load data
+main_headlines <- read.csv("afghanistan_headlines_main.csv")
+main_headlines <- as.data.frame(main_headlines)
+#turn into data frame
+print_headlines <- read.csv("afghanistan_headlines_print.csv")
+print_headlines <- as.data.frame(print_headlines)
+```
+
+```{r code_folding = TRUE}
+cnlp_init_udpipe()
+```
+
+```{r code_folding = TRUE, message=FALSE}
 #first the main headlines
 
 main_tibble <- as_tibble(main_headlines) %>%
@@ -31,6 +80,9 @@ main_tibble <- utf8::as_utf8(main_tibble$text)
 
 annotated_main <- cnlp_annotate(main_tibble)
 
+```
+
+```{r code_folding = TRUE, message=FALSE}
 #then the print headlines
 
 print_tibble <- as_tibble(print_headlines) %>%
@@ -39,28 +91,47 @@ print_tibble <- utf8::as_utf8(print_tibble$text)
 
 annotated_print <- cnlp_annotate(print_tibble)
 
-Using spaCyr
-For Main Headlines
-Show code
+head(annotated_print)
+```
+
+## Using spaCyr
+
+### For Main Headlines
+
+```{r code_folding = TRUE}
 parsed_main <- spacy_parse(main_headlines,
                            lemma = TRUE,
                            entity = TRUE,
                            nounphrase = TRUE,
-                           sentiment = TRUE,
                            additional_attributes = c("is_punct",
                                                      "is_stop",
                                                      "is_currency",
                                                      "is_digit",
-                                                     "is_quote")) %>%
+                                                     "is_quote",
+                                                     "sentiment")) %>%
   as_tibble %>%
   select(-sentence_id)
+```
 
+
+```{r echo=TRUE}
 head(parsed_main)
 
 summary(parsed_main)
+```
 
-For Print Headlines
-Show code
+```{r}
+library(data.table)
+parsed_main_clean <- parsed_main %>%
+  filter(!c(pos %in% c("PUNCT", "SPACE", "NUM", "SYM", "PRON", "AUX", "ADP", "DET", "CCONJ", "PART", "ADV"))) %>%
+  filter(!token %in% c("%", "&", "-", "'s", "’s", "#"))
+head(parsed_main_clean)
+```
+
+### For Print Headlines
+
+```{r code_folding=TRUE}
+
 parsed_print <- spacy_parse(print_headlines,
                            lemma = TRUE,
                            entity = TRUE,
@@ -73,8 +144,17 @@ parsed_print <- spacy_parse(print_headlines,
                                                      "sentiment")) %>%
   as_tibble %>%
   select(-sentence_id)
+```
 
+```{r code_folding=TRUE}
 head(parsed_print)
 
 summary(parsed_print)
+```
 
+```{r code_folding=TRUE}
+parsed_main %>%
+  filter(pos == "NOUN") %>%
+  group_by(lemma) 
+
+```

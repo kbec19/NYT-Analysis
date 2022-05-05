@@ -1,0 +1,31 @@
+---
+title: "Poster Presentation"
+description: |
+  Text as Data Project: Research Poster Presentation
+preview: 697D.png
+categories:
+  - text as data
+  - NYT text analysis project
+  - poster presentation
+author:
+  - name: Kristina Becvar
+    url: https://kbec19.github.io/NYT-Analysis/
+    affiliation: UMass DACSS Program (My Academic Blog Link)
+    affiliation_url: https://kristinabecvar.com
+date: 2022-05-05
+output:
+  distill::distill_article:
+    toc: true
+    code_folding: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Research Poster
+
+This poster is a summary of this phase of research as presented as the Spring 2022 DACSS poster session. I look forward to continuing this research path in future semseters.
+
+![](697D.png)
+

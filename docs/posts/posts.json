@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/poster-presentation/",
+    "title": "Poster Presentation",
+    "description": "Text as Data Project: Research Poster Presentation",
+    "author": [
+      {
+        "name": "Kristina Becvar",
+        "url": "https://kbec19.github.io/NYT-Analysis/"
+      }
+    ],
+    "date": "2022-05-05",
+    "categories": [
+      "text as data",
+      "NYT text analysis project",
+      "poster presentation"
+    ],
+    "contents": "\r\n\r\nContents\r\nResearch Poster\r\n\r\nResearch Poster\r\nThis poster is a summary of this phase of research as presented as\r\nthe Spring 2022 DACSS poster session. I look forward to continuing this\r\nresearch path in future semseters.\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/poster-presentation/697D.png",
+    "last_modified": "2022-05-05T02:30:47-04:00",
+    "input_file": "poster-presentation.knit.md"
+  },
+  {
     "path": "posts/topic-modeling/",
     "title": "Topic Modeling",
     "description": "Text as Data Project: Headline Topic Modeling",

@@ -6,6 +6,7 @@ preview: new_sentiment.png
 categories:
   - text as data
   - NYT text analysis project
+  - normalized 
 author:
   - name: Kristina Becvar
     url: https://kbec19.github.io/NYT-Analysis/
@@ -388,8 +389,6 @@ main_plot
 
 
 # Citations
-
-Citations:
 
 * This research makes use of the [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm), created by Saif Mohammad and Peter Turney at the National Research Council Canada. 
 

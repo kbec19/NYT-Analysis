@@ -6,6 +6,8 @@ preview: 00001c.png
 categories:
   - text as data
   - NYT text analysis project
+  - sentiment analysis
+  - co-occurrence matrix
 author:
   - name: Kristina Becvar
     url: https://kbec19.github.io/NYT-Analysis/

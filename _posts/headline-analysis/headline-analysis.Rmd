@@ -12,7 +12,7 @@ author:
     affiliation: UMass DACSS Program (My Academic Blog Link)
     affiliation_url: https://kristinabecvar.com
 slug: headline-analysis
-date: 04/17/2022
+date: 04/19/2022
 output:
   distill::distill_article:
     toc: true
@@ -23,7 +23,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Comparing Main vs. Print Headlines in the New York Times
+# Comparing Main & Print Headlines
 
 ## Research Background
 
@@ -631,11 +631,7 @@ tidy_all
                  
 ```
 
-
-
 # Citations
-
-Citations:
 
 * This research makes use of the [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm), created by Saif Mohammad and Peter Turney at the National Research Council Canada. 
 

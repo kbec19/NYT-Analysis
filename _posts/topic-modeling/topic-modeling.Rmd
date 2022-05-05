@@ -2,10 +2,11 @@
 title: "Topic Modeling"
 description: |
   Text as Data Project: Headline Topic Modeling
-preview: photoc.png
+preview: modeling.png
 categories:
   - text as data
   - NYT text analysis project
+  - topic models
 author:
   - name: Kristina Becvar
     url: https://kbec19.github.io/NYT-Analysis/

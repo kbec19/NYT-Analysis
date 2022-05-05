@@ -2,7 +2,7 @@
 title: "Analysis of Main vs. Print Headlines: Phase 2"
 description: |
   Text as Data Project Headline Comparison Research Using API Query "Afghanistan"
-preview: 000010.png
+preview: 00001c.png
 categories:
   - text as data
   - NYT text analysis project
@@ -23,7 +23,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Comparing Main vs. Print Headlines in the New York Times
+# "Afghanistan" Search Term
 
 This is a continuation of my analysis started in my [last post.](https://kbec19.github.io/NYT-Analysis/posts/headline-analysis/)
 
@@ -169,7 +169,7 @@ head(print_counts)
 
 ## Feature Co-Occurrence Matrix
 
-Now I can take a look at this network of feature co-occurrences again.
+Now I can take a look at this network of feature co-occurrences again. This time, I'm also going to increase the feature count from 20 to 30.
 
 First, for the main headlines:
 
@@ -590,8 +590,6 @@ Although I was not able to find any statistically meaningful, measurable differe
 Specifically, there is a pattern that the print headlines carry a lower level of emotionally weighted words than the online headlines. I can't make a factual observation, but I would like to do further, expanded studies in articles in this research path to investigate the hypothesis.
 
 # Citations
-
-Citations:
 
 * This research makes use of the [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm), created by Saif Mohammad and Peter Turney at the National Research Council Canada. 
 

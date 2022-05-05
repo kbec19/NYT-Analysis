@@ -5,6 +5,7 @@ description: |
 categories:
   - text as data
   - NYT text analysis project
+  - pdf analysis
 author:
   - name: Kristina Becvar
     url: https://kbec19.github.io/NYT-Analysis/
